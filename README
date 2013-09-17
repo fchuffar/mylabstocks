@@ -1,0 +1,75 @@
+*****************************************
+Readme / Documentation for `MyLabsStocks`
+*****************************************
+
+`MyLabsStocks` offers Python API and R package allowing to perform 
+quantitative analysis of nucleosomal epigenome. It is especially well 
+suited for scripting to extract natural Single-Nucleosome Epi-
+Polymorphisms (SNEP) from ChIP-Seq data.
+
+License
+=======
+
+Copyright CNRS 2012-2013                                                 
+                                                                          
+- Florent CHUFFART                                                         
+- Gael YVERT                                                               
+                                                                          
+This software is a computer program which purpose is to perform quanti-
+tative analysis of epigenetic marks at single nucleosome resolution.     
+                                                                          
+The Software is provided “as is” without warranty of any kind, either 
+express or implied, including without lim- itation any implied warranties 
+of condition, uninterrupted use, merchantability, fitness for a particular 
+purpose, or non-infringement. You use this software at your own risk.
+
+This software is governed by the CeCILL license under French law and     
+abiding by the rules of distribution of free software.  You can  use,    
+modify and/ or redistribute the software under the terms of the CeCILL   
+license as circulated by CEA, CNRS and INRIA at the following URL        
+"http://www.cecill.info".                                                
+                                                                          
+As a counterpart to the access to the source code and  rights to copy,   
+modify and redistribute granted by the license, users are provided only  
+with a limited warranty  and the software's author,  the holder of the   
+economic rights,  and the successive licensors  have only  limited       
+liability.                                                               
+                                                                          
+In this respect, the user's attention is drawn to the risks associated   
+with loading,  using,  modifying and/or developing or reproducing the    
+software by the user in light of its specific status of free software,   
+that may mean  that it is complicated to manipulate,  and  that  also    
+therefore means  that it is reserved for developers  and  experienced    
+professionals having in-depth computer knowledge. Users are therefore    
+encouraged to load and test the software's suitability as regards their  
+requirements in conditions enabling the security of their systems and/or 
+data to be ensured and,  more generally, to use and operate it in the    
+same conditions as regards security.                                     
+                                                                          
+The fact that you are presently reading this means that you have had     
+knowledge of the CeCILL license and that you accept its terms.           
+
+Installation Instructions
+=========================
+
+Links
+-----
+
+`MyLabsStocks` home page: http://www.ens-lyon.fr/LBMC/gisv/
+
+`MyLabsStocks` documentation: http://www.ens-lyon.fr/LBMC/gisv/
+
+
+Installation
+------------
+
+...
+
+Usage
+=====
+
+In the strain section, the form `Search in genotype` filters strains where the 
+fields `locus1`, `locus2`, `locus3`, `locus4`, `locus5`, `ADE2`, `HIS3`, `LEU2`, 
+`LYS2`, `MET15`, `TRP1`, `URA3`, `HO_`, `Cytoplasmic_Character` or 
+`extrachromosomal_plasmid` contain the given expression. This filter is case 
+insensitive.
