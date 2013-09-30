@@ -63,7 +63,70 @@ Links
 Installation
 ------------
 
-...
+rsync -cauvz  --exclude="formatdb.log" --exclude=".DS_Store" ../src/ root@cremone:/var/www/labstocks/
+
+cd /var/www/labstocks
+# sudo vi connect_entry.php 
+sudo touch formatdb.log
+sudo chmod 440 connect_entry.php 
+sudo chown -R www-data:www-data connect_entry.php formatdb.log  plasmid_files raw_dirs
+
+
+Migration
+cd /var/www/labstocks
+sudo cp -r ../labstocks.bck2/plasmid_files/*.gb.gz plasmid_files/.
+sudo chmod -R a+r plasmid_files
+sudo chown -R www-data:www-data plasmid_files
+sudo cp -r ../labstocks.bck2/collections collections/.
+cd raw_dirs/antibodies/
+sudo mkdir `for ((a=1; a <= 24 ; a++)); do echo $a ; done`
+cd ../..
+sudo cp ../labstocks.bck2/antibody_files/10.Anti-H3K14ac\(07-353\).pdf                raw_dirs/antibodies/10/Anti-H3K14ac\(07-353\).pdf                            
+sudo cp ../labstocks.bck2/antibody_files/11.Anti-H3ac\(06-599\).pdf                   raw_dirs/antibodies/11/Anti-H3ac\(06-599\).pdf                               
+sudo cp ../labstocks.bck2/antibody_files/12.Anti-H3\(ab1791\).pdf                     raw_dirs/antibodies/12/Anti-H3\(ab1791\).pdf                                 
+sudo cp ../labstocks.bck2/antibody_files/13.Anti-FLAG\(F7425\).pdf                    raw_dirs/antibodies/13/Anti-FLAG\(F7425\).pdf                                
+sudo cp ../labstocks.bck2/antibody_files/14.Cre-Recombinase\(PRB-106C\).pdf           raw_dirs/antibodies/14/Cre-Recombinase\(PRB-106C\).pdf                        
+sudo cp ../labstocks.bck2/antibody_files/15.GAPDH-HRP\(ab85760\).pdf                  raw_dirs/antibodies/15/GAPDH-HRP\(ab85760\).pdf                              
+sudo cp ../labstocks.bck2/antibody_files/16.Anti-H3K9ac\(ab10812\).pdf                raw_dirs/antibodies/16/Anti-H3K9ac\(ab10812\).pdf                            
+sudo cp ../labstocks.bck2/antibody_files/17.Anti-H3K4me3\(CS-003-100\).pdf            raw_dirs/antibodies/17/Anti-H3K4me3\(CS-003-100\).pdf                         
+sudo cp ../labstocks.bck2/antibody_files/18.Anti-H3\(ab1791\).pdf                     raw_dirs/antibodies/18/Anti-H3\(ab1791\).pdf                                 
+sudo cp ../labstocks.bck2/antibody_files/19.Anti-H3K4me1\(07-436\).pdf                raw_dirs/antibodies/19/Anti-H3K4me1\(07-436\).pdf                            
+sudo cp ../labstocks.bck2/antibody_files/1.Anti-Actin-C4\(69100\).pdf                 raw_dirs/antibodies/1/Anti-Actin-C4\(69100\).pdf                             
+sudo cp ../labstocks.bck2/antibody_files/20.Anti-H3K14ac\(07-353\).pdf                raw_dirs/antibodies/20/Anti-H3K14ac\(07-353\).pdf                            
+sudo cp ../labstocks.bck2/antibody_files/21.Anti-H4K12ac\(07-595\).pdf                raw_dirs/antibodies/21/Anti-H4K12ac\(07-595\).pdf                            
+sudo cp ../labstocks.bck2/antibody_files/22.Anti-Htz1\(39647\).pdf                    raw_dirs/antibodies/22/Anti-Htz1\(39647\).pdf                                
+sudo cp ../labstocks.bck2/antibody_files/23.Anti-H2AFZ\(ab4626\).pdf                  raw_dirs/antibodies/23/Anti-H2AFZ\(ab4626\).pdf                              
+sudo cp ../labstocks.bck2/antibody_files/24.Anti-LexA-DBD\(39185\).pdf                raw_dirs/antibodies/24/Anti-LexA-DBD\(39185\).pdf                            
+sudo cp ../labstocks.bck2/antibody_files/2.Anti-Myc\(06-340\).pdf                     raw_dirs/antibodies/2/Anti-Myc\(06-340\).pdf                                 
+sudo cp ../labstocks.bck2/antibody_files/3.Anti-H3\(ab10799\).pdf                     raw_dirs/antibodies/3/Anti-H3\(ab10799\).pdf                                 
+sudo cp ../labstocks.bck2/antibody_files/4.Anti-H3\(ab24834\).pdf                     raw_dirs/antibodies/4/Anti-H3\(ab24834\).pdf                                 
+sudo cp ../labstocks.bck2/antibody_files/5.Anti-H3K4me2\(ab7766\).pdf                 raw_dirs/antibodies/5/Anti-H3K4me2\(ab7766\).pdf                             
+sudo cp ../labstocks.bck2/antibody_files/6.Anti-H3K4me3\(ab8580\).pdf                 raw_dirs/antibodies/6/Anti-H3K4me3\(ab8580\).pdf                             
+sudo cp ../labstocks.bck2/antibody_files/7.Anti-H3K27me3\(07-449\).pdf                raw_dirs/antibodies/7/Anti-H3K27me3\(07-449\).pdf                            
+sudo cp ../labstocks.bck2/antibody_files/8.Anti-H4K12ac\(06-761\).pdf                 raw_dirs/antibodies/8/Anti-H4K12ac\(06-761\).pdf                             
+sudo cp ../labstocks.bck2/antibody_files/9.Beta-Actin-AC74\(A2228\).pdf               raw_dirs/antibodies/9/Beta-Actin-AC74\(A2228\).pdf                           
+sudo chmod -R a+r raw_dirs
+sudo chown -R www-data:www-data raw_dirs
+# upload gene_synthesis_reports_pGY247.zip and gene_synthesis_reports_pGY248.zip
+
+
+
+
+
+scp -r stainer:Desktop/LBMC/projects/plasmapper/src/plasmid_files labstocks
+vi labstocks/connect_entry.php
+sudo cp -r labstocks /var/www/
+sudo chmod 440 /var/www/labstocks/connect_entry.php 
+sudo chown www-data:www-data /var/www/labstocks/connect_entry.php
+sudo chown -R www-data:www-data /var/www/labstocks/plasmid_files
+sudo chown -R www-data:www-data /var/www/labstocks/raw_dirs
+sudo touch /var/www/labstocks/formatdb.log
+sudo chown www-data:www-data /var/www/labstocks/formatdb.log
+
+
+
+
+
 
 Usage
 =====
@@ -73,3 +136,19 @@ fields `locus1`, `locus2`, `locus3`, `locus4`, `locus5`, `ADE2`, `HIS3`, `LEU2`,
 `LYS2`, `MET15`, `TRP1`, `URA3`, `HO_`, `Cytoplasmic_Character` or 
 `extrachromosomal_plasmid` contain the given expression. This filter is case 
 insensitive.
+
+Even in edit mode, users are not granted permission to directly edit a plasmid 
+sequence, nor the URL to the plasmid sequence file. If a new sequence must be 
+entered instead of the current one, users must upload a new sequence file, in 
+.gb or .gb.gz format. MyLabStocks then automatically reads the file and update 
+the sequence field and the URL. This ensures consistency between URL, sequence 
+and the file itself.
+
+TODO
+====
+
+  - Upload a .gb file, gzip it on fly for plasmids.
+  - Bug with plasmid 246, having a look on log file: tail -f /var/log/tomcat6/catalina.out
+  - Add persistence on advanced search form conditions.
+  - Remove file field for antibodies
+  - More error msg when an uploaded file is too big. (>2Mo).

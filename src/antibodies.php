@@ -18,7 +18,6 @@ require("headers.php");
  *              generating setup script: 1.50
  */
 
-	
 /*************************/
 //
 // Pass phpMyEdit options
@@ -238,10 +237,8 @@ $opts['fdd']['DataSheet']['URL'] = '$value';
 $opts['fdd']['DataSheet']['URLprefix'] = 'antibody_files/';
 $opts['fdd']['DataSheet']['URLtarget'] = '_self';
 
-// Now important call to phpMyEdit
-require_once 'phpMyEdit.class.php';
-new phpMyEdit($opts);
+// TRIGGER
+// Before displaying the view page
 
+require("footers.php");
 ?>
-
-

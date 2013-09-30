@@ -2,7 +2,6 @@
 session_start ();
 require("headers.php");
 
-
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -19,92 +18,11 @@ require("headers.php");
  *              generating setup script: 1.50
  */
 
-
-
-/*************************/
-//
-// Connect to DB and 
-// handle session/authentification
-//
-/*************************/
-require_once ("connect_entry.php");
-require_once ("session.php");
-// connect to DB
-$connexion = mysql_pconnect (SERVEUR, NOM, PASSE);
-if (!$connexion)
-{
- echo "Sorry, connexion to " . SERVEUR . " failed\n";
- exit;
-}
-if (!mysql_select_db (BASE, $connexion))
-{
- echo "Sorry, connexion to database " . BASE . " failed\n";
- exit;
-}
-// authentification
-CleanOldSessions($connexion);
-$session = ControleAcces ("notebooks.php", $_POST, session_id(), $connexion);
-if (!is_object($session))
-	exit;
-
-/*************************/
-//
-// According to login:
-// Define priviledge options
-// to pass to phpMyEdit
-//
-/*************************/
-
-//check that visitor is allowed to use this table
-$tb = "notebooks";
-if ($session->target_table != $tb && $session->target_table != "all")
-{
-   echo "Sorry, your session is not granted access to table <B> $tb </B><p>";
-   echo "Please logout and try again with appropriate login<P>";
-   exit;
-}
-
-//define priv options and change background color accordingly
-if ($session->mode == "view"){
-	$privopt = 'VF';
-	$colorband = "#00ff00";
-	$messageband = "You are safely in VIEW mode";
-}
-else if ($session->mode == "add"){
-	$privopt = 'APVF';
-	$colorband = "orange";
-	$messageband = 'You are in <I><B> ADD </I></B> mode, please logout after you additions';
-}
-else if ($session->mode == "edit"){
-	$privopt = 'ACPVDF';
-	$colorband = "rgb(250,0,255)";
-	$messageband = 'IMPORTANT: You are in <I><B> EDIT </I></B> mode, please logout after editing.';
-}
-else{
-	$privopt = '';
-	$colorband = "grey";
-}
-echo '<style type="text/css"> ';
-echo	"h4 {background-color: $colorband }";
-echo '</style>';
-echo "<h4> $messageband </h4>";
-echo "<HR>";
-
-//************************/
-//
-// Fix a problem displaying
-// symbols (such as delta)
-//
-//************************/
-
-mysql_query("SET NAMES 'UTF8'", $connexion);
-
 /*************************/
 //
 // Pass phpMyEdit options
 //
 /*************************/
-
 
 $opts['dbh'] = $connexion;
 $opts['tb'] = $tb;
@@ -250,10 +168,5 @@ $opts['fdd']['End_Date'] = array(
 // Before displaying the view page
 
 
-// Now important call to phpMyEdit
-require_once 'phpMyEdit.class.php';
-new phpMyEdit($opts);
-
+require("footers.php");
 ?>
-
-

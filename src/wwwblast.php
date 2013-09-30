@@ -2,48 +2,7 @@
 session_start ();
 require("headers.php");
 
-/*************************/
-//
-// Connect to DB and 
-// handle session/authentification
-//
-/*************************/
-require_once ("connect_entry.php");
-require_once ("session.php");
-// connect to DB
-$connexion = mysql_pconnect (SERVEUR, NOM, PASSE);
-if (!$connexion)
-{
- echo "Sorry, connexion to " . SERVEUR . " failed\n";
- exit;
-}
-if (!mysql_select_db (BASE, $connexion))
-{
- echo "Sorry, connexion to database " . BASE . " failed\n";
- exit;
-}
-// authentification
-CleanOldSessions($connexion);
-$session = ControleAcces ("wwwblast.php", $_POST, session_id(), $connexion);
-if (!is_object($session)) {
-  exit;
-}
-
-/*************************/
-//
-// Verify login and priviledges
-//
-/*************************/
-
-// just in case:
-// check that visitor is in read-only mode
-if ($session->mode != "view" && $session->login != "superuser"){
-   echo "Sorry, you should log in <B> view </B> mode<p>";
-   echo "Please logout and try again with appropriate login<P>";
-   exit;
-}
-
-require_once("seq2fasta.php");
+require_once("lib/seq.lib.php");
 
 // Create an updated fasta
 // file of all oligos
@@ -170,26 +129,18 @@ while($feat = mysql_fetch_object($result)) {
     $fasta_content .= $toprint[$i] . "\n";
   }
 }
-
 fclose($FastaFile);
-
-/*************************/
-//
 // Using the fasta file
 // Create the blast database
 // and place it in the appropriate directory for wwwblast
-//
-/*************************/
-
 $cmd_formatdb = FORMATDB_CMD." -i $blastbasename -p F -o T";
 echo "<pre>$cmd_formatdb</pre>";
 system($cmd_formatdb, $retval1);
 
 if ($retval1 != 0){
-   echo "<b><font color='red'>ERROR!</font></b> while formatting the FASTA database into BLAST format. <a href=formatdb.log>formatdb.log</a>";
+   echo "Error while formatting the FASTA database into BLAST format";
    exit;
 }
-
 $html_feat_cnt = <<<EOD
 <html>
 <head>
@@ -206,39 +157,13 @@ $fasta_content
 </body>
 </html>
 EOD;
-
 $html_feat_filename = PLASMAPPER_HOME . "html/feature.html";
 $fp = fopen($html_feat_filename, 'w');
 fwrite($fp, $html_feat_cnt);
 fclose($fp);
-
 echo "Blast has updated PlasMapper with the latest plasmid's features.";
-
 ?>
-
-
-
-
-
-
-
-
-
-
 
 <center>
 <iframe src="/blast/blast.html" width="100%" height="90%" border="0"/>
 </center>
-
-
-
-
-
-
-
-
-
-
-
-
-

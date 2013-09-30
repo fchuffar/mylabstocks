@@ -1,8 +1,39 @@
 <?php
 session_start ();
-
-
 require("headers.php");
+
+// if (array_key_exists("action", $_REQUEST)) {
+//   if ($_REQUEST["action"] == "SEARCH_IN_GENOTYPE") {
+//     $keys = split(" ", $_REQUEST["geno"]); 
+//     print_r($keys );
+// 
+//     $tmp_filter = "ynl095c:PBY-306-ynl095C";
+//     $likes = "";
+//     foreach ($keys as $k) {
+//       if ($k != "") {
+//         $likes .= "`locus1` LIKE '%$k%' OR `locus2` LIKE '%$k%' OR `locus3` LIKE '%$k%' OR `locus4` LIKE '%$k%' OR `locus5` LIKE '%$k%' OR `ADE2` LIKE '%$k%' OR `HIS3` LIKE '%$k%' OR `LEU2` LIKE '%$k%' OR `LYS2` LIKE '%$k%' OR `MET15` LIKE '%$k%' OR `TRP1` LIKE '%$k%' OR `URA3` LIKE '%$k%' OR `HO_` LIKE '%$k%' OR `Cytoplasmic_Character` LIKE '%$k%' OR `extrachromosomal_plasmid` LIKE '%$k%'";
+//       }
+//     }
+//     $opts["filters"] = $likes . " " ;
+//   }
+// }
+// 
+// if (!array_key_exists("PME_sys_operation", $_REQUEST)) {
+//   if (array_key_exists("geno", $_REQUEST)) {
+//     $geno = $_REQUEST["geno"]; 
+//   } else {
+//     $geno = "";
+//   }
+//   echo "<form action='' method='post'>";
+//   //echo "<fieldset style='border:1px plain black; width: 300px;'>";
+//   //echo "<legend>Search in genotype</legend>";
+//   echo "Search in genotype: <input type='hidden' name='action' value='SEARCH_IN_GENOTYPE'/>";
+//   echo "<input type='text' name='geno' value='$geno'/>";
+//   echo "<input type='button' name='send' value='Search' onclick='return this.form.submit();'/>";
+// //  echo "</fieldset>";
+//   echo "</form>";
+// }
+
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -19,124 +50,12 @@ require("headers.php");
  *              generating setup script: 1.50
  */
 
-/*************************/
-// Connect to DB and 
-// handle session/authentification
-/*************************/
-require_once ("connect_entry.php");
-require_once ("session.php");
-// connect to DB
-$connexion = mysql_pconnect (SERVEUR, NOM, PASSE);
-if (!$connexion)
-{
- echo "Sorry, connexion to " . SERVEUR . " failed\n";
- exit;
-}
-if (!mysql_select_db (BASE, $connexion))
-{
- echo "Sorry, connexion to database " . BASE . " failed\n";
- exit;
-}
-// authentification
-CleanOldSessions($connexion);
-$session = ControleAcces ("strains.php", $_POST, session_id(), $connexion);
-if (!is_object($session))
-	exit;
-
-/*************************/
-// According to login:
-// Define priviledge options
-// to pass to phpMyEdit
-/*************************/
-
-//check that visitor is allowed to use this table
-$tb = "strains";
-if ($session->target_table != $tb && $session->target_table != "all")
-{
-   echo "Sorry, your session is not granted access to table <B> $tb </B><p>";
-   echo "Please logout and try again with appropriate login<P>";
-   exit;
-}
-
-//define priv options and change background color accordingly
-if ($session->mode == "view"){
-	$privopt = 'VF';
-	$colorband = "#00ff00";
-	$messageband = "You are safely in VIEW mode";
-}
-else if ($session->mode == "add"){
-	$privopt = 'APVF';
-	$colorband = "orange";
-	$messageband = 'You are in <I><B> ADD </I></B> mode, please logout after you additions';
-}
-else if ($session->mode == "edit"){
-	$privopt = 'ACPVDF';
-	$colorband = "rgb(250,0,255)";
-	$messageband = 'IMPORTANT: You are in <I><B> EDIT </I></B> mode, please logout after editing.';
-}
-else{
-	$privopt = '';
-	$colorband = "grey";
-}
-echo '<style type="text/css"> ';
-echo	"h4 {background-color: $colorband }";
-echo '</style>';
-echo "<h4> $messageband </h4>";
-echo "<HR>";
-
-
-  //print_r($_REQUEST );
-
-if (array_key_exists("action", $_REQUEST)) {
-  if ($_REQUEST["action"] == "SEARCH_IN_GENOTYPE") {
-    $keys = split(" ", $_REQUEST["geno"]); 
-    print_r($keys );
-
-    $tmp_filter = "ynl095c:PBY-306-ynl095C";
-    $likes = "";
-    foreach ($keys as $k) {
-      if ($k != "") {
-        $likes .= "`locus1` LIKE '%$k%' OR `locus2` LIKE '%$k%' OR `locus3` LIKE '%$k%' OR `locus4` LIKE '%$k%' OR `locus5` LIKE '%$k%' OR `ADE2` LIKE '%$k%' OR `HIS3` LIKE '%$k%' OR `LEU2` LIKE '%$k%' OR `LYS2` LIKE '%$k%' OR `MET15` LIKE '%$k%' OR `TRP1` LIKE '%$k%' OR `URA3` LIKE '%$k%' OR `HO_` LIKE '%$k%' OR `Cytoplasmic_Character` LIKE '%$k%' OR `extrachromosomal_plasmid` LIKE '%$k%'";
-      }
-    }
-    $opts["filters"] = $likes . " " ;
-  }
-}
-
-if (!array_key_exists("PME_sys_operation", $_REQUEST)) {
-  if (array_key_exists("geno", $_REQUEST)) {
-    $geno = $_REQUEST["geno"]; 
-  } else {
-    $geno = "";
-  }
-  echo "<form action='' method='post'>";
-  //echo "<fieldset style='border:1px plain black; width: 300px;'>";
-  //echo "<legend>Search in genotype</legend>";
-  echo "Search in genotype: <input type='hidden' name='action' value='SEARCH_IN_GENOTYPE'/>";
-  echo "<input type='text' name='geno' value='$geno'/>";
-  echo "<input type='button' name='send' value='Search' onclick='return this.form.submit();'/>";
-//  echo "</fieldset>";
-  echo "</form>";
-}
-
-
-
-
-//************************/
-//
-// Fix a problem displaying
-// symbols (such as delta)
-//
-//************************/
-
-mysql_query("SET NAMES 'UTF8'", $connexion);
 
 /*************************/
 //
 // Pass phpMyEdit options
 //
 /*************************/
-
 
 $opts['dbh'] = $connexion;
 $opts['tb'] = $tb;
@@ -454,13 +373,6 @@ $opts['fdd']['Date_'] = array(
 
 // TRIGGER
 // Before displaying the view page
-$opts['triggers']['select']['pre'] = 'strains.TSP.php';
-$opts['triggers']['select']['before'] = 'strains.test.php';
-
-// Now important call to phpMyEdit
-require_once 'phpMyEdit.class.php';
-new phpMyEdit($opts);
-
+$opts['triggers']['select']['pre'][] = 'strains.TSP.php';
+require("footers.php");
 ?>
-
-

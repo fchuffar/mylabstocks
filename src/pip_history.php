@@ -1,33 +1,6 @@
 <?php
 session_start ();
-?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-	body {background-color:  #FFF8DC}
-	input.btn { color: #050; font: bold 84%'trebuchet ms',helvetica,sans-serif; background-color: #fed;}
-	input.btn2{ color: #050; font: bold 84%'trebuchet ms',helvetica,sans-serif; background-color: #CC6633;}
-	hr.pme-hr		     { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
-	table.pme-main 	     { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
-	table.pme-navigation { border: #004d9c 0px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
-	td.pme-navigation-0, td.pme-navigation-1 { white-space: nowrap; }
-	th.pme-header	     { border: #004d9c 1px solid; padding: 4px; background: #add8e6; }
-	td.pme-key-0, td.pme-value-0, td.pme-help-0, td.pme-navigation-0, td.pme-cell-0,
-	td.pme-key-1, td.pme-value-1, td.pme-help-0, td.pme-navigation-1, td.pme-cell-1,
-	td.pme-sortinfo, td.pme-filter { border: #004d9c 1px solid; padding: 3px; }
-	td.pme-buttons { text-align: left;   }
-	td.pme-message { text-align: center; }
-	td.pme-stats   { text-align: right;  }
-</style>
-<h3> List of Pipets of the GY lab
-    <CENTER>
-    <FORM ACTION = 'logout.php' METHOD = 'POST'>
-      <INPUT TYPE='SUBMIT' VALUE = 'Logout' NAME = 'logout' class = "btn2">
-    </FORM> </CENTER>
-    <FORM ACTION = 'pipethistory.php' METHOD = 'POST'>
-      <INPUT TYPE='SUBMIT' VALUE = 'Go to Pipets History' NAME = 'gotohistory' class = "btn">
-    </FORM>
-</h3>
-<?php
+require("headers.php");
 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
@@ -45,85 +18,16 @@ session_start ();
  *              generating setup script: 1.50
  */
 
-
-
-/*************************/
-//
-// Connect to DB and 
-// handle session/authentification
-//
-/*************************/
-require_once ("connect_entry.php");
-require_once ("session.php");
-// connect to DB
-$connexion = mysql_pconnect (SERVEUR, NOM, PASSE);
-if (!$connexion)
-{
- echo "Sorry, connexion to " . SERVEUR . " failed\n";
- exit;
-}
-if (!mysql_select_db (BASE, $connexion))
-{
- echo "Sorry, connexion to database " . BASE . " failed\n";
- exit;
-}
-// authentification
-CleanOldSessions($connexion);
-$session = ControleAcces ("pipetstocks.php", $_POST, session_id(), $connexion);
-if (!is_object($session))
-	exit;
-
-/*************************/
-//
-// According to login:
-// Define priviledge options
-// to pass to phpMyEdit
-//
-/*************************/
-
-//check that visitor is allowed to use this table
-$tb = "pip_stock";
-if ($session->target_table != $tb && $session->target_table != "all")
-{
-   echo "Sorry, your session is not granted access to table <B> $tb </B><p>";
-   echo "Please logout and try again with appropriate login<P>";
-   exit;
-}
-
-//define priv options and change background color accordingly
-if ($session->mode == "view"){
-	$privopt = 'VF';
-	$colorband = "#00ff00";
-	$messageband = "You are safely in VIEW mode";
-}
-else if ($session->mode == "add"){
-	$privopt = 'APVF';
-	$colorband = "orange";
-	$messageband = 'You are in <I><B> ADD </I></B> mode, please logout after you additions';
-}
-else if ($session->mode == "edit"){
-	$privopt = 'ACPVDF';
-	$colorband = "rgb(250,0,255)";
-	$messageband = 'IMPORTANT: You are in <I><B> EDIT </I></B> mode, please logout after editing.';
-}
-else{
-	$privopt = '';
-	$colorband = "grey";
-}
-echo '<style type="text/css"> ';
-echo	"h4 {background-color: $colorband }";
-echo '</style>';
-echo "<h4> $messageband </h4>";
-echo "<HR>";
-
 //************************/
 //
-// Fix a problem displaying
-// symbols (such as delta)
+// Update list of pipet Users
 //
 //************************/
 
-mysql_query("SET NAMES 'UTF8'", $connexion);
+mysql_query("DELETE FROM pip_users", $connexion);
+mysql_query("INSERT INTO pip_users (User) SELECT id FROM lab_members", $connexion);
+mysql_query("INSERT INTO pip_users (User) SELECT User FROM pip_generic_user", $connexion);
+mysql_query("DELETE FROM pip_users WHERE User IN (SELECT User FROM pip_nonusers)", $connexion);
 
 /*************************/
 //
@@ -231,45 +135,70 @@ appear in generated list. Here are some most used field options documented.
 $opts['fdd']['ID'] = array(
   'name'     => 'ID',
   'select'   => 'N',
-  //'options'  => 'LAVCPDR', // auto increment
+  'options'  => 'LAVCPDR', // auto increment
   'maxlen'   => 10,
-  'default'  => '0',
-  'sort'     => true
-);
-$opts['fdd']['Serial_Number'] = array(
-  'name'     => 'Serial Number',
-  'select'   => 'T',
-  'maxlen'   => 30,
   //'default'  => '0',
   'sort'     => true
 );
-$opts['fdd']['Marque'] = array(
-  'name'     => 'Marque',
+$opts['fdd']['Date'] = array(
+  'name'     => 'Date',
+  'options'  => 'LFAVCPD',
+  'select'   => 'N',
+  'maxlen'   => 10,
+  'sort'     => true,
+  'default'  => date("Y-m-d", strtotime("now"))
+);
+$opts['fdd']['Event_Type'] = array(
+  'name'     => 'Type of Event',
+  'select'   => 'D',
+  'maxlen'   => 30,
+  'default'  => 'Misc',
+  'values'   => array(
+  	'table'  => 'pip_events',
+	'column' => 'Events'),
+  'sort'     => true
+);
+$opts['fdd']['Serial_Number'] = array(
+  'name'     => 'Pipet Serial Number',
+  'select'   => 'D',
+  'maxlen'   => 30,
+  //'default'  => '0',
+  'values'   => array(
+  	'table'  => 'pip_stock',
+	'column' => 'Serial_Number'),
+  'sort'     => true
+);
+$opts['fdd']['Usage_fromNowOn'] = array(
+  'name'     => 'Usage after this',
+  'select'   => 'D',
+  'maxlen'   => 25,
+  'sort'     => true,
+  'default'  => 'Misc',
+  'values'   => array(
+  	'table'  => 'pip_usage',
+	'column' => 'Usage')
+);
+$opts['fdd']['Owner_fromNowOn'] = array(
+  'name'     => 'Owner after this',
   'select'   => 'D',
   'maxlen'   => 25,
   'sort'     => true,
   'values'   => array(
-  	'table'  => 'pip_marque',
-	'column' => 'Marque')
+  	'table'  => 'pip_users',
+	'column' => 'User')
 );
-$opts['fdd']['Type'] = array(
-  'name'     => 'Type',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'pip_type',
-	'column' => 'Type')
+$opts['fdd']['Comments'] = array(
+  'name'     => 'Comments',
+  'select'   => 'T',
+  'maxlen'   => 1000000000, //4294967295,
+  'textarea' => array(
+  	'rows' => 5,
+  	'cols' => 50),
+  'sort'     => true
 );
-
 // TRIGGER
 // Before displaying the view page
+$opts['triggers']['select']['pre'][]    = 'pip_history.TSP.php';
 
-
-// Now important call to phpMyEdit
-require_once 'phpMyEdit.class.php';
-new phpMyEdit($opts);
-
+require("footers.php");
 ?>
-
-

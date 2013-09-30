@@ -1,6 +1,5 @@
 <?php
 session_start ();
-
 require("headers.php");
 
 /*
@@ -18,75 +17,6 @@ require("headers.php");
  *            phpMyEditSetup.php script: 1.50
  *              generating setup script: 1.50
  */
-
-/*************************/
-//
-// Connect to DB and 
-// handle session/authentification
-//
-/*************************/
-require_once ("connect_entry.php");
-require_once ("session.php");
-// connect to DB
-$connexion = mysql_pconnect (SERVEUR, NOM, PASSE);
-if (!$connexion)
-{
- echo "Sorry, connexion to " . SERVEUR . " failed\n";
- exit;
-}
-if (!mysql_select_db (BASE, $connexion))
-{
- echo "Sorry, connexion to database " . BASE . " failed\n";
- exit;
-}
-// authentification
-CleanOldSessions($connexion);
-$session = ControleAcces ("pl_features.php", $_POST, session_id(), $connexion);
-if (!is_object($session))
-	exit;
-
-/*************************/
-//
-// According to login:
-// Define priviledge options
-// to pass to phpMyEdit
-//
-/*************************/
-
-//check that visitor is allowed to use this table
-$tb = "pl_features";
-if ($session->target_table != $tb && $session->target_table != "all")
-{
-   echo "Sorry, your session is not granted access to table <B> $tb </B><p>";
-   echo "Please logout and try again with appropriate login<P>";
-   exit;
-}
-
-//define priv options and display warning accordingly
-if ($session->mode == "view"){
-	$privopt = 'VF';
-	$colorband = "#00ff00";
-	$messageband = "You are safely in VIEW mode";
-}
-else if ($session->mode == "add"){
-	$privopt = 'APVF';
-	$colorband = "orange";
-	$messageband = 'You are in <I><B> ADD </I></B> mode, please logout after you additions';
-}
-else if ($session->mode == "edit"){
-	$privopt = 'ACPVDF';
-	$colorband = "rgb(250,0,255)";
-	$messageband = 'IMPORTANT: You are in <I><B> EDIT </I></B> mode, please logout after editing.';
-}
-else{
-	$privopt = '';
-	$colorband = "grey";
-}
-echo '<style type="text/css"> ';
-echo	"h4 {background-color: $colorband }";
-echo '</style>';
-echo "<h4> $messageband </h4>";
-echo "<HR>";
 	
 /*************************/
 //
@@ -252,11 +182,7 @@ $opts['fdd']['Comments'] = array(
 
 // TRIGGER
 // Before displaying the view page
-$opts['triggers']['select']['pre']    = 'pl_features.TSP.php';
+$opts['triggers']['select']['pre'][]    = 'pl_features.TSP.php';
 
-
-// Now important call to phpMyEdit
-require_once 'phpMyEdit.class.php';
-new phpMyEdit($opts);
-
+require("footers.php");
 ?>
