@@ -223,19 +223,6 @@ $opts['fdd']['Comments'] = array(
   'maxlen'   => 200,
   'sort'     => true
 );
-$opts['fdd']['DataSheet'] = array(
-  'name'     => 'DataSheet',
-  'select'   => 'T',
-  'maxlen'   => 50,
-  'sort'     => true,
-  'sqlw' => 'IF($val_qas = "", NULL, $val_qas)' //to use real NULL instead of empty blanks
-);
-
-//link to datasheet file:
-$opts['fdd']['DataSheet']['URL'] = '$value';
-//$opts['fdd']['DataSheet']['URLdisp'] = 'Link'; 
-$opts['fdd']['DataSheet']['URLprefix'] = 'antibody_files/';
-$opts['fdd']['DataSheet']['URLtarget'] = '_self';
 
 // TRIGGER
 // Before displaying the view page

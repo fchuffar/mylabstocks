@@ -339,13 +339,6 @@ $opts['fdd']['Reference_'] = array(
   'maxlen'   => 125,
   'sort'     => true
 );
-$opts['fdd']['Date_Created'] = array(
-  'name'     => 'Date Created',
-  'options'  => 'AVCPD',
-  'select'   => 'T',
-  'maxlen'   => 10,
-  'sort'     => true
-);
 $opts['fdd']['Last_modified'] = array(
   'name'     => 'Last modified',
   'options'  => 'AVCPD',

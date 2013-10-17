@@ -1,100 +1,45 @@
+<?php
+require_once ("connect_entry.php");
+?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-
-body {
-  font-family:  sans-serif;
-  background-color: #FFF;
-  color: #000;
-}
-
-#onglets
-{
-  list-style-type : none;
-  padding-bottom : 30px; /* à modifier suivant la taille de la police ET de la hauteur de l'onglet dans #onglets li */
-  border-bottom : 1px solid #000;
-  margin-left : 0;
-}
-
-#onglets li
-{
-    float : left;
-    height : 27px; /* à modifier suivant la taille de la police pour centrer le texte dans l'onglet */
-    margin : 2px 2px 0 2px !important;  /* Pour les navigateurs autre que IE */
-    margin : 1px 2px 0 2px;  /* Pour IE  */
-    border : 1px solid #000;
-    background-color: #DDD;
-}
-
-#onglets li.active
-{
-    border-bottom: 1px solid #fff;
-    background-color: #fff;
-}
-
-#onglets a
-{
-    display : block;
-    color : #000;
-    text-decoration : none;
-    padding : 4px;
-}
-
-#onglets a:hover
-{
-    background : #fff;
-}
-
-input.btn{ color: #050; font: bold 84%'trebuchet ms',helvetica,sans-serif; background-color: #fed;}
-input.btn2{ color: #050; font: bold 84%'trebuchet ms',helvetica,sans-serif; background-color: #CC6633;}
-
-hr.pme-hr                    { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
-table.pme-main       { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
-table.pme-navigation { border: #004d9c 0px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
-td.pme-navigation-0, td.pme-navigation-1 { white-space: nowrap; }
-th.pme-header        { border: #004d9c 1px solid; padding: 4px; background: #add8e6; }
-td.pme-key-0, td.pme-value-0, td.pme-help-0, td.pme-navigation-0, td.pme-cell-0,
-td.pme-key-1, td.pme-value-1, td.pme-help-0, td.pme-navigation-1, td.pme-cell-1,
-td.pme-sortinfo, td.pme-filter { border: #004d9c 1px solid; padding: 3px; }
-td.pme-buttons { text-align: left;   }
-td.pme-message { text-align: center; }
-td.pme-stats   { text-align: right;  }
-</style>
-
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 
 <body>
+  <div id="divDebug" style="display: none; font-weight:normal; position:absolute; background-color:#EEEEEE; font-size:xx-small; top:0ex; width:38ex; right:0ex;">toto</div>
 
-<h3>GY Lab Stocks</h3>
+  <div id="sheets">
 
-<div id="menu">
-  <ul id="onglets">
-    <li id="home"><a href="home.php"> Home </a></li>
-    <li id="plasmids"><a href="plasmids.php"> Plasmids </a></li>
-    <li id="pl_features"><a href="pl_features.php"> Plasmids Features </a></li>
-    <li id="strains"><a href="strains.php"> Strains </a></li>
-    <li id="oligos"><a href="oligos.php"> Oligos </a></li>
-    <li id="wwwblast"><a href="wwwblast.php"> wwwBlast </a></li>
-    <li id="antibodies"><a href="antibodies.php"> Antibodies </a></li>
-    <li id="collections"><a href="collections.php"> Collections </a></li>
-    <li id="pip_stock"><a href="pip_stock.php"> Pipets </a></li>
-    <li id="pip_history"><a href="pip_history.php"> Pipet History </a></li>
-    <li id="notebooks"><a href="notebooks.php"> Lab's Notebooks </a></li>
-    <li id="logout"><a href="logout.php"> Logout </a></li>
-    <li id="admin"><a href="admin.php"> Admin </a></li>
-  </ul>
-</div>
-</div>
+      <h3><?php echo LABNAME; ?> Lab Stocks</h3>
+  
+      <div id="wrapper">
+        <div id="menu">
+          <ul>
+            <li id="home"><span><a href="home.php"> Home </a></span></li>
+            <li id="plasmids"><span><a href="plasmids.php"> Plasmids </a></span></li>
+            <li id="pl_features"><span><a href="pl_features.php"> Plasmids Features </a></span></li>
+            <li id="strains"><span><a href="strains.php"> Strains </a></span></li>
+            <li id="oligos"><span><a href="oligos.php"> Oligos </a></span></li>
+            <li id="wwwblast"><span><a href="wwwblast.php"> wwwBlast </a></span></li>
+            <li id="antibodies"><span><a href="antibodies.php"> Antibodies </a></span></li>
+            <li id="collections"><span><a href="collections.php"> Collections </a></span></li>
+            <li id="pip_stock"><span><a href="pip_stock.php"> Pipets </a></span></li>
+            <li id="pip_history"><span><a href="pip_history.php"> Pipet History </a></span></li>
+            <li id="notebooks"><span><a href="notebooks.php"> Lab's Notebooks </a></span></li>
+            <li id="logout"><span><a href="logout.php"> Logout </a></span></li>
+            <li id="admin"><span><a href="admin.php"> Admin </a></span></li>
+          </ul>
+        </div>
 
-<div id="divDebug" style="font-weight:normal; position:absolute; background-color:#EEEEEE; font-size:xx-small; top:0ex; width:38ex; right:0ex;">toto</div>
+        <div class="sheet">
 
-<script type="text/javascript"> 
-id=window.location.href.split("/").pop().split(".")[0];
-document.getElementById("divDebug").innerHTML=id;
-document.getElementById(id).setAttribute("class","active");
-</script>
-
+        <script type="text/javascript"> 
+        id=window.location.href.split("/").pop().split(".")[0];
+        document.getElementById("divDebug").innerHTML=id;
+        document.getElementById(id).setAttribute("class","active");
+        </script>
 
 
 <?php
@@ -112,7 +57,6 @@ $tb = array_shift(split("\.php", array_pop(split("/", $_SERVER["SCRIPT_FILENAME"
 //
 /*************************/
 
-require_once ("connect_entry.php");
 require_once ("lib/session.lib.php");
 // connect to DB
 $connexion = mysql_pconnect (SERVEUR, NOM, PASSE);
@@ -168,11 +112,7 @@ if (!(in_array($tb, array("home", "")))) {
   	$privopt = '';
   	$colorband = "grey";
   }
-  echo '<style type="text/css"> ';
-  echo	"h4 {background-color: $colorband }";
-  echo '</style>';
-  echo "<h4> $messageband </h4>";
-  echo "<HR>";
+  echo "<h4 style='background-color: $colorband'> $messageband </h4>";
 }
 // Fix a problem displaying
 // symbols (such as delta)
@@ -223,9 +163,17 @@ $opts['language'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'] . '-UTF8';
 
 <?php
 
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
+if (@$_SESSION["tb"] != $tb) {
+  unset($_SESSION["action"]);
+  $_SESSION["tb"] = $tb;   
+}
 // MVC for ADV_SEARCH
 if (array_key_exists("action", $_REQUEST)) {
   if ($_REQUEST["action"] == "ADV_SEARCH") {
+    $_SESSION["action"] = $_REQUEST["action"];
     $fltr = "";
     $cols = preg_filter("/col_/","", array_keys($_REQUEST));
     foreach ($cols as $index) {
@@ -245,8 +193,18 @@ if (array_key_exists("action", $_REQUEST)) {
         }
       }
     }
-    $opts["filters"] = $fltr;
+    $_SESSION["filters"] = $fltr;    
   }
 }
+if (array_key_exists("action", $_SESSION)) {
+  if ($_SESSION["action"] == "ADV_SEARCH") {
+    $opts["filters"] = $_SESSION["filters"];
+  }
+}
+
+
+
+
+
 
 ?>

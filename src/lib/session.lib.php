@@ -6,8 +6,6 @@
 // SELECT sur visitors,
 // et ALL sur sessionWeb
 
-require_once 'lib/form.cls.php';
-
 function execQry ($qry, $bd)
 {
   $result = mysql_query($qry, $bd);
@@ -29,35 +27,26 @@ function CleanOldSessions ($bd)
   $resultat = execQry ($qry, $bd);
 }
 
-// uses form class from "form.cls.php"
 function LoginForm ($nom_script, $login_default = "view")
 {
-  $form = new form ();
-
-  $form -> openForm (array ('action' => "$nom_script", 'id' => 'LoginForm'));
-  $form -> openFieldset (array ('style' => 'border:1px dotted red; width: 300px;'));
-  $form -> addLegend ('Please Login');
-
-  $form -> addInput ('text', array ('id' => 'Login', 'value' => "$login_default", 'name' => 'visitor_login', 'test' => 'test'));
-  $form -> addLabel (' login', array ('for' => 'MyText', 'style' => 'margin: 5px;'));
-  $form -> addAnything ('<br /><br />');
-
-  $form -> addInput ('password', array ('id' => 'Pwd', 'value' => '', 'name' => 'visitor_pwd', 'test' => 'test'));
-  $form -> addLabel (' password', array ('for' => 'MyText', 'style' => 'margin: 5px;'));
-  $form -> addAnything ('<br /><br />');
-
-  $form -> addInput ('submit', array ('id' => 'MyButton', 'value' => 'Submit', 'test' => 'test'));
-  $form -> closeFieldset ();
-  $form -> closeForm ();  
-  
-  echo '<br><I>To login, cookies must be enabled on your browser</I><br><br>';
-  echo '<div >';//style="border: 1px solid darkgrey; text-align: center; width: 310px;">';
-  // on l'affiche
-  echo $form;
-  echo '</div>';
-  
-  echo '</body>';
-  echo '</html>';
+  $ret = <<<EOD
+  <div class="centered_form">
+  <i>To login, cookies must be enabled on your browser</i>
+  <br/>
+  <br/>
+    <form method="post" action="$nom_script">
+      <fieldset>
+        <legend >Log In</legend>
+        <input type="text" id="Login" value="$login_default" name="visitor_login"/>
+        <label style="margin: 5px;" for="MyText" > username</label><br/>
+        <input type="password" id="Pwd" name="visitor_pwd" value=""/>     
+        <label style="margin: 5px;" for="MyText" > password</label><br/>
+        <input type="submit" id="MyButton" value="Submit"/>
+      </fieldset>
+    </form>
+  </div>
+EOD;
+  echo $ret;
 }
 
 

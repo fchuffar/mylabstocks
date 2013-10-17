@@ -207,12 +207,6 @@ $opts['fdd']['Construction_Description'] = array(
     'cols' => 50),
   'sort'     => true
 );
-$opts['fdd']['Size'] = array(
-  'name'     => 'Size',
-  'select'   => 'T',
-  'maxlen'   => 22,
-  'sort'     => true
-);
 $opts['fdd']['Tags'] = array(
   'name'     => 'Tags',
   'select'   => 'D',

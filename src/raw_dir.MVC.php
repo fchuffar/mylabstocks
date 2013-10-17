@@ -7,6 +7,11 @@ $q = "SELECT * FROM $this->tb WHERE `$this->key`='$this->rec'";
 $all = $this->myQuery($q);
 $current_object = mysql_fetch_object($all);
 
+if ($_FILES["userfile"]["error"]) {
+  exit("ERROR, your file is probably too big, maximum upload file size is "  . ini_get('upload_max_filesize') . ". <br/><a href='".$_SERVER["HTTP_REFERER"]."'>Back</a>");
+}
+
+
 if ($current_object) {
   $current_class_raw_dir = "raw_dirs/$this->tb";
   $current_entry_raw_dir = "$current_class_raw_dir/$this->rec/";
@@ -51,14 +56,21 @@ if ($current_object) {
 
   if ($in_edit_mode) {  
     $raw_dir_form = <<<EOD
-  <form action='' method='post' enctype='multipart/form-data'>
-    Upload a file to the raw directory of this entry: 
-    <input type='hidden' name='PME_sys_operation' value='PME_op_Change'/>
-    <input type='hidden' name='PME_sys_rec' value='$this->rec'/>
-    <input type='hidden' name='action' value='ADD_RAW_FILE'/>
-    <input name='userfile' type='file' size='10'/>
-    <input type='button' name='send' value='Upload' onclick='return this.form.submit();'/>
-  </form>
+  <div class="centered_form">
+    <i>Upload a file to the raw directory of this entry</i>
+    <br/>
+    <br/>
+    <form action='' method='post' enctype='multipart/form-data'>
+      <fieldset>
+      <legend>Upload Raw File</legend>
+        <input type='hidden' name='PME_sys_operation' value='PME_op_Change'/>
+        <input type='hidden' name='PME_sys_rec' value='$this->rec'/>
+        <input type='hidden' name='action' value='ADD_RAW_FILE'/>
+        <input name='userfile' type='file' size='10'/>
+        <input type='button' name='send' value='Upload' onclick='return this.form.submit();'/>
+      </fieldset>
+    </form>
+  </div>
 EOD;
   }
 
@@ -71,9 +83,14 @@ EOD;
   }
 }
 
-$to_be_post_list_content .= <<<EOD
-  $raw_dir_form
-  $raw_dir_frame
-  <hr/>
+
+if ($raw_dir_form != "" | $raw_dir_frame != "") {
+  $to_be_post_list_content .= <<<EOD
+    <div class="sheet">
+    $raw_dir_form
+    $raw_dir_frame
+    </div>
 EOD;
+}
+
 ?>

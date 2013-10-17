@@ -108,7 +108,10 @@ $fasta_content = "";
 $qry = "SELECT * FROM pl_features";
 $result = mysql_query($qry, $connexion);
 while($feat = mysql_fetch_object($result)) {
-  fwrite($FastaFile, ">$feat->Description[$feat->Category]{" . $feat->Description . "}," . strlen($feat->Sequence) . " bases, " . md5($feat->Sequence) . " checksum.\n");
+  $descr = str_replace(" ","-",substr($feat->Description, 0, strlen($feat->Description)));
+  // $descr = $feat->Description;
+  // echo "***$descr***<br>";
+  fwrite($FastaFile, ">$descr" . "[$feat->Category]{" . $descr . "}," . strlen($feat->Sequence) . " bases, " . md5($feat->Sequence) . " checksum.\n");
   $fasta_content .= ">$feat->Description\n";
   $toprint = Convert2Fasta($feat->Sequence);
   for ($i=0; $i< count($toprint); $i++){

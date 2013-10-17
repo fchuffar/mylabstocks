@@ -1,5 +1,5 @@
 <?php
-session_start ();
+session_start();
 require("headers.php");
 
 
@@ -21,7 +21,7 @@ $pageTitle     = $tb;
 if (@$_REQUEST["action"] == "CHANGE_TB") {
   $_SESSION["tb"] = $_REQUEST["tb"];
 } else {
-  if (!isset($_SESSION["tb"])) {
+  if (!isset($_SESSION["tb"]) || $_SESSION["tb"] == "admin") {
     $_SESSION["tb"] = "lab_members";
   }
 }

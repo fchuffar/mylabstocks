@@ -1,5 +1,5 @@
 <?php
-require_once("seq2png.php");
+require_once("lib/seq.lib.php");
 // a Trigger to display plsmid map image
 $all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE id=" . $this->rec);
 // reach the plasmid displayed
