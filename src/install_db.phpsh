@@ -1,0 +1,55 @@
+<?php
+require("/var/www/labstocks/connect_entry.php");
+
+echo "Enter a new password for view, add and edit modes: \n";
+$password = trim(fgets(STDIN));
+echo "login/password for view mode will be: view/$password\n";
+echo "login/password for add mode will be:  view/add$password\n";
+echo "login/password for edit mode will be: view/edit$password\n";
+
+echo "Enter a new password for superuser mode: \n";
+$superpassword = trim(fgets(STDIN));
+echo "login/password for superuser mode will be: superuser/$superpassword\n";
+
+$exec = "mysqldump --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --single-transaction " . BASE . " | gzip > ./db_backup_$(date +%s).sql.gz";
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+
+$exec = "echo 'DROP DATABASE IF EXISTS " . BASE . "' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . "";
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+
+$exec = "echo 'CREATE DATABASE IF NOT EXISTS " . BASE . "' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . "";
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+
+$sql_filename = "mylabstocks/src/sql/labstocks_db.sql";
+$exec = "mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE . " < $sql_filename ";
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5($password) WHERE  login=\"view\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5(add$password) WHERE  login=\"add\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5(edit$password) WHERE  login=\"edit\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5($superpassword) WHERE  login=\"superuser\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+echo "Executing $exec... ";
+shell_exec($exec);
+echo "done.\n";
+?>
+
