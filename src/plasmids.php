@@ -180,8 +180,8 @@ $opts['fdd']['Type_'] = array(
   	'table'  => 'pl_type',
 	'column' => 'type')
 );
-$opts['fdd']['Yeast_selection_1'] = array(
-  'name'     => 'Yeast selection 1',
+$opts['fdd']['Marker_1'] = array(
+  'name'     => 'Marker 1',
   'select'   => 'D',
   'maxlen'   => 25,
   'sort'     => true,
@@ -189,8 +189,8 @@ $opts['fdd']['Yeast_selection_1'] = array(
   	'table'  => 'pl_yeast_marker',
 	'column' => 'type')
 );
-$opts['fdd']['Yeast_selection_2'] = array(
-  'name'     => 'Yeast selection 2',
+$opts['fdd']['Marker_2'] = array(
+  'name'     => 'Marker 2',
   'select'   => 'D',
   'maxlen'   => 25,
   'sort'     => true,

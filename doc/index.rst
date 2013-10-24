@@ -95,6 +95,10 @@ http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/blast/executables/release/LAT
   cd ../..
 ..
 
+
+Now you have a wwwBlast instance available here: http://your_server/blast.
+
+
 Install PlasMapper
 ------------------
 
@@ -134,6 +138,8 @@ Install PlasMapper
   cd ../../..
 ..
 
+Now you have a PlasMapper instance available here: http://your_server:8080/PlasMapper.
+
 
 Install MyLabStocks
 -------------------
@@ -141,7 +147,7 @@ Install MyLabStocks
 .. code:: bash
 
   sudo cp -r mylabstocks/src /var/www/labstocks
-  sudo rm /var/www/labstocks/
+  sudo rm /var/www/labstocks/install_db.phpsh
   sudo touch /var/www/labstocks/formatdb.log
   sudo chmod 440 /var/www/labstocks/connect_entry.php 
   sudo mkdir /var/www/labstocks/plasmid_files 
@@ -150,8 +156,8 @@ Install MyLabStocks
   sudo chown -R www-data:www-data /var/www/labstocks/connect_entry.php /var/www/labstocks/formatdb.log  /var/www/labstocks/plasmid_files /var/www/labstocks/raw_dirs
 ..
 
-Configurate MyLabStocks
------------------------
+Configure MyLabStocks
+---------------------
 
 Now you have to update connexion params in /var/www/labstocks/connect_entry.php
 
@@ -167,8 +173,9 @@ finally run the following script to  define passwords and instantiate db.
   php mylabstocks/src/install_db.phpsh 
 ..
 
-Congratulation your LabStocks instance is available on the url http://your_server/labstocks.
+Congratulation your LabStocks instance is available here: http://your_server/labstocks.
 
+Go to http://your_server/labstocks/wwwblast.php to initialize blast dbs.
 
 Links
 -----

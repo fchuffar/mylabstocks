@@ -27,9 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `ab_avail` (
-  `Type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Type` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `ab_avail`
@@ -46,9 +46,9 @@ INSERT INTO `ab_avail` (`Type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ab_host` (
-  `Host` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Host` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Host`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `ab_host`
@@ -67,9 +67,9 @@ INSERT INTO `ab_host` (`Host`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ab_monopoly` (
-  `Type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Type` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `ab_monopoly`
@@ -86,9 +86,9 @@ INSERT INTO `ab_monopoly` (`Type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ab_supplier` (
-  `Supplier` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Supplier` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Supplier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `ab_supplier`
@@ -110,9 +110,9 @@ INSERT INTO `ab_supplier` (`Supplier`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ab_type` (
-  `Type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Type` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `ab_type`
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `antibodies` (
 --
 
 INSERT INTO `antibodies` (`id`, `Antigen`, `InStock`, `Date`, `Comments`, `Host`, `Ordered_by`, `Type`, `Batch_Reference`, `Supplier`, `Location`, `Dilution-WB`, `Volume-ChIP`, `ProductID`) VALUES
-(1, 'Actin C4', 'available', '2008-09-11', 'used for WB control, do not use as control in case of TSA treatment: TSA is known to reduce actin expression.', 'mouse', 'Gael.Yvert', 'monoclonal', '9045J', 'MPBiomedicals', 'Boite Ac Primaires#1 / Tiroir #3', '1:20000', '', '69100');
+(1, 'Actin C4', 'available', '2008-09-11', 'used for WB control, do not use as control in case of TSA treatment: TSA is known to reduce actin expression.', 'mouse', 'Gael.Y', 'monoclonal', '9045J', 'MPBiomedicals', 'Boite Ac Primaires#1 / Tiroir #3', '1:20000', '', '69100');
 
 -- --------------------------------------------------------
 
@@ -170,11 +170,11 @@ CREATE TABLE IF NOT EXISTS `lab_members` (
 --
 
 INSERT INTO `lab_members` (`id`) VALUES
-('Christelle.Damon'),
-('Florent.Chuffart'),
-('Gael.Yvert'),
+('Christelle.D'),
+('Florent.C'),
+('Gael.Y'),
 ('Gift.or.Purchased'),
-('Helene.Bottin');
+('Helene.B');
 
 -- --------------------------------------------------------
 
@@ -198,11 +198,11 @@ CREATE TABLE IF NOT EXISTS `notebooks` (
 --
 
 INSERT INTO `notebooks` (`ID`, `Begin_Date`, `End_Date`, `Author`, `Serial_Number`) VALUES
-(1, '2005-04-01', '2006-01-31', 'Gael.Yvert', 'GY8'),
-(2, '2005-05-24', '2005-12-07', 'Christelle.Damon', 'CD1'),
-(3, '2008-01-16', '0000-00-00', 'Helene.Bottin', 'EVO'),
-(4, '2009-07-06', '2010-01-19', 'Helene.Bottin', 'B49069'),
-(5, '2012-09-03', '0000-00-00', 'Florent.Chuffart', 'E002933');
+(1, '2005-04-01', '2006-01-31', 'Gael.Y', 'GY8'),
+(2, '2005-05-24', '2005-12-07', 'Christelle.D', 'CD1'),
+(3, '2008-01-16', '0000-00-00', 'Helene.B', 'EVO'),
+(4, '2009-07-06', '2010-01-19', 'Helene.B', 'B49069'),
+(5, '2012-09-03', '0000-00-00', 'Florent.C', 'E002933');
 
 --
 -- Table structure for table `oligos`
@@ -225,12 +225,12 @@ CREATE TABLE IF NOT EXISTS `oligos` (
 --
 
 INSERT INTO `oligos` (`id`, `Sequence`, `Date_`, `Description`, `PCR_conditions_predicted`, `Author`, `Purif`) VALUES
-('1C09', 'cttaatgcgccgctacaggg', '2006-10-05', 'to screen bacteria for cloning of GAL3 fragment into pRS306', '  #1: Product of length 475 (rating: 171)\r\n      Contains region of the molecule from 4048 to 4522\r\n      Tm: 80.5 C  TaOpt: 58.6 C  GC: 53.7\r\n    Sense Primer:\r\n      CTTAATGCGCCGCTACAGGG\r\n      Similarity: 100.0%\r\n      Length: 20  Tm: 57.2 C  GC: 60.0\r\n      dH: -170.4 kcal/mol  dS: -437.5 cal/mol  dG: -38.2 kcal/mol\r\n    Antisense Primer:\r\n      GCTACTGCGACTCTTAGGGCCAAT\r\n      Similarity: 100.0%\r\n      Length: 24  Tm: 58.9 C  GC: 54.17\r\n      dH: -191.8 kcal/mol  dS: -495.6 cal/mol  dG: -42.3 kcal/mol\r\n    Tm Difference: 1.8\r\n    GC Difference: 5.8\r\n', 'Gael.Yvert', ''),
-('1F14', 'gtgatgacggtgaaaacctc', '2009-09-07', 'Upstream selection marker in pSH* plasmids.', '', 'Gael.Yvert', ''),
-('1F19', 'ataagggcgacacggaaatg', '2009-10-12', 'To sequence CEN/ARS of pCEN-AdeAru', '', 'Gael.Yvert', ''),
-('1F97', 'tgtaacccactcgtgcac', '2010-03-01', 'To sequence any plasmid from the AmpR coding sequence.', '', 'Gael.Yvert', 'SePoP'),
-('1H75', 'cactatagggcgaattgg', '2011-01-06', 'To amplify yEGFP-CYC1term from pGY8 and clone it into pCM183 by homologous recombination in yeast.', '', 'Gael.Yvert', 'SePoP'),
-('1I97', 'atttagagcttgacggggaaagcc', '2013-03-28', 'For Laser Game mutagenesis of Cre-VVD II.', 'Taille du fragment amplifié : 1531 nucl.\r\nGC% : 46%\r\nTempérature d''hybridation suggérée (TA) : 57°C\r\nAmorce sens : 1I96\r\nAmorce anti-sens : 1I97\r\n\r\nPrimer: 1I96 (1) 5'' tacctgttttgccgggtcagaa 3'' (22)\r\n                    ||||||||||||||||||||||\r\nTarget:   (4077) 5'' tacctgttttgccgggtcagaa 3'' (4099)\r\nscore : 178\r\nTM : 58\r\n\r\n\r\nPrimer: 1I97[compl.] (24)  \r\n3'' ggctttccccgtcaagctctaaat 5'' (1)\r\n                                  ||||||||||||||||||||||||\r\nTarget:              (5584) \r\n5'' ggctttccccgtcaagctctaaat 3'' (5608)\r\nscore : 180\r\nTM : 59\r\n\r\nTarget= pGY286', 'Helene.Bottin', 'SePoP');
+('1C09', 'cttaatgcgccgctacaggg', '2006-10-05', 'to screen bacteria for cloning of GAL3 fragment into pRS306', '  #1: Product of length 475 (rating: 171)\r\n      Contains region of the molecule from 4048 to 4522\r\n      Tm: 80.5 C  TaOpt: 58.6 C  GC: 53.7\r\n    Sense Primer:\r\n      CTTAATGCGCCGCTACAGGG\r\n      Similarity: 100.0%\r\n      Length: 20  Tm: 57.2 C  GC: 60.0\r\n      dH: -170.4 kcal/mol  dS: -437.5 cal/mol  dG: -38.2 kcal/mol\r\n    Antisense Primer:\r\n      GCTACTGCGACTCTTAGGGCCAAT\r\n      Similarity: 100.0%\r\n      Length: 24  Tm: 58.9 C  GC: 54.17\r\n      dH: -191.8 kcal/mol  dS: -495.6 cal/mol  dG: -42.3 kcal/mol\r\n    Tm Difference: 1.8\r\n    GC Difference: 5.8\r\n', 'Gael.Y', ''),
+('1F14', 'gtgatgacggtgaaaacctc', '2009-09-07', 'Upstream selection marker in pSH* plasmids.', '', 'Gael.Y', ''),
+('1F19', 'ataagggcgacacggaaatg', '2009-10-12', 'To sequence CEN/ARS of pCEN-AdeAru', '', 'Gael.Y', ''),
+('1F97', 'tgtaacccactcgtgcac', '2010-03-01', 'To sequence any plasmid from the AmpR coding sequence.', '', 'Gael.Y', 'SePoP'),
+('1H75', 'cactatagggcgaattgg', '2011-01-06', 'To amplify yEGFP-CYC1term from pGY8 and clone it into pCM183 by homologous recombination in yeast.', '', 'Gael.Y', 'SePoP'),
+('1I97', 'atttagagcttgacggggaaagcc', '2013-03-28', 'For Laser Game mutagenesis of Cre-VVD II.', 'Taille du fragment amplifié : 1531 nucl.\r\nGC% : 46%\r\nTempérature d''hybridation suggérée (TA) : 57°C\r\nAmorce sens : 1I96\r\nAmorce anti-sens : 1I97\r\n\r\nPrimer: 1I96 (1) 5'' tacctgttttgccgggtcagaa 3'' (22)\r\n                    ||||||||||||||||||||||\r\nTarget:   (4077) 5'' tacctgttttgccgggtcagaa 3'' (4099)\r\nscore : 178\r\nTM : 58\r\n\r\n\r\nPrimer: 1I97[compl.] (24)  \r\n3'' ggctttccccgtcaagctctaaat 5'' (1)\r\n                                  ||||||||||||||||||||||||\r\nTarget:              (5584) \r\n5'' ggctttccccgtcaagctctaaat 3'' (5608)\r\nscore : 180\r\nTM : 59\r\n\r\nTarget= pGY286', 'Helene.B', 'SePoP');
 
 -- --------------------------------------------------------
 
@@ -239,7 +239,7 @@ INSERT INTO `oligos` (`id`, `Sequence`, `Date_`, `Description`, `PCR_conditions_
 --
 
 CREATE TABLE IF NOT EXISTS `olig_purif` (
-  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -261,9 +261,9 @@ INSERT INTO `olig_purif` (`type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pip_events` (
-  `Events` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Events` varchar(100) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Events`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `pip_events`
@@ -284,16 +284,16 @@ INSERT INTO `pip_events` (`Events`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pip_generic_user` (
-  `User` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `User` varchar(100) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`User`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `pip_generic_user`
 --
 
 INSERT INTO `pip_generic_user` (`User`) VALUES
-('Christelle.Damon'),
+('Christelle.D'),
 ('Everybody'),
 ('Standby'),
 ('Student');
@@ -306,35 +306,35 @@ INSERT INTO `pip_generic_user` (`User`) VALUES
 
 CREATE TABLE IF NOT EXISTS `pip_history` (
   `ID` int(10) NOT NULL AUTO_INCREMENT,
-  `Serial_Number` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Serial_Number` varchar(50) COLLATE utf8_general_ci NOT NULL,
   `Date` date NOT NULL,
-  `Owner_fromNowOn` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Usage_fromNowOn` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Event_Type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `Comments` text COLLATE utf8_unicode_ci NOT NULL,
+  `Owner_fromNowOn` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `Usage_fromNowOn` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `Event_Type` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  `Comments` text COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC AUTO_INCREMENT=90 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC AUTO_INCREMENT=90 ;
 
 --
 -- Dumping data for table `pip_history`
 --
 
 INSERT INTO `pip_history` (`ID`, `Serial_Number`, `Date`, `Owner_fromNowOn`, `Usage_fromNowOn`, `Event_Type`, `Comments`) VALUES
-(8, 'Y60538M', '2005-00-00', 'Christelle.Damon', 'Misc', 'Purchase', ''),
-(9, 'Y60538M', '2006-00-00', 'Helene.Bottin', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
-(10, 'Y60538M', '2009-03-04', 'Helene.Bottin', 'Misc', 'Maintenance', 'Change of parts (spring was broken 2009_02_12)'),
-(11, 'Y58817M', '2005-00-00', 'Christelle.Damon', 'Misc', 'Purchase', ''),
-(12, 'Y58817M', '2006-00-00', 'Helene.Bottin', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
-(13, 'Y58817M', '2009-03-04', 'Helene.Bottin', 'Misc', 'Maintenance', 'Change of parts '),
-(14, 'Y63235M', '2005-00-00', 'Christelle.Damon', 'Misc', 'Purchase', ''),
-(15, 'Y63235M', '2009-03-04', 'Helene.Bottin', 'Misc', 'Maintenance', ''),
-(16, 'Y63235M', '2006-00-00', 'Helene.Bottin', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
-(17, 'Z64108A', '2005-00-00', 'Christelle.Damon', 'Misc', 'Purchase', ''),
-(18, 'Z64108A', '2006-00-00', 'Helene.Bottin', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
-(19, 'Z64108A', '2009-03-04', 'Helene.Bottin', 'Misc', 'Maintenance', ''),
-(53, '2102895', '2005-09-01', 'Everybody', 'Misc', 'Purchase', ''),
-(54, '6133327', '2007-03-02', 'Everybody', 'Misc', 'Purchase', ''),
-(63, 'Z64108A', '2011-02-18', 'Andri.Leonidou', 'Misc', 'Change User', 'Previous user: Christelle Damon');
+(1, 'Y60538M', '2005-00-00', 'Christelle.D', 'Misc', 'Purchase', ''),
+(2, 'Y60538M', '2006-00-00', 'Helene.B', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
+(3, 'Y60538M', '2009-03-04', 'Helene.B', 'Misc', 'Maintenance', 'Change of parts (spring was broken 2009_02_12)'),
+(4, 'Y58817M', '2005-00-00', 'Christelle.D', 'Misc', 'Purchase', ''),
+(5, 'Y58817M', '2006-00-00', 'Helene.B', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
+(6, 'Y58817M', '2009-03-04', 'Helene.B', 'Misc', 'Maintenance', 'Change of parts '),
+(7, 'Y63235M', '2005-00-00', 'Christelle.D', 'Misc', 'Purchase', ''),
+(8, 'Y63235M', '2009-03-04', 'Helene.B', 'Misc', 'Maintenance', ''),
+(9, 'Y63235M', '2006-00-00', 'Helene.B', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
+(10, 'Z64108A', '2005-00-00', 'Christelle.D', 'Misc', 'Purchase', ''),
+(11, 'Z64108A', '2006-00-00', 'Helene.B', 'Misc', 'Change User', 'Previous user: Christelle Damon'),
+(12, 'Z64108A', '2009-03-04', 'Helene.B', 'Misc', 'Maintenance', ''),
+(13, '2102895', '2005-09-01', 'Everybody', 'Misc', 'Purchase', ''),
+(14, '6133327', '2007-03-02', 'Everybody', 'Misc', 'Purchase', ''),
+(15, 'Z64108A', '2011-02-18', 'Andri.Leonidou', 'Misc', 'Change User', 'Previous user: Christelle Damon');
 
 -- --------------------------------------------------------
 
@@ -343,9 +343,9 @@ INSERT INTO `pip_history` (`ID`, `Serial_Number`, `Date`, `Owner_fromNowOn`, `Us
 --
 
 CREATE TABLE IF NOT EXISTS `pip_marque` (
-  `Marque` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Marque` varchar(100) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Marque`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `pip_marque`
@@ -363,16 +363,16 @@ INSERT INTO `pip_marque` (`Marque`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pip_nonusers` (
-  `User` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `User` varchar(100) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`User`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `pip_nonusers`
 --
 
 INSERT INTO `pip_nonusers` (`User`) VALUES
-('Florent.Chuffart'),
+('Florent.C'),
 ('Gift.or.Purchased');
 
 -- --------------------------------------------------------
@@ -383,12 +383,12 @@ INSERT INTO `pip_nonusers` (`User`) VALUES
 
 CREATE TABLE IF NOT EXISTS `pip_stock` (
   `ID` int(10) NOT NULL AUTO_INCREMENT,
-  `Serial_Number` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `Marque` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `Type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Serial_Number` varchar(40) COLLATE utf8_general_ci NOT NULL,
+  `Marque` varchar(40) COLLATE utf8_general_ci NOT NULL,
+  `Type` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Serial_Number` (`Serial_Number`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC AUTO_INCREMENT=228 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC AUTO_INCREMENT=228 ;
 
 --
 -- Dumping data for table `pip_stock`
@@ -396,11 +396,11 @@ CREATE TABLE IF NOT EXISTS `pip_stock` (
 
 INSERT INTO `pip_stock` (`ID`, `Serial_Number`, `Marque`, `Type`) VALUES
 (1, 'Y60538M', 'Gilson', 'P1000'),
-(6, '6133327', 'BioHit', 'multicanaux_02-10ul'),
-(5, '2102895', 'Eppendorf', 'multicanaux_10-100ul'),
-(4, 'Z64108A', 'Gilson', 'P2'),
+(2, 'Y58817M', 'Gilson', 'P200'),
 (3, 'Y63235M', 'Gilson', 'P20'),
-(2, 'Y58817M', 'Gilson', 'P200');
+(4, 'Z64108A', 'Gilson', 'P2'),
+(5, '2102895', 'Eppendorf', 'multicanaux_10-100ul'),
+(6, '6133327', 'BioHit', 'multicanaux_02-10ul');
 
 -- --------------------------------------------------------
 
@@ -409,9 +409,9 @@ INSERT INTO `pip_stock` (`ID`, `Serial_Number`, `Marque`, `Type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pip_type` (
-  `Type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Type` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `pip_type`
@@ -433,9 +433,9 @@ INSERT INTO `pip_type` (`Type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pip_usage` (
-  `Usage` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Usage` varchar(100) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Usage`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `pip_usage`
@@ -453,17 +453,17 @@ INSERT INTO `pip_usage` (`Usage`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pip_users` (
-  `User` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `User` varchar(100) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`User`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `pip_users`
 --
 
 INSERT INTO `pip_users` (`User`) VALUES
-('Christelle.Damon'),
-('Helene.Bottin');
+('Christelle.D'),
+('Helene.B');
 
 -- --------------------------------------------------------
 
@@ -478,8 +478,8 @@ CREATE TABLE IF NOT EXISTS `plasmids` (
   `date_` date DEFAULT NULL,
   `Checkings` varchar(200) DEFAULT NULL,
   `Type_` varchar(25) DEFAULT NULL,
-  `Yeast_selection_1` varchar(25) DEFAULT NULL,
-  `Yeast_selection_2` varchar(25) DEFAULT NULL,
+  `Marker_1` varchar(25) DEFAULT NULL,
+  `Marker_2` varchar(25) DEFAULT NULL,
   `Bacterial_selection` varchar(25) DEFAULT NULL,
   `Tags` varchar(25) DEFAULT NULL,
   `parent_vector` varchar(50) DEFAULT NULL,
@@ -503,12 +503,12 @@ CREATE TABLE IF NOT EXISTS `plasmids` (
 -- Dumping data for table `plasmids`
 --
 
-INSERT INTO `plasmids` (`id`, `Name_`, `Other_names`, `date_`, `Checkings`, `Type_`, `Yeast_selection_1`, `Yeast_selection_2`, `Bacterial_selection`, `Tags`, `parent_vector`, `Insert_`, `Insert_Type`, `Construction_Description`, `Reference_`, `Reporter`, `Promoter`, `Link_to_file`, `sequence`, `image_file`, `Author`) VALUES
-(306, 'pRSII303', NULL, '2013-05-28', '', 'integrative', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n\r\n', '', 'Lac Z', '', 'pRSII303.gb.gz', 'TCGCGCGTTTCGGTGATGACGGTGAAAACCTCTGACACATGCAGCTCCCGGAGACGGTCACAGCTTGTCTGTAAGCGGATGCCGGGAGCAGACAAGCCCGTCAGGGCGCGTCAGCGGGTGTTGGCGGGTGTCGGGGCTGGCTTAACTATGCGGCATCAGAGCAGATTGTACTGAGAGTGCACCATAAATTCCCGTTTTAAGAGCTTGGTGAGCGCTAGGAGTCACTGCCAGGTATCGTTTGAACACGGCATTAGTCAGGGAAGTCATAACACAGTCCTTTCCCGCAATTTTCTTTTTCTATTACTCTTGGCCTCCTCTAGTACACTCTATATTTTTTTATGCCTCGGTAATGATTTTCATTTTTTTTTTTCCACCTAGCGGATGACTCTTTTTTTTTCTTAGCGATTGGCATTATCACATAATGAATTATACATTATATAAAGTAATGTGATTTCTTCGAAGAATATACTAAAAAATGAGCAGGCAAGATAAACGAAGGCAAAGATGACAGAGCAGAAAGCCCTAGTAAAGCGTATTACAAATGAAACCAAGATTCAGATTGCGATCTCTTTAAAGGGTGGTCCCCTAGCGATAGAGCACTCGATCTTCCCAGAAAAAGAGGCAGAAGCAGTAGCAGAACAGGCCACACAATCGCAAGTGATTAACGTCCACACAGGTATAGGGTTTCTGGACCATATGATACATGCTCTGGCCAAGCATTCCGGCTGGTCGCTAATCGTTGAGTGCATTGGTGACTTACACATAGACGACCATCACACCACTGAAGACTGCGGGATTGCTCTCGGTCAAGCATTTAAAGAGGCCCTAGGGGCCGTGCGTGGAGTAAAAAGGTTTGGATCAGGATTTGCGCCTTTGGATGAGGCACTTTCCAGAGCGGTGGTAGATCTTTCGAACAGGCCGTACGCAGTTGTCGAACTTGGTTTGCAAAGGGAGAAAGTAGGAGATCTCTCTTGCGAGATGATCCCGCATTTTCTTGAAAGTTTTGCAGAGGCTAGCAGAATTACCCTCCACGTTGATTGTCTGCGAGGCAAGAATGATCATCACCGTAGTGAGAGTGCGTTCAAGGCTCTTGCGGTTGCCATAAGAGAAGCCACCTCGCCCAATGGTACAAACGATGTTCCCTCCACCAAAGGTGTTCTTATGTAGTGACACCGATTATTTAAAGTTGCAGCATACGATATATATACATGTGTATATATGTATACCTATGAATGTCAGTAAGTATGTATACGAACAGTATGATACTGAAGATGACAAGGTAATGCATCATTCTATACGTGTCATTCTGAACGAGGCGCGCTTTCCTTTTTTCTTTTTGCTTTTTCTTTTTTTTTCTCTTGAACTCGACGGATCTATGCGGTGTGAAATACCGCACAGATGCGTAAGGAGAAAATACCGCATCAGGAAATTGTAAGCGTTAATATTTTGTTAAAATTCGCGTTAAATTTTTGTTAAATCAGCTCATTTTTTAACCAATAGGCCGAAATCGGCAAAATCCCTTATAAATCAAAAGAATAGACCGAGATAGGGTTGAGTGTTGTTCCAGTTTGGAACAAGAGTCCACTATTAAAGAACGTGGACTCCAACGTCAAAGGGCGAAAAACCGTCTATCAGGGCGATGGCCCACTACGTGAACCATCACCCTAATCAAGTTTTTTGGGGTCGAGGTGCCGTAAAGCACTAAATCGGAACCCTAAAGGGAGCCCCCGATTTAGAGCTTGACGGGGAAAGCCGGCGAACGTGGCGAGAAAGGAAGGGAAGAAAGCGAAAGGAGCGGGCGCTAGGGCGCTGGCAAGTGTAGCGGTCACGCTGCGCGTAACCACCACACCCGCCGCGCTTAATGCGCCGCTACAGGGCGCGTCCATTCGCCATTCAGGCTGCGCAACTGTTGGGAAGGGCGATCGGTGCGGGCCTCTTCGCTATTACGCCAGCTGGCGAAAGGGGGATGTGCTGCAAGGCGATTAAGTTGGGTAACGCCAGGGTTTTCCCAGTCACGACGTTGTAAAACGACGGCCAGTGAATTGTAATACGACTCACTATAGGGCGAATTGGAGCTCCACCGCGGTGGCGGCCGCTCTAGAACTAGTGGATCCCCCGGGCTGCAGGAATTCGATATCAAGCTTATCGATACCGTCGACCTCGAGGGGGGGCCCGGTACCAGCTTTTGTTCCCTTTAGTGAGGGTTAATTTCGAGCTTGGCGTAATCATGGTCATAGCTGTTTCCTGTGTGAAATTGTTATCCGCTCACAATTCCACACAACATACGAGCCGGAAGCATAAAGTGTAAAGCCTGGGGTGCCTAATGAGTGAGCTAACTCACATTAATTGCGTTGCGCTCACTGCCCGCTTTCCAGTCGGGAAACCTGTCGTGCCAGCTGCATTAATGAATCGGCCAACGCGCGGGGAGAGGCGGTTTGCGTATTGGGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGAACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTACAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAATACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGACGTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTC', NULL, 'Gift.or.Purchased'),
-(307, 'pRSII403', NULL, '2013-05-28', '', 'integrative', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n\r\n', '', 'Lac Z', '', 'pRSII403.gb.gz', 'tcgcgcgtttcggtgatgacggtgaaaacctctgacacatgcagctcccggagacggtcacagcttgtctgtaagcggatgccgggagcagacaagcccgtcagggcgcgtcagcgggtgttggcgggtgtcggggctggcttaactatgcggcatcagagcagattgtactgagagtgcaccataaattcccgttttaagagcttggtgagcgctaggagtcactgccaggtatcgtttgaacacggcattagtcagggaagtcataacacagtcctttcccgcaattttctttttctattactcttggcctcctctagtacactctatatttttttatgcctcggtaatgattttcatttttttttttccAcctagcggatgactctttttttttcttagcgattggcattatcacataatgaattatacattatataaagtaatgtgatttcttcgaagaatatactaaaaaatgagcaggcaagataaacgaaggcaaagatgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcAtttaaagaggccctaGGggcCGTgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagTtttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtacAaacgatgttccctccaccaaaggtgttcttatgtagtgacaccgattatttaaagTtgcagcatacgatatatatacatgtgtatatatgtatacctatgaatgtcagtaagtatgtatacgaacagtatgatactgaagatgacaaggtaatgcatcattctatacgtgtcattctgaacgaggcgcgctttccttttttctttttgctttttctttttttttctcttgaactcgacggatctatgcggtgtgaaataccgcacagatgcgtaaggagaaaataccgcatcaggaaattgtaaGcgttaatattttgttaaaattcgcgttaaatttttgttaaatcagctcattttttaaccaataggccgaaatcggcaaaatcccttataaatcaaaagaatagaccgagatagggttgagtgttgttccagtttggaacaagagtccactattaaagaacgtggactccaacgtcaaagggcgaaaaaccgtctatcagggcgatggcccactacgtgaaccatcaccctaatcaagttttttggggtcgaggtgccgtaaagcactaaatcggaaccctaaagggagcccccgatttagagcttgacggggaaagccggcgaacgtggcgagaaaggaagggaagaaagcgaaaggagcgggcgctagggcgctggcaagtgtagcggtcacgctgcgcgtaaccaccacacccgccgcgcttaatgcgccgctacagggcgcgtccattcgccattcaggctgcgcaactgttgggaagggcgatcggtgcgggcctcttcgctattacgccagctggcgaaagggggatgtgctgcaaggcgattaagttgggtaacgccagggttttcccagtcacgacgttgtaaaacgacggccagtgagcgcgcgtaatacgactcactatagggcgaattgggtaccgggccccccctcgaggtcgacggtatcgataagcttgatatcgaattcctgcagcccgggggatccactagttctagagcggccgccaccgcggtggagctccagcttttgttccctttagtgagggttaattgcgcgcttggcgtaatcatggtcatagctgtttcctgtgtgaaattgttatccgctcacaattccacacaacataCgagccggaagcataaagtgtaaagcctggggtgcctaatgagtgagCtaactcacattaattgcgttgcgctcactgcccgctttccagtcgggaaacctgtcgtgccagctgcattaatgaatcggccaacgcgcggggagaggcggtttgcgtattgggcgctcttccgcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaagAacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttaccaatgcttaatcagtgaggcacctatctcagcgatctgtctatttcgttcatccatagttgcctgactccccgtcgtgtagataactacgatacgggagggcttaccatctggccccagtgctgcaatgataccgcgagacccacgctcaccggctccagatttatcagcaataaaccagccagccggaagggccgagcgcagaagtggtcctgcaactttatccgcctccatccagtctattaattgttgccgggaagctagagtaagtagttcgccagttaatagtttgcgcaacgttgttgccattgctacaggcatcgtggtgtcacgctcgtcgtttggtatggcttcattcagctccggttcccaacgatcaaggcgagttacatgatcccccatgttgtgcaaaaaagcggttagctccttcggtcctccgatcgttgtcagaagtaagttggccgcagtgttatcactcatggttatggcagcactgcataattctcttactgtcatgccatccgtaagatgcttttctgtgactggtgagtactcaaccaagtcattctgagaatagtgtatgcggcgaccgagttgctcttgcccggcgtcaatacgggataataccgcgccacatagcagaactttaaaagtgctcatcattggaaaacgttcttcggggcgaaaactctcaaggatcttaccgctgttgagatccagttcgatgtaacccactcgtgcacccaactgatcttcagcatcttttactttcaccagcgtttctgggtgagcaaaaacaggaaggcaaaatgccgcaaaaaagggaataagggcgacacggaaatgttgaatactcatactcttcctttttcaatattattgaagcatttatcagggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacatttccccgaaaagtgccacctgacgtctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggccctttcgtc', NULL, 'Gift.or.Purchased'),
-(314, 'pRSII313', NULL, '2013-05-28', '', 'integrative', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n', '', 'Lac Z', '', 'pRSII313.gb.gz', 'TCGCGCGTTTCGGTGATGACGGTGAAAACCTCTGACACATGCAGCTCCCGGAGACGGTCACAGCTTGTCTGTAAGCGGATGCCGGGAGCAGACAAGCCCGTCAGGGCGCGTCAGCGGGTGTTGGCGGGTGTCGGGGCTGGCTTAACTATGCGGCATCAGAGCAGATTGTACTGAGAGTGCACCATAAATTCCCGTTTTAAGAGCTTGGTGAGCGCTAGGAGTCACTGCCAGGTATCGTTTGAACACGGCATTAGTCAGGGAAGTCATAACACAGTCCTTTCCCGCAATTTTCTTTTTCTATTACTCTTGGCCTCCTCTAGTACACTCTATATTTTTTTATGCCTCGGTAATGATTTTCATTTTTTTTTTTCCACCTAGCGGATGACTCTTTTTTTTTCTTAGCGATTGGCATTATCACATAATGAATTATACATTATATAAAGTAATGTGATTTCTTCGAAGAATATACTAAAAAATGAGCAGGCAAGATAAACGAAGGCAAAGATGACAGAGCAGAAAGCCCTAGTAAAGCGTATTACAAATGAAACCAAGATTCAGATTGCGATCTCTTTAAAGGGTGGTCCCCTAGCGATAGAGCACTCGATCTTCCCAGAAAAAGAGGCAGAAGCAGTAGCAGAACAGGCCACACAATCGCAAGTGATTAACGTCCACACAGGTATAGGGTTTCTGGACCATATGATACATGCTCTGGCCAAGCATTCCGGCTGGTCGCTAATCGTTGAGTGCATTGGTGACTTACACATAGACGACCATCACACCACTGAAGACTGCGGGATTGCTCTCGGTCAAGCATTTAAAGAGGCCCTAGGGGCCGTGCGTGGAGTAAAAAGGTTTGGATCAGGATTTGCGCCTTTGGATGAGGCACTTTCCAGAGCGGTGGTAGATCTTTCGAACAGGCCGTACGCAGTTGTCGAACTTGGTTTGCAAAGGGAGAAAGTAGGAGATCTCTCTTGCGAGATGATCCCGCATTTTCTTGAAAGTTTTGCAGAGGCTAGCAGAATTACCCTCCACGTTGATTGTCTGCGAGGCAAGAATGATCATCACCGTAGTGAGAGTGCGTTCAAGGCTCTTGCGGTTGCCATAAGAGAAGCCACCTCGCCCAATGGTACAAACGATGTTCCCTCCACCAAAGGTGTTCTTATGTAGTGACACCGATTATTTAAAGTTGCAGCATACGATATATATACATGTGTATATATGTATACCTATGAATGTCAGTAAGTATGTATACGAACAGTATGATACTGAAGATGACAAGGTAATGCATCATTCTATACGTGTCATTCTGAACGAGGCGCGCTTTCCTTTTTTCTTTTTGCTTTTTCTTTTTTTTTCTCTTGAACTCGACGGATCTATGCGGTGTGAAATACCGCACAGATGCGTAAGGAGAAAATACCGCATCAGGAAATTGTAAGCGTTAATATTTTGTTAAAATTCGCGTTAAATTTTTGTTAAATCAGCTCATTTTTTAACCAATAGGCCGAAATCGGCAAAATCCCTTATAAATCAAAAGAATAGACCGAGATAGGGTTGAGTGTTGTTCCAGTTTGGAACAAGAGTCCACTATTAAAGAACGTGGACTCCAACGTCAAAGGGCGAAAAACCGTCTATCAGGGCGATGGCCCACTACGTGAACCATCACCCTAATCAAGTTTTTTGGGGTCGAGGTGCCGTAAAGCACTAAATCGGAACCCTAAAGGGAGCCCCCGATTTAGAGCTTGACGGGGAAAGCCGGCGAACGTGGCGAGAAAGGAAGGGAAGAAAGCGAAAGGAGCGGGCGCTAGGGCGCTGGCAAGTGTAGCGGTCACGCTGCGCGTAACCACCACACCCGCCGCGCTTAATGCGCCGCTACAGGGCGCGTCCATTCGCCATTCAGGCTGCGCAACTGTTGGGAAGGGCGATCGGTGCGGGCCTCTTCGCTATTACGCCAGCTGGCGAAAGGGGGATGTGCTGCAAGGCGATTAAGTTGGGTAACGCCAGGGTTTTCCCAGTCACGACGTTGTAAAACGACGGCCAGTGAATTGTAATACGACTCACTATAGGGCGAATTGGAGCTCCACCGCGGTGGCGGCCGCTCTAGAACTAGTGGATCCCCCGGGCTGCAGGAATTCGATATCAAGCTTATCGATACCGTCGACCTCGAGGGGGGGCCCGGTACCAGCTTTTGTTCCCTTTAGTGAGGGTTAATTTCGAGCTTGGCGTAATCATGGTCATAGCTGTTTCCTGTGTGAAATTGTTATCCGCTCACAATTCCACACAACATACGAGCCGGAAGCATAAAGTGTAAAGCCTGGGGTGCCTAATGAGTGAGCTAACTCACATTAATTGCGTTGCGCTCACTGCCCGCTTTCCAGTCGGGAAACCTGTCGTGCCAGCTGCATTAATGAATCGGCCAACGCGCGGGGAGAGGCGGTTTGCGTATTGGGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGAACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTACAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAATACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGggtccttttcatcacgtgctataaaaataattataatttaaattttttaatataaatatataaattaaaaatagaaagtaaaaaaagaaattaaagaaaaaatagtttttgttttccgaagatgtaaaagactctagggggatcgccaacaaatactaccttttatcttgctcttcctgctctcaggtattaatgccgaattgtttcatcttgtctgtgtagaagaccacacacgaaaatcctgtgattttacattttacttatcgttaatcgaatgtatatctatttaatctgcttttcttgtctaataaatatatatgtaaagtacgctttttgttgaaattttttaaacctttgtttatttttttttcttcattccgtaactcttctaccttctttatttactttctaaaatccaaatacaaaacataaaaataaataaacacagagtaaattcccaaattattccatcattaaaagatacgaggcgcgtgtaagttacaggcaagcgatcCGTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTC', NULL, 'Gift.or.Purchased'),
-(322, 'pRSII323', NULL, '2013-05-29', '', '2-mu', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n2 micron origin is from YEplac195, which has had its XbaI site removed.', '', 'Lac Z', '', 'pRSII323.gb.gz', 'TCGCGCGTTTCGGTGATGACGGTGAAAACCTCTGACACATGCAGCTCCCGGAGACGGTCACAGCTTGTCTGTAAGCGGATGCCGGGAGCAGACAAGCCCGTCAGGGCGCGTCAGCGGGTGTTGGCGGGTGTCGGGGCTGGCTTAACTATGCGGCATCAGAGCAGATTGTACTGAGAGTGCACCATAAATTCCCGTTTTAAGAGCTTGGTGAGCGCTAGGAGTCACTGCCAGGTATCGTTTGAACACGGCATTAGTCAGGGAAGTCATAACACAGTCCTTTCCCGCAATTTTCTTTTTCTATTACTCTTGGCCTCCTCTAGTACACTCTATATTTTTTTATGCCTCGGTAATGATTTTCATTTTTTTTTTTCCACCTAGCGGATGACTCTTTTTTTTTCTTAGCGATTGGCATTATCACATAATGAATTATACATTATATAAAGTAATGTGATTTCTTCGAAGAATATACTAAAAAATGAGCAGGCAAGATAAACGAAGGCAAAGATGACAGAGCAGAAAGCCCTAGTAAAGCGTATTACAAATGAAACCAAGATTCAGATTGCGATCTCTTTAAAGGGTGGTCCCCTAGCGATAGAGCACTCGATCTTCCCAGAAAAAGAGGCAGAAGCAGTAGCAGAACAGGCCACACAATCGCAAGTGATTAACGTCCACACAGGTATAGGGTTTCTGGACCATATGATACATGCTCTGGCCAAGCATTCCGGCTGGTCGCTAATCGTTGAGTGCATTGGTGACTTACACATAGACGACCATCACACCACTGAAGACTGCGGGATTGCTCTCGGTCAAGCATTTAAAGAGGCCCTAGGGGCCGTGCGTGGAGTAAAAAGGTTTGGATCAGGATTTGCGCCTTTGGATGAGGCACTTTCCAGAGCGGTGGTAGATCTTTCGAACAGGCCGTACGCAGTTGTCGAACTTGGTTTGCAAAGGGAGAAAGTAGGAGATCTCTCTTGCGAGATGATCCCGCATTTTCTTGAAAGTTTTGCAGAGGCTAGCAGAATTACCCTCCACGTTGATTGTCTGCGAGGCAAGAATGATCATCACCGTAGTGAGAGTGCGTTCAAGGCTCTTGCGGTTGCCATAAGAGAAGCCACCTCGCCCAATGGTACAAACGATGTTCCCTCCACCAAAGGTGTTCTTATGTAGTGACACCGATTATTTAAAGTTGCAGCATACGATATATATACATGTGTATATATGTATACCTATGAATGTCAGTAAGTATGTATACGAACAGTATGATACTGAAGATGACAAGGTAATGCATCATTCTATACGTGTCATTCTGAACGAGGCGCGCTTTCCTTTTTTCTTTTTGCTTTTTCTTTTTTTTTCTCTTGAACTCGACGGATCTATGCGGTGTGAAATACCGCACAGATGCGTAAGGAGAAAATACCGCATCAGGAAATTGTAAGCGTTAATATTTTGTTAAAATTCGCGTTAAATTTTTGTTAAATCAGCTCATTTTTTAACCAATAGGCCGAAATCGGCAAAATCCCTTATAAATCAAAAGAATAGACCGAGATAGGGTTGAGTGTTGTTCCAGTTTGGAACAAGAGTCCACTATTAAAGAACGTGGACTCCAACGTCAAAGGGCGAAAAACCGTCTATCAGGGCGATGGCCCACTACGTGAACCATCACCCTAATCAAGTTTTTTGGGGTCGAGGTGCCGTAAAGCACTAAATCGGAACCCTAAAGGGAGCCCCCGATTTAGAGCTTGACGGGGAAAGCCGGCGAACGTGGCGAGAAAGGAAGGGAAGAAAGCGAAAGGAGCGGGCGCTAGGGCGCTGGCAAGTGTAGCGGTCACGCTGCGCGTAACCACCACACCCGCCGCGCTTAATGCGCCGCTACAGGGCGCGTCCATTCGCCATTCAGGCTGCGCAACTGTTGGGAAGGGCGATCGGTGCGGGCCTCTTCGCTATTACGCCAGCTGGCGAAAGGGGGATGTGCTGCAAGGCGATTAAGTTGGGTAACGCCAGGGTTTTCCCAGTCACGACGTTGTAAAACGACGGCCAGTGAATTGTAATACGACTCACTATAGGGCGAATTGGAGCTCCACCGCGGTGGCGGCCGCTCTAGAACTAGTGGATCCCCCGGGCTGCAGGAATTCGATATCAAGCTTATCGATACCGTCGACCTCGAGGGGGGGCCCGGTACCAGCTTTTGTTCCCTTTAGTGAGGGTTAATTTCGAGCTTGGCGTAATCATGGTCATAGCTGTTTCCTGTGTGAAATTGTTATCCGCTCACAATTCCACACAACATACGAGCCGGAAGCATAAAGTGTAAAGCCTGGGGTGCCTAATGAGTGAGCTAACTCACATTAATTGCGTTGCGCTCACTGCCCGCTTTCCAGTCGGGAAACCTGTCGTGCCAGCTGCATTAATGAATCGGCCAACGCGCGGGGAGAGGCGGTTTGCGTATTGGGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGAACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTACAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAATACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGAAcgaagcatctgtgcttcattttgtagaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgaaagcgctattttaccaacgaagaatctgtgcttcatttttgtaaaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgagagcgctattttaccaacaaagaatctatacttcttttttgttctacaaaaatgcatcccgagagcgctatttttctaacaaagcatcttagattactttttttctcctttgtgcgctctataatgcagtctcttgataactttttgcactgtaggtccgttaaggttagaagaaggctactttggtgtctattttctcttccataaaaaaagcctgactccacttcccgcgtttactgattactagcgaagctgcgggtgcattttttcaagataaaggcatccccgattatattctataccgatgtggattgcgcatactttgtgaacagaaagtgatagcgttgatgattcttcattggtcagaaaattatgaacggtttcttctattttgtctctatatactacgtataggaaatgtttacattttcgtattgttttcgattcactctatgaatagttcttactacaatttttttgtctaaagagtaatactagagataaacataaaaaatgtagaggtcgagtttagatgcaagttcaaggagcgaaaggtggatgggtaggttatatagggatatagcacagagatatatagcaaagagatacttttgagcaatgtttgtggaagcggtattcgcaatattttagtagctcgttacagtccggtgcgtttttggttttttgaaagtgcgtcttcagagcgcttttggttttcaaaagcgctctgaagttcctatactttctagCTAGagaataggaacttcggaataggaacttcaaagcgtttccgaaaacgagcgcttccgaaaatgcaacgcgagctgcgcacatacagctcactgttcacgtcgcacctatatctgcgtgttgcctgtatatatatatacatgagaagaacggcatagtgcgtgtttatgcttaaatgcgtacttatatgcgtctatttatgtaggatgaaaggtagtctagtacctcctgtgatattatcccattccatgcggggtatcgtatgcttccttcagcactaccctttagctgttctatatgctgccactcctcaattggattagtctcatccttcaatgctatcatttcctttgatattggatcaTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTC', NULL, 'Gift.or.Purchased'),
-(323, 'pRSII423', NULL, '2013-05-29', '', '2-mu', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n2 micron replication origin is from YEplac195 and has had its XbaI site removed.', '', 'Lac Z', '', 'pRSII423.gb.gz', 'tcgcgcgtttcggtgatgacggtgaaaacctctgacacatgcagctcccggagacggtcacagcttgtctgtaagcggatgccgggagcagacaagcccgtcagggcgcgtcagcgggtgttggcgggtgtcggggctggcttaactatgcggcatcagagcagattgtactgagagtgcaccataaattcccgttttaagagcttggtgagcgctaggagtcactgccaggtatcgtttgaacacggcattagtcagggaagtcataacacagtcctttcccgcaattttctttttctattactcttggcctcctctagtacactctatatttttttatgcctcggtaatgattttcatttttttttttccAcctagcggatgactctttttttttcttagcgattggcattatcacataatgaattatacattatataaagtaatgtgatttcttcgaagaatatactaaaaaatgagcaggcaagataaacgaaggcaaagatgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcAtttaaagaggccctaGGggcCGTgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagTtttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtacAaacgatgttccctccaccaaaggtgttcttatgtagtgacaccgattatttaaagTtgcagcatacgatatatatacatgtgtatatatgtatacctatgaatgtcagtaagtatgtatacgaacagtatgatactgaagatgacaaggtaatgcatcattctatacgtgtcattctgaacgaggcgcgctttccttttttctttttgctttttctttttttttctcttgaactcgacggatctatgcggtgtgaaataccgcacagatgcgtaaggagaaaataccgcatcaggaaattgtaaGcgttaatattttgttaaaattcgcgttaaatttttgttaaatcagctcattttttaaccaataggccgaaatcggcaaaatcccttataaatcaaaagaatagaccgagatagggttgagtgttgttccagtttggaacaagagtccactattaaagaacgtggactccaacgtcaaagggcgaaaaaccgtctatcagggcgatggcccactacgtgaaccatcaccctaatcaagttttttggggtcgaggtgccgtaaagcactaaatcggaaccctaaagggagcccccgatttagagcttgacggggaaagccggcgaacgtggcgagaaaggaagggaagaaagcgaaaggagcgggcgctagggcgctggcaagtgtagcggtcacgctgcgcgtaaccaccacacccgccgcgcttaatgcgccgctacagggcgcgtccattcgccattcaggctgcgcaactgttgggaagggcgatcggtgcgggcctcttcgctattacgccagctggcgaaagggggatgtgctgcaaggcgattaagttgggtaacgccagggttttcccagtcacgacgttgtaaaacgacggccagtgagcgcgcgtaatacgactcactatagggcgaattgggtaccgggccccccctcgaggtcgacggtatcgataagcttgatatcgaattcctgcagcccgggggatccactagttctagagcggccgccaccgcggtggagctccagcttttgttccctttagtgagggttaattgcgcgcttggcgtaatcatggtcatagctgtttcctgtgtgaaattgttatccgctcacaattccacacaacataCgagccggaagcataaagtgtaaagcctggggtgcctaatgagtgagCtaactcacattaattgcgttgcgctcactgcccgctttccagtcgggaaacctgtcgtgccagctgcattaatgaatcggccaacgcgcggggagaggcggtttgcgtattgggcgctcttccgcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaagAacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttaccaatgcttaatcagtgaggcacctatctcagcgatctgtctatttcgttcatccatagttgcctgactccccgtcgtgtagataactacgatacgggagggcttaccatctggccccagtgctgcaatgataccgcgagacccacgctcaccggctccagatttatcagcaataaaccagccagccggaagggccgagcgcagaagtggtcctgcaactttatccgcctccatccagtctattaattgttgccgggaagctagagtaagtagttcgccagttaatagtttgcgcaacgttgttgccattgctacaggcatcgtggtgtcacgctcgtcgtttggtatggcttcattcagctccggttcccaacgatcaaggcgagttacatgatcccccatgttgtgcaaaaaagcggttagctccttcggtcctccgatcgttgtcagaagtaagttggccgcagtgttatcactcatggttatggcagcactgcataattctcttactgtcatgccatccgtaagatgcttttctgtgactggtgagtactcaaccaagtcattctgagaatagtgtatgcggcgaccgagttgctcttgcccggcgtcaatacgggataataccgcgccacatagcagaactttaaaagtgctcatcattggaaaacgttcttcggggcgaaaactctcaaggatcttaccgctgttgagatccagttcgatgtaacccactcgtgcacccaactgatcttcagcatcttttactttcaccagcgtttctgggtgagcaaaaacaggaaggcaaaatgccgcaaaaaagggaataagggcgacacggaaatgttgaatactcatactcttcctttttcaatattattgaagcatttatcagggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacatttccccgaaaagtgccacctgaAcgaagcatctgtgcttcattttgtagaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgaaagcgctattttaccaacgaagaatctgtgcttcatttttgtaaaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgagagcgctattttaccaacaaagaatctatacttcttttttgttctacaaaaatgcatcccgagagcgctatttttctaacaaagcatcttagattactttttttctcctttgtgcgctctataatgcagtctcttgataactttttgcactgtaggtccgttaaggttagaagaaggctactttggtgtctattttctcttccataaaaaaagcctgactccacttcccgcgtttactgattactagcgaagctgcgggtgcattttttcaagataaaggcatccccgattatattctataccgatgtggattgcgcatactttgtgaacagaaagtgatagcgttgatgattcttcattggtcagaaaattatgaacggtttcttctattttgtctctatatactacgtataggaaatgtttacattttcgtattgttttcgattcactctatgaatagttcttactacaatttttttgtctaaagagtaatactagagataaacataaaaaatgtagaggtcgagtttagatgcaagttcaaggagcgaaaggtggatgggtaggttatatagggatatagcacagagatatatagcaaagagatacttttgagcaatgtttgtggaagcggtattcgcaatattttagtagctcgttacagtccggtgcgtttttggttttttgaaagtgcgtcttcagagcgcttttggttttcaaaagcgctctgaagttcctatactttctagCTAGagaataggaacttcggaataggaacttcaaagcgtttccgaaaacgagcgcttccgaaaatgcaacgcgagctgcgcacatacagctcactgttcacgtcgcacctatatctgcgtgttgcctgtatatatatatacatgagaagaacggcatagtgcgtgtttatgcttaaatgcgtacttatatgcgtctatttatgtaggatgaaaggtagtctagtacctcctgtgatattatcccattccatgcggggtatcgtatgcttccttcagcactaccctttagctgttctatatgctgccactcctcaattggattagtctcatccttcaatgctatcatttcctttgatattggatcatctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggccctttcgtc', NULL, 'Gift.or.Purchased');
+INSERT INTO `plasmids` (`id`, `Name_`, `Other_names`, `date_`, `Checkings`, `Type_`, `Marker_1`, `Marker_2`, `Bacterial_selection`, `Tags`, `parent_vector`, `Insert_`, `Insert_Type`, `Construction_Description`, `Reference_`, `Reporter`, `Promoter`, `Link_to_file`, `sequence`, `image_file`, `Author`) VALUES
+(1, 'pRSII303', NULL, '2013-05-28', '', 'integrative', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n\r\n', '', 'Lac Z', '', 'pRSII303.gb.gz', 'TCGCGCGTTTCGGTGATGACGGTGAAAACCTCTGACACATGCAGCTCCCGGAGACGGTCACAGCTTGTCTGTAAGCGGATGCCGGGAGCAGACAAGCCCGTCAGGGCGCGTCAGCGGGTGTTGGCGGGTGTCGGGGCTGGCTTAACTATGCGGCATCAGAGCAGATTGTACTGAGAGTGCACCATAAATTCCCGTTTTAAGAGCTTGGTGAGCGCTAGGAGTCACTGCCAGGTATCGTTTGAACACGGCATTAGTCAGGGAAGTCATAACACAGTCCTTTCCCGCAATTTTCTTTTTCTATTACTCTTGGCCTCCTCTAGTACACTCTATATTTTTTTATGCCTCGGTAATGATTTTCATTTTTTTTTTTCCACCTAGCGGATGACTCTTTTTTTTTCTTAGCGATTGGCATTATCACATAATGAATTATACATTATATAAAGTAATGTGATTTCTTCGAAGAATATACTAAAAAATGAGCAGGCAAGATAAACGAAGGCAAAGATGACAGAGCAGAAAGCCCTAGTAAAGCGTATTACAAATGAAACCAAGATTCAGATTGCGATCTCTTTAAAGGGTGGTCCCCTAGCGATAGAGCACTCGATCTTCCCAGAAAAAGAGGCAGAAGCAGTAGCAGAACAGGCCACACAATCGCAAGTGATTAACGTCCACACAGGTATAGGGTTTCTGGACCATATGATACATGCTCTGGCCAAGCATTCCGGCTGGTCGCTAATCGTTGAGTGCATTGGTGACTTACACATAGACGACCATCACACCACTGAAGACTGCGGGATTGCTCTCGGTCAAGCATTTAAAGAGGCCCTAGGGGCCGTGCGTGGAGTAAAAAGGTTTGGATCAGGATTTGCGCCTTTGGATGAGGCACTTTCCAGAGCGGTGGTAGATCTTTCGAACAGGCCGTACGCAGTTGTCGAACTTGGTTTGCAAAGGGAGAAAGTAGGAGATCTCTCTTGCGAGATGATCCCGCATTTTCTTGAAAGTTTTGCAGAGGCTAGCAGAATTACCCTCCACGTTGATTGTCTGCGAGGCAAGAATGATCATCACCGTAGTGAGAGTGCGTTCAAGGCTCTTGCGGTTGCCATAAGAGAAGCCACCTCGCCCAATGGTACAAACGATGTTCCCTCCACCAAAGGTGTTCTTATGTAGTGACACCGATTATTTAAAGTTGCAGCATACGATATATATACATGTGTATATATGTATACCTATGAATGTCAGTAAGTATGTATACGAACAGTATGATACTGAAGATGACAAGGTAATGCATCATTCTATACGTGTCATTCTGAACGAGGCGCGCTTTCCTTTTTTCTTTTTGCTTTTTCTTTTTTTTTCTCTTGAACTCGACGGATCTATGCGGTGTGAAATACCGCACAGATGCGTAAGGAGAAAATACCGCATCAGGAAATTGTAAGCGTTAATATTTTGTTAAAATTCGCGTTAAATTTTTGTTAAATCAGCTCATTTTTTAACCAATAGGCCGAAATCGGCAAAATCCCTTATAAATCAAAAGAATAGACCGAGATAGGGTTGAGTGTTGTTCCAGTTTGGAACAAGAGTCCACTATTAAAGAACGTGGACTCCAACGTCAAAGGGCGAAAAACCGTCTATCAGGGCGATGGCCCACTACGTGAACCATCACCCTAATCAAGTTTTTTGGGGTCGAGGTGCCGTAAAGCACTAAATCGGAACCCTAAAGGGAGCCCCCGATTTAGAGCTTGACGGGGAAAGCCGGCGAACGTGGCGAGAAAGGAAGGGAAGAAAGCGAAAGGAGCGGGCGCTAGGGCGCTGGCAAGTGTAGCGGTCACGCTGCGCGTAACCACCACACCCGCCGCGCTTAATGCGCCGCTACAGGGCGCGTCCATTCGCCATTCAGGCTGCGCAACTGTTGGGAAGGGCGATCGGTGCGGGCCTCTTCGCTATTACGCCAGCTGGCGAAAGGGGGATGTGCTGCAAGGCGATTAAGTTGGGTAACGCCAGGGTTTTCCCAGTCACGACGTTGTAAAACGACGGCCAGTGAATTGTAATACGACTCACTATAGGGCGAATTGGAGCTCCACCGCGGTGGCGGCCGCTCTAGAACTAGTGGATCCCCCGGGCTGCAGGAATTCGATATCAAGCTTATCGATACCGTCGACCTCGAGGGGGGGCCCGGTACCAGCTTTTGTTCCCTTTAGTGAGGGTTAATTTCGAGCTTGGCGTAATCATGGTCATAGCTGTTTCCTGTGTGAAATTGTTATCCGCTCACAATTCCACACAACATACGAGCCGGAAGCATAAAGTGTAAAGCCTGGGGTGCCTAATGAGTGAGCTAACTCACATTAATTGCGTTGCGCTCACTGCCCGCTTTCCAGTCGGGAAACCTGTCGTGCCAGCTGCATTAATGAATCGGCCAACGCGCGGGGAGAGGCGGTTTGCGTATTGGGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGAACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTACAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAATACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGACGTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTC', NULL, 'Gift.or.Purchased'),
+(2, 'pRSII403', NULL, '2013-05-28', '', 'integrative', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n\r\n', '', 'Lac Z', '', 'pRSII403.gb.gz', 'tcgcgcgtttcggtgatgacggtgaaaacctctgacacatgcagctcccggagacggtcacagcttgtctgtaagcggatgccgggagcagacaagcccgtcagggcgcgtcagcgggtgttggcgggtgtcggggctggcttaactatgcggcatcagagcagattgtactgagagtgcaccataaattcccgttttaagagcttggtgagcgctaggagtcactgccaggtatcgtttgaacacggcattagtcagggaagtcataacacagtcctttcccgcaattttctttttctattactcttggcctcctctagtacactctatatttttttatgcctcggtaatgattttcatttttttttttccAcctagcggatgactctttttttttcttagcgattggcattatcacataatgaattatacattatataaagtaatgtgatttcttcgaagaatatactaaaaaatgagcaggcaagataaacgaaggcaaagatgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcAtttaaagaggccctaGGggcCGTgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagTtttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtacAaacgatgttccctccaccaaaggtgttcttatgtagtgacaccgattatttaaagTtgcagcatacgatatatatacatgtgtatatatgtatacctatgaatgtcagtaagtatgtatacgaacagtatgatactgaagatgacaaggtaatgcatcattctatacgtgtcattctgaacgaggcgcgctttccttttttctttttgctttttctttttttttctcttgaactcgacggatctatgcggtgtgaaataccgcacagatgcgtaaggagaaaataccgcatcaggaaattgtaaGcgttaatattttgttaaaattcgcgttaaatttttgttaaatcagctcattttttaaccaataggccgaaatcggcaaaatcccttataaatcaaaagaatagaccgagatagggttgagtgttgttccagtttggaacaagagtccactattaaagaacgtggactccaacgtcaaagggcgaaaaaccgtctatcagggcgatggcccactacgtgaaccatcaccctaatcaagttttttggggtcgaggtgccgtaaagcactaaatcggaaccctaaagggagcccccgatttagagcttgacggggaaagccggcgaacgtggcgagaaaggaagggaagaaagcgaaaggagcgggcgctagggcgctggcaagtgtagcggtcacgctgcgcgtaaccaccacacccgccgcgcttaatgcgccgctacagggcgcgtccattcgccattcaggctgcgcaactgttgggaagggcgatcggtgcgggcctcttcgctattacgccagctggcgaaagggggatgtgctgcaaggcgattaagttgggtaacgccagggttttcccagtcacgacgttgtaaaacgacggccagtgagcgcgcgtaatacgactcactatagggcgaattgggtaccgggccccccctcgaggtcgacggtatcgataagcttgatatcgaattcctgcagcccgggggatccactagttctagagcggccgccaccgcggtggagctccagcttttgttccctttagtgagggttaattgcgcgcttggcgtaatcatggtcatagctgtttcctgtgtgaaattgttatccgctcacaattccacacaacataCgagccggaagcataaagtgtaaagcctggggtgcctaatgagtgagCtaactcacattaattgcgttgcgctcactgcccgctttccagtcgggaaacctgtcgtgccagctgcattaatgaatcggccaacgcgcggggagaggcggtttgcgtattgggcgctcttccgcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaagAacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttaccaatgcttaatcagtgaggcacctatctcagcgatctgtctatttcgttcatccatagttgcctgactccccgtcgtgtagataactacgatacgggagggcttaccatctggccccagtgctgcaatgataccgcgagacccacgctcaccggctccagatttatcagcaataaaccagccagccggaagggccgagcgcagaagtggtcctgcaactttatccgcctccatccagtctattaattgttgccgggaagctagagtaagtagttcgccagttaatagtttgcgcaacgttgttgccattgctacaggcatcgtggtgtcacgctcgtcgtttggtatggcttcattcagctccggttcccaacgatcaaggcgagttacatgatcccccatgttgtgcaaaaaagcggttagctccttcggtcctccgatcgttgtcagaagtaagttggccgcagtgttatcactcatggttatggcagcactgcataattctcttactgtcatgccatccgtaagatgcttttctgtgactggtgagtactcaaccaagtcattctgagaatagtgtatgcggcgaccgagttgctcttgcccggcgtcaatacgggataataccgcgccacatagcagaactttaaaagtgctcatcattggaaaacgttcttcggggcgaaaactctcaaggatcttaccgctgttgagatccagttcgatgtaacccactcgtgcacccaactgatcttcagcatcttttactttcaccagcgtttctgggtgagcaaaaacaggaaggcaaaatgccgcaaaaaagggaataagggcgacacggaaatgttgaatactcatactcttcctttttcaatattattgaagcatttatcagggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacatttccccgaaaagtgccacctgacgtctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggccctttcgtc', NULL, 'Gift.or.Purchased'),
+(3, 'pRSII313', NULL, '2013-05-28', '', 'integrative', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n', '', 'Lac Z', '', 'pRSII313.gb.gz', 'TCGCGCGTTTCGGTGATGACGGTGAAAACCTCTGACACATGCAGCTCCCGGAGACGGTCACAGCTTGTCTGTAAGCGGATGCCGGGAGCAGACAAGCCCGTCAGGGCGCGTCAGCGGGTGTTGGCGGGTGTCGGGGCTGGCTTAACTATGCGGCATCAGAGCAGATTGTACTGAGAGTGCACCATAAATTCCCGTTTTAAGAGCTTGGTGAGCGCTAGGAGTCACTGCCAGGTATCGTTTGAACACGGCATTAGTCAGGGAAGTCATAACACAGTCCTTTCCCGCAATTTTCTTTTTCTATTACTCTTGGCCTCCTCTAGTACACTCTATATTTTTTTATGCCTCGGTAATGATTTTCATTTTTTTTTTTCCACCTAGCGGATGACTCTTTTTTTTTCTTAGCGATTGGCATTATCACATAATGAATTATACATTATATAAAGTAATGTGATTTCTTCGAAGAATATACTAAAAAATGAGCAGGCAAGATAAACGAAGGCAAAGATGACAGAGCAGAAAGCCCTAGTAAAGCGTATTACAAATGAAACCAAGATTCAGATTGCGATCTCTTTAAAGGGTGGTCCCCTAGCGATAGAGCACTCGATCTTCCCAGAAAAAGAGGCAGAAGCAGTAGCAGAACAGGCCACACAATCGCAAGTGATTAACGTCCACACAGGTATAGGGTTTCTGGACCATATGATACATGCTCTGGCCAAGCATTCCGGCTGGTCGCTAATCGTTGAGTGCATTGGTGACTTACACATAGACGACCATCACACCACTGAAGACTGCGGGATTGCTCTCGGTCAAGCATTTAAAGAGGCCCTAGGGGCCGTGCGTGGAGTAAAAAGGTTTGGATCAGGATTTGCGCCTTTGGATGAGGCACTTTCCAGAGCGGTGGTAGATCTTTCGAACAGGCCGTACGCAGTTGTCGAACTTGGTTTGCAAAGGGAGAAAGTAGGAGATCTCTCTTGCGAGATGATCCCGCATTTTCTTGAAAGTTTTGCAGAGGCTAGCAGAATTACCCTCCACGTTGATTGTCTGCGAGGCAAGAATGATCATCACCGTAGTGAGAGTGCGTTCAAGGCTCTTGCGGTTGCCATAAGAGAAGCCACCTCGCCCAATGGTACAAACGATGTTCCCTCCACCAAAGGTGTTCTTATGTAGTGACACCGATTATTTAAAGTTGCAGCATACGATATATATACATGTGTATATATGTATACCTATGAATGTCAGTAAGTATGTATACGAACAGTATGATACTGAAGATGACAAGGTAATGCATCATTCTATACGTGTCATTCTGAACGAGGCGCGCTTTCCTTTTTTCTTTTTGCTTTTTCTTTTTTTTTCTCTTGAACTCGACGGATCTATGCGGTGTGAAATACCGCACAGATGCGTAAGGAGAAAATACCGCATCAGGAAATTGTAAGCGTTAATATTTTGTTAAAATTCGCGTTAAATTTTTGTTAAATCAGCTCATTTTTTAACCAATAGGCCGAAATCGGCAAAATCCCTTATAAATCAAAAGAATAGACCGAGATAGGGTTGAGTGTTGTTCCAGTTTGGAACAAGAGTCCACTATTAAAGAACGTGGACTCCAACGTCAAAGGGCGAAAAACCGTCTATCAGGGCGATGGCCCACTACGTGAACCATCACCCTAATCAAGTTTTTTGGGGTCGAGGTGCCGTAAAGCACTAAATCGGAACCCTAAAGGGAGCCCCCGATTTAGAGCTTGACGGGGAAAGCCGGCGAACGTGGCGAGAAAGGAAGGGAAGAAAGCGAAAGGAGCGGGCGCTAGGGCGCTGGCAAGTGTAGCGGTCACGCTGCGCGTAACCACCACACCCGCCGCGCTTAATGCGCCGCTACAGGGCGCGTCCATTCGCCATTCAGGCTGCGCAACTGTTGGGAAGGGCGATCGGTGCGGGCCTCTTCGCTATTACGCCAGCTGGCGAAAGGGGGATGTGCTGCAAGGCGATTAAGTTGGGTAACGCCAGGGTTTTCCCAGTCACGACGTTGTAAAACGACGGCCAGTGAATTGTAATACGACTCACTATAGGGCGAATTGGAGCTCCACCGCGGTGGCGGCCGCTCTAGAACTAGTGGATCCCCCGGGCTGCAGGAATTCGATATCAAGCTTATCGATACCGTCGACCTCGAGGGGGGGCCCGGTACCAGCTTTTGTTCCCTTTAGTGAGGGTTAATTTCGAGCTTGGCGTAATCATGGTCATAGCTGTTTCCTGTGTGAAATTGTTATCCGCTCACAATTCCACACAACATACGAGCCGGAAGCATAAAGTGTAAAGCCTGGGGTGCCTAATGAGTGAGCTAACTCACATTAATTGCGTTGCGCTCACTGCCCGCTTTCCAGTCGGGAAACCTGTCGTGCCAGCTGCATTAATGAATCGGCCAACGCGCGGGGAGAGGCGGTTTGCGTATTGGGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGAACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTACAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAATACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGggtccttttcatcacgtgctataaaaataattataatttaaattttttaatataaatatataaattaaaaatagaaagtaaaaaaagaaattaaagaaaaaatagtttttgttttccgaagatgtaaaagactctagggggatcgccaacaaatactaccttttatcttgctcttcctgctctcaggtattaatgccgaattgtttcatcttgtctgtgtagaagaccacacacgaaaatcctgtgattttacattttacttatcgttaatcgaatgtatatctatttaatctgcttttcttgtctaataaatatatatgtaaagtacgctttttgttgaaattttttaaacctttgtttatttttttttcttcattccgtaactcttctaccttctttatttactttctaaaatccaaatacaaaacataaaaataaataaacacagagtaaattcccaaattattccatcattaaaagatacgaggcgcgtgtaagttacaggcaagcgatcCGTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTC', NULL, 'Gift.or.Purchased'),
+(4, 'pRSII323', NULL, '2013-05-29', '', '2-mu', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n2 micron origin is from YEplac195, which has had its XbaI site removed.', '', 'Lac Z', '', 'pRSII323.gb.gz', 'TCGCGCGTTTCGGTGATGACGGTGAAAACCTCTGACACATGCAGCTCCCGGAGACGGTCACAGCTTGTCTGTAAGCGGATGCCGGGAGCAGACAAGCCCGTCAGGGCGCGTCAGCGGGTGTTGGCGGGTGTCGGGGCTGGCTTAACTATGCGGCATCAGAGCAGATTGTACTGAGAGTGCACCATAAATTCCCGTTTTAAGAGCTTGGTGAGCGCTAGGAGTCACTGCCAGGTATCGTTTGAACACGGCATTAGTCAGGGAAGTCATAACACAGTCCTTTCCCGCAATTTTCTTTTTCTATTACTCTTGGCCTCCTCTAGTACACTCTATATTTTTTTATGCCTCGGTAATGATTTTCATTTTTTTTTTTCCACCTAGCGGATGACTCTTTTTTTTTCTTAGCGATTGGCATTATCACATAATGAATTATACATTATATAAAGTAATGTGATTTCTTCGAAGAATATACTAAAAAATGAGCAGGCAAGATAAACGAAGGCAAAGATGACAGAGCAGAAAGCCCTAGTAAAGCGTATTACAAATGAAACCAAGATTCAGATTGCGATCTCTTTAAAGGGTGGTCCCCTAGCGATAGAGCACTCGATCTTCCCAGAAAAAGAGGCAGAAGCAGTAGCAGAACAGGCCACACAATCGCAAGTGATTAACGTCCACACAGGTATAGGGTTTCTGGACCATATGATACATGCTCTGGCCAAGCATTCCGGCTGGTCGCTAATCGTTGAGTGCATTGGTGACTTACACATAGACGACCATCACACCACTGAAGACTGCGGGATTGCTCTCGGTCAAGCATTTAAAGAGGCCCTAGGGGCCGTGCGTGGAGTAAAAAGGTTTGGATCAGGATTTGCGCCTTTGGATGAGGCACTTTCCAGAGCGGTGGTAGATCTTTCGAACAGGCCGTACGCAGTTGTCGAACTTGGTTTGCAAAGGGAGAAAGTAGGAGATCTCTCTTGCGAGATGATCCCGCATTTTCTTGAAAGTTTTGCAGAGGCTAGCAGAATTACCCTCCACGTTGATTGTCTGCGAGGCAAGAATGATCATCACCGTAGTGAGAGTGCGTTCAAGGCTCTTGCGGTTGCCATAAGAGAAGCCACCTCGCCCAATGGTACAAACGATGTTCCCTCCACCAAAGGTGTTCTTATGTAGTGACACCGATTATTTAAAGTTGCAGCATACGATATATATACATGTGTATATATGTATACCTATGAATGTCAGTAAGTATGTATACGAACAGTATGATACTGAAGATGACAAGGTAATGCATCATTCTATACGTGTCATTCTGAACGAGGCGCGCTTTCCTTTTTTCTTTTTGCTTTTTCTTTTTTTTTCTCTTGAACTCGACGGATCTATGCGGTGTGAAATACCGCACAGATGCGTAAGGAGAAAATACCGCATCAGGAAATTGTAAGCGTTAATATTTTGTTAAAATTCGCGTTAAATTTTTGTTAAATCAGCTCATTTTTTAACCAATAGGCCGAAATCGGCAAAATCCCTTATAAATCAAAAGAATAGACCGAGATAGGGTTGAGTGTTGTTCCAGTTTGGAACAAGAGTCCACTATTAAAGAACGTGGACTCCAACGTCAAAGGGCGAAAAACCGTCTATCAGGGCGATGGCCCACTACGTGAACCATCACCCTAATCAAGTTTTTTGGGGTCGAGGTGCCGTAAAGCACTAAATCGGAACCCTAAAGGGAGCCCCCGATTTAGAGCTTGACGGGGAAAGCCGGCGAACGTGGCGAGAAAGGAAGGGAAGAAAGCGAAAGGAGCGGGCGCTAGGGCGCTGGCAAGTGTAGCGGTCACGCTGCGCGTAACCACCACACCCGCCGCGCTTAATGCGCCGCTACAGGGCGCGTCCATTCGCCATTCAGGCTGCGCAACTGTTGGGAAGGGCGATCGGTGCGGGCCTCTTCGCTATTACGCCAGCTGGCGAAAGGGGGATGTGCTGCAAGGCGATTAAGTTGGGTAACGCCAGGGTTTTCCCAGTCACGACGTTGTAAAACGACGGCCAGTGAATTGTAATACGACTCACTATAGGGCGAATTGGAGCTCCACCGCGGTGGCGGCCGCTCTAGAACTAGTGGATCCCCCGGGCTGCAGGAATTCGATATCAAGCTTATCGATACCGTCGACCTCGAGGGGGGGCCCGGTACCAGCTTTTGTTCCCTTTAGTGAGGGTTAATTTCGAGCTTGGCGTAATCATGGTCATAGCTGTTTCCTGTGTGAAATTGTTATCCGCTCACAATTCCACACAACATACGAGCCGGAAGCATAAAGTGTAAAGCCTGGGGTGCCTAATGAGTGAGCTAACTCACATTAATTGCGTTGCGCTCACTGCCCGCTTTCCAGTCGGGAAACCTGTCGTGCCAGCTGCATTAATGAATCGGCCAACGCGCGGGGAGAGGCGGTTTGCGTATTGGGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGAACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTACAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAATACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGAAcgaagcatctgtgcttcattttgtagaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgaaagcgctattttaccaacgaagaatctgtgcttcatttttgtaaaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgagagcgctattttaccaacaaagaatctatacttcttttttgttctacaaaaatgcatcccgagagcgctatttttctaacaaagcatcttagattactttttttctcctttgtgcgctctataatgcagtctcttgataactttttgcactgtaggtccgttaaggttagaagaaggctactttggtgtctattttctcttccataaaaaaagcctgactccacttcccgcgtttactgattactagcgaagctgcgggtgcattttttcaagataaaggcatccccgattatattctataccgatgtggattgcgcatactttgtgaacagaaagtgatagcgttgatgattcttcattggtcagaaaattatgaacggtttcttctattttgtctctatatactacgtataggaaatgtttacattttcgtattgttttcgattcactctatgaatagttcttactacaatttttttgtctaaagagtaatactagagataaacataaaaaatgtagaggtcgagtttagatgcaagttcaaggagcgaaaggtggatgggtaggttatatagggatatagcacagagatatatagcaaagagatacttttgagcaatgtttgtggaagcggtattcgcaatattttagtagctcgttacagtccggtgcgtttttggttttttgaaagtgcgtcttcagagcgcttttggttttcaaaagcgctctgaagttcctatactttctagCTAGagaataggaacttcggaataggaacttcaaagcgtttccgaaaacgagcgcttccgaaaatgcaacgcgagctgcgcacatacagctcactgttcacgtcgcacctatatctgcgtgttgcctgtatatatatatacatgagaagaacggcatagtgcgtgtttatgcttaaatgcgtacttatatgcgtctatttatgtaggatgaaaggtagtctagtacctcctgtgatattatcccattccatgcggggtatcgtatgcttccttcagcactaccctttagctgttctatatgctgccactcctcaattggattagtctcatccttcaatgctatcatttcctttgatattggatcaTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTC', NULL, 'Gift.or.Purchased'),
+(5, 'pRSII423', NULL, '2013-05-29', '', '2-mu', 'HIS3', '', 'Amp', '', '', '', '', 'Bought from Addgene\r\n\r\nHIS3 has been modified to remove HindIII, KpnI, and PstI sites without altering the amino acid sequence of the His3 protein.\r\n\r\n2 micron replication origin is from YEplac195 and has had its XbaI site removed.', '', 'Lac Z', '', 'pRSII423.gb.gz', 'tcgcgcgtttcggtgatgacggtgaaaacctctgacacatgcagctcccggagacggtcacagcttgtctgtaagcggatgccgggagcagacaagcccgtcagggcgcgtcagcgggtgttggcgggtgtcggggctggcttaactatgcggcatcagagcagattgtactgagagtgcaccataaattcccgttttaagagcttggtgagcgctaggagtcactgccaggtatcgtttgaacacggcattagtcagggaagtcataacacagtcctttcccgcaattttctttttctattactcttggcctcctctagtacactctatatttttttatgcctcggtaatgattttcatttttttttttccAcctagcggatgactctttttttttcttagcgattggcattatcacataatgaattatacattatataaagtaatgtgatttcttcgaagaatatactaaaaaatgagcaggcaagataaacgaaggcaaagatgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcAtttaaagaggccctaGGggcCGTgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagTtttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtacAaacgatgttccctccaccaaaggtgttcttatgtagtgacaccgattatttaaagTtgcagcatacgatatatatacatgtgtatatatgtatacctatgaatgtcagtaagtatgtatacgaacagtatgatactgaagatgacaaggtaatgcatcattctatacgtgtcattctgaacgaggcgcgctttccttttttctttttgctttttctttttttttctcttgaactcgacggatctatgcggtgtgaaataccgcacagatgcgtaaggagaaaataccgcatcaggaaattgtaaGcgttaatattttgttaaaattcgcgttaaatttttgttaaatcagctcattttttaaccaataggccgaaatcggcaaaatcccttataaatcaaaagaatagaccgagatagggttgagtgttgttccagtttggaacaagagtccactattaaagaacgtggactccaacgtcaaagggcgaaaaaccgtctatcagggcgatggcccactacgtgaaccatcaccctaatcaagttttttggggtcgaggtgccgtaaagcactaaatcggaaccctaaagggagcccccgatttagagcttgacggggaaagccggcgaacgtggcgagaaaggaagggaagaaagcgaaaggagcgggcgctagggcgctggcaagtgtagcggtcacgctgcgcgtaaccaccacacccgccgcgcttaatgcgccgctacagggcgcgtccattcgccattcaggctgcgcaactgttgggaagggcgatcggtgcgggcctcttcgctattacgccagctggcgaaagggggatgtgctgcaaggcgattaagttgggtaacgccagggttttcccagtcacgacgttgtaaaacgacggccagtgagcgcgcgtaatacgactcactatagggcgaattgggtaccgggccccccctcgaggtcgacggtatcgataagcttgatatcgaattcctgcagcccgggggatccactagttctagagcggccgccaccgcggtggagctccagcttttgttccctttagtgagggttaattgcgcgcttggcgtaatcatggtcatagctgtttcctgtgtgaaattgttatccgctcacaattccacacaacataCgagccggaagcataaagtgtaaagcctggggtgcctaatgagtgagCtaactcacattaattgcgttgcgctcactgcccgctttccagtcgggaaacctgtcgtgccagctgcattaatgaatcggccaacgcgcggggagaggcggtttgcgtattgggcgctcttccgcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaagAacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttaccaatgcttaatcagtgaggcacctatctcagcgatctgtctatttcgttcatccatagttgcctgactccccgtcgtgtagataactacgatacgggagggcttaccatctggccccagtgctgcaatgataccgcgagacccacgctcaccggctccagatttatcagcaataaaccagccagccggaagggccgagcgcagaagtggtcctgcaactttatccgcctccatccagtctattaattgttgccgggaagctagagtaagtagttcgccagttaatagtttgcgcaacgttgttgccattgctacaggcatcgtggtgtcacgctcgtcgtttggtatggcttcattcagctccggttcccaacgatcaaggcgagttacatgatcccccatgttgtgcaaaaaagcggttagctccttcggtcctccgatcgttgtcagaagtaagttggccgcagtgttatcactcatggttatggcagcactgcataattctcttactgtcatgccatccgtaagatgcttttctgtgactggtgagtactcaaccaagtcattctgagaatagtgtatgcggcgaccgagttgctcttgcccggcgtcaatacgggataataccgcgccacatagcagaactttaaaagtgctcatcattggaaaacgttcttcggggcgaaaactctcaaggatcttaccgctgttgagatccagttcgatgtaacccactcgtgcacccaactgatcttcagcatcttttactttcaccagcgtttctgggtgagcaaaaacaggaaggcaaaatgccgcaaaaaagggaataagggcgacacggaaatgttgaatactcatactcttcctttttcaatattattgaagcatttatcagggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacatttccccgaaaagtgccacctgaAcgaagcatctgtgcttcattttgtagaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgaaagcgctattttaccaacgaagaatctgtgcttcatttttgtaaaacaaaaatgcaacgcgagagcgctaatttttcaaacaaagaatctgagctgcatttttacagaacagaaatgcaacgcgagagcgctattttaccaacaaagaatctatacttcttttttgttctacaaaaatgcatcccgagagcgctatttttctaacaaagcatcttagattactttttttctcctttgtgcgctctataatgcagtctcttgataactttttgcactgtaggtccgttaaggttagaagaaggctactttggtgtctattttctcttccataaaaaaagcctgactccacttcccgcgtttactgattactagcgaagctgcgggtgcattttttcaagataaaggcatccccgattatattctataccgatgtggattgcgcatactttgtgaacagaaagtgatagcgttgatgattcttcattggtcagaaaattatgaacggtttcttctattttgtctctatatactacgtataggaaatgtttacattttcgtattgttttcgattcactctatgaatagttcttactacaatttttttgtctaaagagtaatactagagataaacataaaaaatgtagaggtcgagtttagatgcaagttcaaggagcgaaaggtggatgggtaggttatatagggatatagcacagagatatatagcaaagagatacttttgagcaatgtttgtggaagcggtattcgcaatattttagtagctcgttacagtccggtgcgtttttggttttttgaaagtgcgtcttcagagcgcttttggttttcaaaagcgctctgaagttcctatactttctagCTAGagaataggaacttcggaataggaacttcaaagcgtttccgaaaacgagcgcttccgaaaatgcaacgcgagctgcgcacatacagctcactgttcacgtcgcacctatatctgcgtgttgcctgtatatatatatacatgagaagaacggcatagtgcgtgtttatgcttaaatgcgtacttatatgcgtctatttatgtaggatgaaaggtagtctagtacctcctgtgatattatcccattccatgcggggtatcgtatgcttccttcagcactaccctttagctgttctatatgctgccactcctcaattggattagtctcatccttcaatgctatcatttcctttgatattggatcatctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggccctttcgtc', NULL, 'Gift.or.Purchased');
 
 -- --------------------------------------------------------
 
@@ -517,7 +517,7 @@ INSERT INTO `plasmids` (`id`, `Name_`, `Other_names`, `date_`, `Checkings`, `Typ
 --
 
 CREATE TABLE IF NOT EXISTS `pl_bacterial_selection` (
-  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -542,7 +542,7 @@ CREATE TABLE IF NOT EXISTS `pl_features` (
   `Sequence` longtext NOT NULL,
   `Date_` date DEFAULT NULL,
   `Description` longtext,
-  `Comments` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Comments` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `Author` varchar(50) DEFAULT NULL,
   `Category` varchar(15) NOT NULL DEFAULT 'OTH',
   PRIMARY KEY (`id`),
@@ -555,12 +555,12 @@ CREATE TABLE IF NOT EXISTS `pl_features` (
 --
 
 INSERT INTO `pl_features` (`id`, `Sequence`, `Date_`, `Description`, `Comments`, `Author`, `Category`) VALUES
-(4, 'CGCTTGCCTGTAACTTACACGCGCCTCGTATCTTTTAATGATGGAATAATTTGGGAATTTACTCTGTGTTTATTTATTTTTATGTTTTGTATTTGGATTTTAGAAAGTAAATAAAGAAGGTAGAAGAGTTACGGAATGAAGAAAAAAAAATAAACAAAGGTTTAAAAAATTTCAACAAAAAGCGTACTTTACATATATATTTATTAGACAAGAAAAGCAGATTAAATAGATATACATTCGATTAACGATAAGTAAAATGTAAAATCACAGGATTTTCGTGTGTGGTCTTCTACACAGACAAGATGAAACAATTCGGCATTAATACCTGAGAGCAGGAAGAGCAAGATAAAAGGTAGTATTTGTTGGCGATCCCCCTAGAGTCTTTTACATCTTCGGAAAACAAAAACTATTTTTTCTTTAATTTCTTTTTTTACTTTCTATTTTTAATTTATATATTTATATTAAAAAATTTAAATTATAATTATTTTTATAGCACGTGATGAAAAGGACC', '2013-06-11', 'CEN6/ARSH4', '', 'Gael.Yvert', 'ORI'),
-(5, 'ATAACTTCGTATAATGTATGCTATACGAAGTTAT', '2013-06-11', 'LoxP', '', 'Gael.Yvert', 'OTH'),
-(10, 'ATGTCTAAAGGTGAAGAATTATTCACTGGTGTTGTCCCAATTTTGGTTGAATTAGATGGTGATGTTAATGGTCACAAATTTTCTGTCTCCGGTGAAGGTGAAGGTGATGCTACTTACGGTAAATTGACCTTAAAATTTATTTGTACTACTGGTAAATTGCCAGTTCCATGGCCAACCTTAGTCACTACTTTCGGTTATGGTGTTCAATGTTTTGCTAGATACCCAGATCATATGAAACAACATGACTTTTTCAAGTCTGCCATGCCAGAAGGTTATGTTCAAGAAAGAACTATTTTTTTCAAAGATGACGGTAACTACAAGACCAGAGCTGAAGTCAAGTTTGAAGGTGATACCTTAGTTAATAGAATCGAATTAAAAGGTATTGATTTTAAAGAAGATGGTAACATTTTAGGTCACAAATTGGAATACAACTATAACTCTCACAATGTTTACATCATGGCTGACAAACAAAAGAATGGTATCAAAGTTAACTTCAAAATTAGACACAACATTGAAGATGGTTCTGTTCAATTAGCTGACCATTATCAACAAAATACTCCAATTGGTGATGGTCCAGTCTTGTTACCAGACAACCATTACTTATCCACTCAATCTGCCTTATCCAAAGATCCAAACGAAAAGAGAGACCACATGGTCTTGTTAGAATTTGTTACTGCTGCTGGTATTACCCATGGTATGGATGAATTGTACAAA', '2013-06-11', 'yEGFP3-CDS', '', 'Gael.Yvert', 'REP'),
-(19, 'atgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcttttaaagaggccctactggcgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagctttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtaccaacgatgttccctccaccaaaggtgttcttatgtag', '2013-07-19', 'HIS3-CDS', '', 'Gael.Yvert', 'SEL'),
-(20, 'cgttttaagagcttggtgagcgctaggagtcactgccaggtatcgtttgaacacggcattagtcagggaagtcataacacagtcctttcccgcaattttctttttctattactcttggcctcctctagtacactctatatttttttatgcctcggtaatgattttcatttttttttttcccctagcggatgactctttttttttcttagcgattggcattatcacataatgaattatacattatataaagtaatgtgatttcttcgaagaatatactaaaaaatgagcaggcaagataaacgaaggcaaag', '2013-07-19', 'HIS3-prom', '', 'Gael.Yvert', 'PRO'),
-(21, 'tgacaccgattatttaaagctgcagcatacgatatatatacatgtgtatatatgtatacctatgaatgtcagtaagtatgtatacgaacagtatgatactgaagatgacaaggtaatgcatcattctatacgtgtcattctgaacgaggcgcgctttccttttttctttttgctttttctttttttttctcttgaactcga', '2013-07-19', 'HIS3-term', '', 'Gael.Yvert', 'TER');
+(1, 'CGCTTGCCTGTAACTTACACGCGCCTCGTATCTTTTAATGATGGAATAATTTGGGAATTTACTCTGTGTTTATTTATTTTTATGTTTTGTATTTGGATTTTAGAAAGTAAATAAAGAAGGTAGAAGAGTTACGGAATGAAGAAAAAAAAATAAACAAAGGTTTAAAAAATTTCAACAAAAAGCGTACTTTACATATATATTTATTAGACAAGAAAAGCAGATTAAATAGATATACATTCGATTAACGATAAGTAAAATGTAAAATCACAGGATTTTCGTGTGTGGTCTTCTACACAGACAAGATGAAACAATTCGGCATTAATACCTGAGAGCAGGAAGAGCAAGATAAAAGGTAGTATTTGTTGGCGATCCCCCTAGAGTCTTTTACATCTTCGGAAAACAAAAACTATTTTTTCTTTAATTTCTTTTTTTACTTTCTATTTTTAATTTATATATTTATATTAAAAAATTTAAATTATAATTATTTTTATAGCACGTGATGAAAAGGACC', '2013-06-11', 'CEN6/ARSH4', '', 'Gael.Y', 'ORI'),
+(2, 'ATAACTTCGTATAATGTATGCTATACGAAGTTAT', '2013-06-11', 'LoxP', '', 'Gael.Y', 'OTH'),
+(3, 'ATGTCTAAAGGTGAAGAATTATTCACTGGTGTTGTCCCAATTTTGGTTGAATTAGATGGTGATGTTAATGGTCACAAATTTTCTGTCTCCGGTGAAGGTGAAGGTGATGCTACTTACGGTAAATTGACCTTAAAATTTATTTGTACTACTGGTAAATTGCCAGTTCCATGGCCAACCTTAGTCACTACTTTCGGTTATGGTGTTCAATGTTTTGCTAGATACCCAGATCATATGAAACAACATGACTTTTTCAAGTCTGCCATGCCAGAAGGTTATGTTCAAGAAAGAACTATTTTTTTCAAAGATGACGGTAACTACAAGACCAGAGCTGAAGTCAAGTTTGAAGGTGATACCTTAGTTAATAGAATCGAATTAAAAGGTATTGATTTTAAAGAAGATGGTAACATTTTAGGTCACAAATTGGAATACAACTATAACTCTCACAATGTTTACATCATGGCTGACAAACAAAAGAATGGTATCAAAGTTAACTTCAAAATTAGACACAACATTGAAGATGGTTCTGTTCAATTAGCTGACCATTATCAACAAAATACTCCAATTGGTGATGGTCCAGTCTTGTTACCAGACAACCATTACTTATCCACTCAATCTGCCTTATCCAAAGATCCAAACGAAAAGAGAGACCACATGGTCTTGTTAGAATTTGTTACTGCTGCTGGTATTACCCATGGTATGGATGAATTGTACAAA', '2013-06-11', 'yEGFP3-CDS', '', 'Gael.Y', 'REP'),
+(4, 'atgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcttttaaagaggccctactggcgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagctttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtaccaacgatgttccctccaccaaaggtgttcttatgtag', '2013-07-19', 'HIS3-CDS', '', 'Gael.Y', 'SEL'),
+(5, 'cgttttaagagcttggtgagcgctaggagtcactgccaggtatcgtttgaacacggcattagtcagggaagtcataacacagtcctttcccgcaattttctttttctattactcttggcctcctctagtacactctatatttttttatgcctcggtaatgattttcatttttttttttcccctagcggatgactctttttttttcttagcgattggcattatcacataatgaattatacattatataaagtaatgtgatttcttcgaagaatatactaaaaaatgagcaggcaagataaacgaaggcaaag', '2013-07-19', 'HIS3-prom', '', 'Gael.Y', 'PRO'),
+(6, 'tgacaccgattatttaaagctgcagcatacgatatatatacatgtgtatatatgtatacctatgaatgtcagtaagtatgtatacgaacagtatgatactgaagatgacaaggtaatgcatcattctatacgtgtcattctgaacgaggcgcgctttccttttttctttttgctttttctttttttttctcttgaactcga', '2013-07-19', 'HIS3-term', '', 'Gael.Y', 'TER');
 
 -- --------------------------------------------------------
 
@@ -569,10 +569,10 @@ INSERT INTO `pl_features` (`id`, `Sequence`, `Date_`, `Description`, `Comments`,
 --
 
 CREATE TABLE IF NOT EXISTS `pl_features_catname` (
-  `Category` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `Name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Category` varchar(15) COLLATE utf8_general_ci NOT NULL,
+  `Name` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`Category`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `pl_features_catname`
@@ -597,7 +597,7 @@ INSERT INTO `pl_features_catname` (`Category`, `Name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pl_tag` (
-  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -623,7 +623,7 @@ INSERT INTO `pl_tag` (`type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pl_type` (
-  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -644,7 +644,7 @@ INSERT INTO `pl_type` (`type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pl_yeast_marker` (
-  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -685,7 +685,7 @@ INSERT INTO `pl_yeast_marker` (`type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pl_yeast_promoter` (
-  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -714,32 +714,32 @@ INSERT INTO `pl_yeast_promoter` (`type`) VALUES
 
 CREATE TABLE IF NOT EXISTS `strains` (
   `id` int(10) unsigned NOT NULL,
-  `Name_` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Name_` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `Date_` date DEFAULT NULL,
-  `Comments` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `Comments` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
   `General_Background` varchar(25) NOT NULL,
   `Mating_Type` varchar(25) DEFAULT NULL,
-  `ADE2` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `HIS3` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `LEU2` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `LYS2` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `TRP1` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `URA3` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `HO_` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `locus1` varchar(75) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `locus2` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `locus3` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ADE2` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `HIS3` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `LEU2` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `LYS2` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `TRP1` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `URA3` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `HO_` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `locus1` varchar(75) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `locus2` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `locus3` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Parental_strain` varchar(25) DEFAULT NULL,
   `Obtained_by` varchar(25) DEFAULT NULL,
-  `Checkings` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `extrachromosomal_plasmid` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Checkings` varchar(225) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `extrachromosomal_plasmid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Other_names` varchar(25) DEFAULT NULL,
   `Reference_` varchar(125) DEFAULT NULL,
-  `locus4` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `locus5` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Cytoplasmic_Character` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `locus4` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `locus5` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Cytoplasmic_Character` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Last_modified` date DEFAULT NULL,
-  `MET15` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MET15` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Author` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Author` (`Author`)
@@ -750,25 +750,25 @@ CREATE TABLE IF NOT EXISTS `strains` (
 --
 
 INSERT INTO `strains` (`id`, `Name_`, `Date_`, `Comments`, `General_Background`, `Mating_Type`, `ADE2`, `HIS3`, `LEU2`, `LYS2`, `TRP1`, `URA3`, `HO_`, `locus1`, `locus2`, `locus3`, `Parental_strain`, `Obtained_by`, `Checkings`, `extrachromosomal_plasmid`, `Other_names`, `Reference_`, `locus4`, `locus5`, `Cytoplasmic_Character`, `Last_modified`, `MET15`, `Author`) VALUES
-(6, 'BY4700', '2005-02-01', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(7, 'BY4709', '2005-02-01', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(8, 'BY4719', '2005-02-01', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, 'trp1∆63', 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(9, 'BY4724', '2005-02-01', 'Gift from Gottschling Lab. Strain from ', 'S288c', 'MATa', NULL, NULL, NULL, 'lys2∆0', NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(10, 'BY4720', '2003-05-06', NULL, 'S288c', 'MATb', NULL, NULL, NULL, 'lys2∆0', 'trp1∆63', 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann et al; Yeast 1998 14:115-132.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(42, 'BY4716', NULL, 'Gift from Hartwell Lab, who got it from Brachmann et al. Yeast 1998 14:115-132.', 'S288c', 'MATb', NULL, NULL, NULL, 'lys2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann et al. Yeast 1998 14:115-132.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(128, 'BY4741', '2005-10-11', 'Gift from Gilson Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, 'his3∆1', 'leu2∆0', NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', 'met15∆0', 'Gift.or.Purchased'),
-(129, 'BY4742', '2005-10-11', 'Gift from Gilson Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, 'his3∆1', 'leu2∆0', 'lys2∆0', NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(142, 'BY4706', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', 'met15∆0', 'Gift.or.Purchased'),
-(143, 'BY4707', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', 'met15∆0', 'Gift.or.Purchased'),
-(144, 'BY4710', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, 'trp1∆63', NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(145, 'BY4711', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, NULL, NULL, 'trp1∆63', NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(146, 'BY4712', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, 'leu2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(147, 'BY4713', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, 'leu2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(148, 'BY4714', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, 'his3∆200', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(149, 'BY4715', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, 'lys2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(150, 'BY4717', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', 'ade2∆::hisG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(151, 'BY4725', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', 'ade2∆::hisG', NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
-(152, 'BY4726', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', 'ade2∆::hisG', NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased');
+(1, 'BY4700', '2005-02-01', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(2, 'BY4709', '2005-02-01', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(3, 'BY4719', '2005-02-01', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, 'trp1∆63', 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(4, 'BY4724', '2005-02-01', 'Gift from Gottschling Lab. Strain from ', 'S288c', 'MATa', NULL, NULL, NULL, 'lys2∆0', NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(5, 'BY4720', '2003-05-06', NULL, 'S288c', 'MATb', NULL, NULL, NULL, 'lys2∆0', 'trp1∆63', 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann et al; Yeast 1998 14:115-132.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(6, 'BY4716', NULL, 'Gift from Hartwell Lab, who got it from Brachmann et al. Yeast 1998 14:115-132.', 'S288c', 'MATb', NULL, NULL, NULL, 'lys2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann et al. Yeast 1998 14:115-132.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(7, 'BY4741', '2005-10-11', 'Gift from Gilson Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, 'his3∆1', 'leu2∆0', NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', 'met15∆0', 'Gift.or.Purchased'),
+(8, 'BY4742', '2005-10-11', 'Gift from Gilson Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, 'his3∆1', 'leu2∆0', 'lys2∆0', NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(9, 'BY4706', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', 'met15∆0', 'Gift.or.Purchased'),
+(10, 'BY4707', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', 'met15∆0', 'Gift.or.Purchased'),
+(11, 'BY4710', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, NULL, 'trp1∆63', NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(12, 'BY4711', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, NULL, NULL, 'trp1∆63', NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(13, 'BY4712', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, 'leu2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(14, 'BY4713', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', NULL, NULL, 'leu2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(15, 'BY4714', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, 'his3∆200', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(16, 'BY4715', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', NULL, NULL, NULL, 'lys2∆0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(17, 'BY4717', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', 'ade2∆::hisG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(18, 'BY4725', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATa', 'ade2∆::hisG', NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased'),
+(19, 'BY4726', '2005-11-03', 'Gift from Gottschling Lab. Strain from Brachmann Yeast 14:115-132, 1998.', 'S288c', 'MATb', 'ade2∆::hisG', NULL, NULL, NULL, NULL, 'ura3∆0', NULL, NULL, NULL, NULL, NULL, 'Gift', NULL, NULL, NULL, 'Brachmann Yeast 14:115-132, 1998.', NULL, NULL, NULL, '2006-11-02', NULL, 'Gift.or.Purchased');
 
 -- --------------------------------------------------------
 
@@ -777,7 +777,7 @@ INSERT INTO `strains` (`id`, `Name_`, `Date_`, `Comments`, `General_Background`,
 --
 
 CREATE TABLE IF NOT EXISTS `st_ADE2` (
-  `alleles` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -803,7 +803,7 @@ INSERT INTO `st_ADE2` (`alleles`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_general_backgrounds` (
-  `background` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `background` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`background`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -920,7 +920,7 @@ INSERT INTO `st_general_backgrounds` (`background`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_HIS3` (
-  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -950,7 +950,7 @@ INSERT INTO `st_HIS3` (`alleles`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_LEU2` (
-  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -986,7 +986,7 @@ INSERT INTO `st_LEU2` (`alleles`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_LYS2` (
-  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1016,7 +1016,7 @@ INSERT INTO `st_LYS2` (`alleles`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_MAT` (
-  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1041,7 +1041,7 @@ INSERT INTO `st_MAT` (`alleles`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_MET15` (
-  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1064,7 +1064,7 @@ INSERT INTO `st_MET15` (`alleles`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_TRP1` (
-  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1103,7 +1103,7 @@ INSERT INTO `st_TRP1` (`alleles`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `st_URA3` (
-  `alleles` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `alleles` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`alleles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

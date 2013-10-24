@@ -4,6 +4,9 @@ body {
   font:normal 87.5%/1.4 Arial,sans-serif;
 }
 
+td {
+ font:normal 87.5%/1.4 Arial,sans-serif;
+}
 
 a:link, a:visited , a:active, a:hover {
   text-decoration: none;  
