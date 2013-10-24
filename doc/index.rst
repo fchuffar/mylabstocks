@@ -14,8 +14,6 @@ Copyright CNRS 2012-2013
 - Florent CHUFFART                                                         
 - Gael YVERT                                                               
                                                                           
-This software is a computer program which purpose is to perform quantitative analysis of epigenetic marks at single nucleosome resolution.     
-                                                                          
 The Software is provided “as is” without warranty of any kind, either express or implied, including without limitation any implied warranties of condition, uninterrupted use, merchantability, fitness for a particular purpose, or non-infringement. You use this software at your own risk.
 
 This software is governed by the CeCILL license under French law and abiding by the rules of distribution of free software.  You can  use, modify and/ or redistribute the software under the terms of the CeCILL license as circulated by CEA, CNRS and INRIA at the following URL "http://www.cecill.info".                                                
@@ -42,14 +40,20 @@ This installation has been fully tested on:
 Prerequisites
 -------------
 
+Prior to installing MyLabStocks, a number of packages must be installed on your system. Git is used to retrieve MyLabStocks sources. MySQL and Apache ensure web and database services, it needs php5 and php5-curl packages. Tomcat6 will support advanced plasmid visualisation services (PlasMapper), it needs openjdk-6-jdk and ant. Finally, Blast is used to analyse sequences, it needs csh.
+
+On the targeted server type the following command under a terminal.
+
 .. code:: bash
 
-  sudo apt-get install git mysql-server apache2 php5 phpmyadmin php5-curl csh blast2 tomcat6 ant openjdk-6-jdk 
+  sudo apt-get install git apache2 mysql-server php5 php5-curl tomcat6 ant openjdk-6-jdk blast2 csh  
 ..
 
 
 Get MyLabStocks Sources
 ------------------------
+
+Git is used to retrieve MyLabStocks sources. On the targeted server type the following command under a terminal.
 
 .. code:: bash
 
@@ -57,13 +61,16 @@ Get MyLabStocks Sources
 ..
 
 
-Install wwwBlast
+Install wwwblast
 ----------------
+
+MyLabStocks uses Blast queries for several of its features, wwwblast is a web interface to access to this feature in a common way.
 
 MyLabStocks is distributed with wwwblast working on a x64 architecture.
 For other architectures refer to the NCBI repositories
 http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/blast/executables/release/LATEST
 
+On the targeted server type the following command under a terminal.
 
 .. code:: bash
 
@@ -96,11 +103,13 @@ http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/blast/executables/release/LAT
 ..
 
 
-Now you have a wwwBlast instance available here: http://your_server/blast.
+Now you have a wwwblast instance available here: http://your_server/blast.
 
 
 Install PlasMapper
 ------------------
+
+PlasMapper provides advanced plasmid visualisation features. We use it to produced annoted plasmid maps. To install it, type the following command under a targeted server terminal.
 
 .. code:: bash
 
@@ -116,7 +125,6 @@ Install PlasMapper
   # and set blastallDir=/usr/bin/
   sed -i 's/\/usr\/local\/bin\//\/usr\/bin\//g' src/ca/ualberta/xdong/plasMapper/annotate/plasMapConfiguration_en_CA.properties
   # Here PlasMapper is ready to be configured
-
   ant clean
   ant build 
   sudo ant install 
@@ -126,7 +134,6 @@ Install PlasMapper
   sudo mv context.xml /var/lib/tomcat6/webapps/PlasMapper/META-INF/
   sudo /etc/init.d/tomcat6 restart
   # Here PlasMapper works on your server at the url http://myserver:8080/PlasMapper
-
   sudo chown root:www-data /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/*.*
   sudo chmod 664 /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/*.*
   sudo chown root:www-data /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/
@@ -134,7 +141,6 @@ Install PlasMapper
   sudo chown root:www-data /var/lib/tomcat6/webapps/PlasMapper/html/feature.html
   sudo chmod 664 /var/lib/tomcat6/webapps/PlasMapper/html/feature.html
   # Here plasmids feature could be blasted by MyLabStock
-
   cd ../../..
 ..
 
@@ -143,6 +149,8 @@ Now you have a PlasMapper instance available here: http://your_server:8080/PlasM
 
 Install MyLabStocks
 -------------------
+
+Now your are ready to install the core of MyLabStocks. It a set of php scripts that you have to deploy on your apache server. To do that, type the following command under a targeted server terminal.
 
 .. code:: bash
 
@@ -159,23 +167,32 @@ Install MyLabStocks
 Configure MyLabStocks
 ---------------------
 
-Now you have to update connexion params in /var/www/labstocks/connect_entry.php
+For obvious security reasons, it is essential that you now update connexion parameters by editing the script: /var/www/labstocks/connect_entry.php
+
+In this script you have to update the following constants: 
+
+  - SERVEUR
+  - NOM
+  - BASE
+  - PASSE
+  - LABNAME
+  
 
 .. code:: bash
 
   sudo vi /var/www/labstocks/connect_entry.php 
 ..
 
-finally run the following script to  define passwords and instantiate db.
+We have prepared the following script to help you define passwords and instantiate the database. This script will ask you to chose a password for basic and admin access. To use this script, simply type the following command line:
 
 .. code:: bash
 
   php mylabstocks/src/install_db.phpsh 
 ..
 
-Congratulation your LabStocks instance is available here: http://your_server/labstocks.
+Congratulations! Your MyLabStocks instance is now available here: http://your_server/labstocks.
 
-Go to http://your_server/labstocks/wwwblast.php to initialize blast dbs.
+Go to http://your_server/labstocks/wwwblast.php to initialize blast databases.
 
 Links
 -----
