@@ -11,14 +11,14 @@ echo "\n";
 echo "\n";
 echo "\n";
 echo "**********************************************************************\n";
-echo "* login/password for view mode will be:               view/$password *\n";
+echo "* login/password for view mode will be:                view/$password *\n";
 echo "*                for add mode                       add/add$password *\n";
 echo "*                for edit mode                    edit/edit$password *\n";
 echo "*                for superuser              superuser/$superpassword *\n";
 echo "**********************************************************************\n";
-echo "";
-echo "";
-echo "";
+echo "\n";
+echo "\n";
+echo "\n";
 
 $exec = "mysqldump --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --single-transaction " . BASE . " | gzip > ./db_backup_$(date +%s).sql.gz";
 echo "Executing $exec... ";
