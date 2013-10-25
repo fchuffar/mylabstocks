@@ -3,13 +3,22 @@ require("/var/www/labstocks/connect_entry.php");
 
 echo "Enter a new password for view, add and edit modes: \n";
 $password = trim(fgets(STDIN));
-echo "login/password for view mode will be: view/$password\n";
-echo "login/password for add mode will be:  view/add$password\n";
-echo "login/password for edit mode will be: view/edit$password\n";
 
 echo "Enter a new password for superuser mode: \n";
 $superpassword = trim(fgets(STDIN));
-echo "login/password for superuser mode will be: superuser/$superpassword\n";
+
+echo "\n";
+echo "\n";
+echo "\n";
+echo "**********************************************************************\n";
+echo "* login/password for view mode will be:               view/$password *\n";
+echo "*                for add mode                       add/add$password *\n";
+echo "*                for edit mode                    edit/edit$password *\n";
+echo "*                for superuser              superuser/$superpassword *\n";
+echo "**********************************************************************\n";
+echo "";
+echo "";
+echo "";
 
 $exec = "mysqldump --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --single-transaction " . BASE . " | gzip > ./db_backup_$(date +%s).sql.gz";
 echo "Executing $exec... ";
