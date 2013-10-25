@@ -40,20 +40,20 @@ This installation has been fully tested on:
 Prerequisites
 -------------
 
-Prior to installing MyLabStocks, a number of packages must be installed on your system. Git is used to retrieve MyLabStocks sources. MySQL and Apache ensure web and database services, it needs php5 and php5-curl packages. Tomcat6 will support advanced plasmid visualisation services (PlasMapper), it needs openjdk-6-jdk and ant. Finally, Blast is used to analyse sequences, it needs csh.
+Prior to installing MyLabStocks, a number of packages must be installed on your system. Git is used to retrieve MyLabStocks sources. MySQL, Apache and phpMyAdmin ensure web and database services, it needs php5 and php5-curl packages. Tomcat6 will support advanced plasmid visualisation services (PlasMapper), it needs openjdk-6-jdk and ant. Finally, Blast is used to analyse sequences, it needs csh.
 
-On the targeted server type the following command under a terminal.
+On the targeted server, you can install these packages by typing the following command in a terminal.
 
 .. code:: bash
 
-  sudo apt-get install git apache2 mysql-server php5 php5-curl tomcat6 ant openjdk-6-jdk blast2 csh  
+  sudo apt-get install git apache2 mysql-server php5 php5-curl phpmyadmin tomcat6 ant openjdk-6-jdk blast2 csh  
 ..
 
 
 Get MyLabStocks Sources
 ------------------------
 
-Git is used to retrieve MyLabStocks sources. On the targeted server type the following command under a terminal.
+The first installation step is to retrieve the source code of MyLabStocks. You can do this by typing the following command in a terminal.
 
 .. code:: bash
 
@@ -64,13 +64,13 @@ Git is used to retrieve MyLabStocks sources. On the targeted server type the fol
 Install wwwblast
 ----------------
 
-MyLabStocks uses Blast queries for several of its features, wwwblast is a web interface to access to this feature in a common way.
+MyLabStocks uses Blast queries for several of its features, wwwblast is a web interface which provides access to this feature in a user-friendly way.
 
 MyLabStocks is distributed with wwwblast working on a x64 architecture.
-For other architectures refer to the NCBI repositories
+For other architectures, please refer to the NCBI repositories
 http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/blast/executables/release/LATEST
 
-On the targeted server type the following command under a terminal.
+On the targeted server type the following commands in a terminal.
 
 .. code:: bash
 
@@ -124,7 +124,7 @@ PlasMapper provides advanced plasmid visualisation features. We use it to produc
   sed -i 's/\/home\/tomcat/\/var\/lib\/tomcat6/g' src/ca/ualberta/xdong/plasMapper/annotate/plasMapConfiguration_en_CA.properties
   # and set blastallDir=/usr/bin/
   sed -i 's/\/usr\/local\/bin\//\/usr\/bin\//g' src/ca/ualberta/xdong/plasMapper/annotate/plasMapConfiguration_en_CA.properties
-  # Here PlasMapper is ready to be configured
+  # After these steps, PlasMapper is ready to be configured
   ant clean
   ant build 
   sudo ant install 
@@ -133,14 +133,14 @@ PlasMapper provides advanced plasmid visualisation features. We use it to produc
   echo '<?xml version="1.0" encoding="UTF-8"?><Context path="/myapp" allowLinking="true"></Context>' > context.xml
   sudo mv context.xml /var/lib/tomcat6/webapps/PlasMapper/META-INF/
   sudo /etc/init.d/tomcat6 restart
-  # Here PlasMapper works on your server at the url http://myserver:8080/PlasMapper
+  # After these steps, PlasMapper works on your server at the url http://myserver:8080/PlasMapper
   sudo chown root:www-data /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/*.*
   sudo chmod 664 /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/*.*
   sudo chown root:www-data /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/
   sudo chmod 775 /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/
   sudo chown root:www-data /var/lib/tomcat6/webapps/PlasMapper/html/feature.html
   sudo chmod 664 /var/lib/tomcat6/webapps/PlasMapper/html/feature.html
-  # Here plasmids feature could be blasted by MyLabStock
+  #  Now, plasmid features are ready to be searched by MyLabStocks via Blast queries.
   cd ../../..
 ..
 
@@ -150,7 +150,7 @@ Now you have a PlasMapper instance available here: http://your_server:8080/PlasM
 Install MyLabStocks
 -------------------
 
-Now your are ready to install the core of MyLabStocks. It a set of php scripts that you have to deploy on your apache server. To do that, type the following command under a targeted server terminal.
+Now your are ready to install the core of MyLabStocks. It consists of a set of php scripts that you have to deploy on your apache server. To do that, type the following commands in a targeted server terminal.
 
 .. code:: bash
 
@@ -183,7 +183,7 @@ In this script you have to update the following constants:
   sudo vi /var/www/labstocks/connect_entry.php 
 ..
 
-We have prepared the following script to help you define passwords and instantiate the database. This script will ask you to chose a password for basic and admin access. To use this script, simply type the following command line:
+We have prepared the following script to help you define passwords and instantiate the database. This script will ask you to choose a password for basic and administrative access. To use this script, simply type the following command line:
 
 .. code:: bash
 

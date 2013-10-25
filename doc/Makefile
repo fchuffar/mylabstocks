@@ -112,6 +112,7 @@ latexpdf:
 
 text:
 	$(SPHINXBUILD) -b text $(ALLSPHINXOPTS) $(BUILDDIR)/text
+	cp build/text/index.txt ../README 
 	@echo
 	@echo "Build finished. The text files are in $(BUILDDIR)/text."
 
