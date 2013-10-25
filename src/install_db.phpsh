@@ -32,22 +32,22 @@ echo "Executing $exec... ";
 shell_exec($exec);
 echo "done.\n";
 
-$exec = "echo 'UPDATE  visitors SET  pwd=MD5($password) WHERE  login=\"view\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5(\"$password\") WHERE  login=\"view\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
 echo "Executing $exec... ";
 shell_exec($exec);
 echo "done.\n";
 
-$exec = "echo 'UPDATE  visitors SET  pwd=MD5(add$password) WHERE  login=\"add\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5(\"add$password\") WHERE  login=\"add\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
 echo "Executing $exec... ";
 shell_exec($exec);
 echo "done.\n";
 
-$exec = "echo 'UPDATE  visitors SET  pwd=MD5(edit$password) WHERE  login=\"edit\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5(\"edit$password\") WHERE  login=\"edit\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
 echo "Executing $exec... ";
 shell_exec($exec);
 echo "done.\n";
 
-$exec = "echo 'UPDATE  visitors SET  pwd=MD5($superpassword) WHERE  login=\"superuser\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
+$exec = "echo 'UPDATE  visitors SET  pwd=MD5(\"$superpassword\") WHERE  login=\"superuser\"' | mysql --host=" . SERVEUR . " --user=" . NOM . " --password=" . PASSE . " --database=" . BASE;
 echo "Executing $exec... ";
 shell_exec($exec);
 echo "done.\n";
