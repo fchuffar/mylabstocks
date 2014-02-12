@@ -154,7 +154,7 @@ Now your are ready to install the core of MyLabStocks. It consists of a set of p
 
 .. code:: bash
 
-  sudo cp -r mylabstocks/src /var/www/labstocks
+  sudo rsync -cauvz mylabstocks/src/ /var/www/labstocks/
   sudo rm /var/www/labstocks/install_db.phpsh
   sudo touch /var/www/labstocks/formatdb.log
   sudo chmod 440 /var/www/labstocks/connect_entry.php 
@@ -226,6 +226,15 @@ entered instead of the current one, users must upload a new sequence file, in
 .gb or .gb.gz format. MyLabStocks then automatically reads the file and update 
 the sequence field and the URL. This ensures consistency between URL, sequence 
 and the file itself.
+
+
+Backing up the Mysql Database and Stored Files
+----------------------------------------------
+
+We provide two level of backup. The first only dump the mySQL database and the second also add the uploaded files (plasmid_files raw_dirs directories in your /var/www/labstocks directory). These two features are available on the *home* page. The two links in the sentence *Backup the entire system or only the database NOW!* allow any user to download the requested backups. It could be use full for an admin to integrate it in a robust file backup system using for example a cron that regularly pull the archives (*wget http://.../labstocks/backup.php?FULL_BACK=1*). 
+
+
+
 
 
 
