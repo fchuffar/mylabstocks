@@ -187,7 +187,7 @@ We have prepared the following script to help you define passwords and instantia
 
 .. code:: bash
 
-  php mylabstocks/src/install_db.phpsh 
+  sudo php mylabstocks/src/install_db.phpsh 
 ..
 
 Congratulations! Your MyLabStocks instance is now available here: http://your_server/labstocks.
@@ -212,7 +212,7 @@ Advanced Search
 ---------------
 
 In the strain section, the form `Search in genotype` filters strains where the 
-fields `locus1`, `locus2`, `locus3`, `locus4`, `locus5`, `ADE2`, `HIS3`, `LEU2`, 
+fields `locus1`, `locus2`, `locus3`, `locus4`, `locus5`, `ADE2`, `HIS3`, `LE  U2`, 
 `LYS2`, `MET15`, `TRP1`, `URA3`, `HO_`, `Cytoplasmic_Character` or 
 `extrachromosomal_plasmid` contain the given expression. This filter is case 
 insensitive.
@@ -235,8 +235,11 @@ We provide two level of backup. The first only dump the mySQL database and the s
 
 
 
+Reporting Bugs
+--------------
 
-
+If you think you have found a bug and would like to report the problem, then please ensure you have applied all applicable updates. Else, 
+send a description of your problem and some screenshot to florent.chuffart on its ens-lyon.fr email. Thank you for your contribution.
 
 
 

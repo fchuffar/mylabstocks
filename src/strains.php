@@ -363,6 +363,46 @@ $opts['fdd']['Date_'] = array(
   'sort'     => true,
   'default'  => date("Y-m-d", strtotime("now"))
 );
+$opts['fdd']['storage_minus20freezers'] = array(
+  'name'     => '-20 Freezer',
+  'select'   => 'D',
+  'maxlen'   => 25,
+  'sort'     => true,
+  'values'   => array(
+  	'table'  => 'storage_minus20freezers',
+	  'column' => 'name'),
+  'default'  => 'Amp'
+);
+$opts['fdd']['storage_minus80freezers'] = array(
+  'name'     => '-80 Freezer',
+  'select'   => 'D',
+  'maxlen'   => 25,
+  'sort'     => true,
+  'values'   => array(
+  	'table'  => 'storage_minus80freezers',
+	  'column' => 'name'),
+  'default'  => 'Amp'
+);
+$opts['fdd']['storage_fridges'] = array(
+  'name'     => 'Fridge',
+  'select'   => 'D',
+  'maxlen'   => 25,
+  'sort'     => true,
+  'values'   => array(
+  	'table'  => 'storage_fridges',
+	  'column' => 'name'),
+  'default'  => 'Amp'
+);
+$opts['fdd']['storage_rooms'] = array(
+  'name'     => 'Room',
+  'select'   => 'D',
+  'maxlen'   => 25,
+  'sort'     => true,
+  'values'   => array(
+  	'table'  => 'storage_rooms',
+	  'column' => 'name'),
+  'default'  => 'Amp'
+);
 
 // TRIGGER
 // Before displaying the view page

@@ -1,3 +1,38 @@
+
+CREATE TABLE IF NOT EXISTS `storage_minus20freezers` (
+  `name` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO `storage_minus20freezers` (`name`) VALUES ('GY -20 freezer');
+
+
+CREATE TABLE IF NOT EXISTS `storage_minus80freezers` (
+  `name` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO `storage_minus80freezers` (`name`) VALUES ('GY -80 freezer');
+
+
+CREATE TABLE IF NOT EXISTS `storage_fridges` (
+  `name` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO `storage_fridges` (`name`) VALUES ('GY fridge');
+
+
+CREATE TABLE IF NOT EXISTS `storage_rooms` (
+  `name` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO `storage_rooms` (`name`) VALUES ('GY room');
+
+
+
+
 -- phpMyAdmin SQL Dump
 -- version 3.4.11.1deb2
 -- http://www.phpmyadmin.net
@@ -143,6 +178,10 @@ CREATE TABLE IF NOT EXISTS `antibodies` (
   `Dilution-WB` text NOT NULL,
   `Volume-ChIP` text NOT NULL,
   `ProductID` varchar(20) NOT NULL,
+`storage_minus20freezers` varchar(100) DEFAULT NULL,
+`storage_minus80freezers` varchar(100) DEFAULT NULL,
+`storage_fridges` varchar(100) DEFAULT NULL,
+`storage_rooms` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Author` (`Ordered_by`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
@@ -216,6 +255,10 @@ CREATE TABLE IF NOT EXISTS `oligos` (
   `PCR_conditions_predicted` longtext,
   `Author` varchar(50) DEFAULT NULL,
   `Purif` varchar(40) NOT NULL,
+`storage_minus20freezers` varchar(100) DEFAULT NULL,
+`storage_minus80freezers` varchar(100) DEFAULT NULL,
+`storage_fridges` varchar(100) DEFAULT NULL,
+`storage_rooms` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Author` (`Author`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
@@ -493,6 +536,10 @@ CREATE TABLE IF NOT EXISTS `plasmids` (
   `sequence` text,
   `image_file` varchar(100) DEFAULT NULL,
   `Author` varchar(50) DEFAULT NULL,
+`storage_minus20freezers` varchar(100) DEFAULT NULL,
+`storage_minus80freezers` varchar(100) DEFAULT NULL,
+`storage_fridges` varchar(100) DEFAULT NULL,
+`storage_rooms` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Link_to_file` (`Link_to_file`),
   UNIQUE KEY `Link_to_file_2` (`Link_to_file`),
@@ -741,6 +788,10 @@ CREATE TABLE IF NOT EXISTS `strains` (
   `Last_modified` date DEFAULT NULL,
   `MET15` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Author` varchar(50) DEFAULT NULL,
+`storage_minus20freezers` varchar(100) DEFAULT NULL,
+`storage_minus80freezers` varchar(100) DEFAULT NULL,
+`storage_fridges` varchar(100) DEFAULT NULL,
+`storage_rooms` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Author` (`Author`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;

@@ -28,7 +28,7 @@ if ($retval1 != 0){
    echo "Error while formatting the FASTA database into BLAST format";
    exit;
 }
-echo "Blast has been updated with the latest oligostock.";
+echo "BLAST has been updated with the latest oligostock.";
 
 // Create an updated fasta
 // file of all plasmids
@@ -57,7 +57,7 @@ if ($retval1 != 0){
    echo "Error while formatting the FASTA database into BLAST format";
    exit;
 }
-echo "Blast has been updated with the latest plasmidstock.";
+echo "BLAST has been updated with the latest plasmidstock.";
 
 // Create an updated fasta
 // file of all pl_features
@@ -94,7 +94,7 @@ if ($retval1 != 0){
    echo "Error while formatting the FASTA database into BLAST format";
    exit;
 }
-echo "Blast has been updated with the latest plfeatstock.";
+echo "BLAST has been updated with the latest plfeatstock.";
 
 
 
@@ -164,7 +164,7 @@ $html_feat_filename = PLASMAPPER_HOME . "html/feature.html";
 $fp = fopen($html_feat_filename, 'w');
 fwrite($fp, $html_feat_cnt);
 fclose($fp);
-echo "Blast has updated PlasMapper with the latest plasmid's features.";
+echo "BLAST has updated PlasMapper with the latest plasmid's features.";
 ?>
 
 <center>
