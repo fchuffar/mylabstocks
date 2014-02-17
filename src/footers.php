@@ -11,6 +11,8 @@ if ($tb != "home") {
   require_once 'phpMyEdit.class.php';
   $pme_instance = new phpMyEdit($opts);  
 
+  print("<p><a href=backup.php?TABLE=$tb>Export to .csv format.</a></p>");
+
   if (!array_key_exists("PME_sys_operation", $_REQUEST)) {
     $tmp_array = $pme_instance->fds;
     if ($tb == "strains") {
