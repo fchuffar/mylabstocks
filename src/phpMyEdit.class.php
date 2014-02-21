@@ -3183,7 +3183,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 
 		$this->sql_disconnect();
 		if ($this->display['time'] && $this->timer != null) {
-			echo $this->timer->end(),' miliseconds';
+			echo $this->timer->end(),' milliseconds';
 		}
 	} /* }}} */
 

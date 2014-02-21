@@ -1,5 +1,5 @@
 <?php
-if ($tb != "home") {
+if ($tb != "home" & $tb != "rack" ) {
   // TRIGGER
   $opts['triggers']['select']['pre'][] = 'last_trigger.MVC.php';
   $opts['triggers']['update']['pre'][] = 'last_trigger.MVC.php';
