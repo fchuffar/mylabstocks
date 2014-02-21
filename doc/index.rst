@@ -40,7 +40,7 @@ This installation has been fully tested on:
 Prerequisites
 -------------
 
-Prior to installing MyLabStocks, a number of packages must be installed on your system. Git is used to retrieve MyLabStocks sources. MySQL, Apache and phpMyAdmin ensure web and database services, it needs php5 and php5-curl packages. Tomcat6 will support advanced plasmid visualisation services (PlasMapper), it needs openjdk-6-jdk and ant. Finally, Blast is used to analyse sequences, it needs csh.
+Prior to installing MyLabStocks, a number of packages must be installed on your system. Git is used to retrieve MyLabStocks sources. MySQL, Apache and phpMyAdmin ensure web and database services, it needs php5 and php5-curl packages. Tomcat6 will support advanced plasmid visualisation services (PlasMapper), it needs openjdk-6-jdk and ant. Finally, BLAST is used to analyse sequences, it needs csh.
 
 On the targeted server, you can install these packages by typing the following command in a terminal.
 
@@ -61,12 +61,12 @@ The first installation step is to retrieve the source code of MyLabStocks. You c
 ..
 
 
-Install wwwblast
+Install wwwBLAST
 ----------------
 
-MyLabStocks uses Blast queries for several of its features, wwwblast is a web interface which provides access to this feature in a user-friendly way.
+MyLabStocks uses BLAST queries for several of its features, wwwBLAST is a web interface which provides access to this feature in a user-friendly way.
 
-MyLabStocks is distributed with wwwblast working on a x64 architecture.
+MyLabStocks is distributed with wwwBLAST working on a x64 architecture.
 For other architectures, please refer to the NCBI repositories
 http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/blast/executables/release/LATEST
 
@@ -103,7 +103,7 @@ On the targeted server type the following commands in a terminal.
 ..
 
 
-Now you have a wwwblast instance available here: http://your_server/blast.
+Now you have a wwwBLAST instance available here: http://your_server/blast.
 
 
 Install PlasMapper
@@ -140,7 +140,7 @@ PlasMapper provides advanced plasmid visualisation features. We use it to produc
   sudo chmod 775 /var/lib/tomcat6/webapps/PlasMapper/dataBase/db_vectorFeature/
   sudo chown root:www-data /var/lib/tomcat6/webapps/PlasMapper/html/feature.html
   sudo chmod 664 /var/lib/tomcat6/webapps/PlasMapper/html/feature.html
-  #  Now, plasmid features are ready to be searched by MyLabStocks via Blast queries.
+  #  Now, plasmid features are ready to be searched by MyLabStocks via BLAST queries.
   cd ../../..
 ..
 
@@ -238,14 +238,27 @@ If you think you have found a bug and would like to report the problem, then ple
 Backing up the Mysql Database and Stored Files
 ----------------------------------------------
 
-We HIGHLY RECOMMEND THAT YOU REGULARLY BACKUP you MyLabStocks database. We provide two levels of backup. The first only dump the mySQL database and the second also add the uploaded files (plasmid_files raw_dirs directories in your /var/www/labstocks directory). These two features are available on the *home* page. The two links in the sentence *Backup the entire system or only the database NOW!* allow any user to download the requested backups. It could be useful for an administrator to integrate it in a robust file backup system using for example a cron that regularly pull the archives (*wget http://.../labstocks/backup.php?FULL_BACK=1*). 
+We HIGHLY RECOMMEND THAT YOU REGULARLY BACKUP your MyLabStocks
+database. We provide two levels of backup. The first one dumps only the
+MySQL database. The second one also adds the items' files that were uploaded on the server (plasmid_files and raw_dirs directories from your /var/www/labstocks
+directory). These two features are available on the *home* page. The
+two links in the sentence *Backup the entire system or only the
+database NOW!* allow any user to download the requested backups. It
+could be useful for an administrator to integrate it in a robust file
+backup system using, for example, a cron that regularly pull the
+archives (wget http://.../labstocks/backup.php?FULL_BACK=1).
 
 
 
 How To Restore System From Backup
 ---------------------------------
 
-On the targeted server, you can restore database from the last backup (file ''labstocks_db.sql'') by typing the following command in a terminal. It drops existing tables, creates new one and restores data. You have to adapt user, password and database name according to your setting.
+On the targeted server, you can restore the database from the last backup
+file ''labstocks_db.sql'' by typing the following command in a
+terminal. Not that you need administrator priviledges on the server to do that. This will drop existing tables, create new ones and populate them with data.
+You need to adapt user, password and database names according to your
+settings.
+
 
 .. code:: bash
 
@@ -253,7 +266,9 @@ On the targeted server, you can restore database from the last backup (file ''la
 ..
 
 
-To restore uploaded file, you have to copy backuped directories (''plasmid_files'' and ''raw_dirs'') to your labstocks directory. To do that, on the targeted server type the following commands in a terminal.
+To restore the uploaded files, you have to copy backed-up directories
+(''plasmid_files'' and ''raw_dirs'') to the labstocks directory of your server. To do that, on the targeted server, type the following commands in a
+terminal.
 
 .. code:: bash
 
@@ -264,5 +279,12 @@ To restore uploaded file, you have to copy backuped directories (''plasmid_files
 Extend Database
 ---------------
 
-MyLabstock is delivered under a free licence. Feel free to modify and extend it as to adapt it to your your own lab. To do that you could easily create new table using phpMyAdmin (http://your_server/phpmyadmin) http://http://your_server/yourserver) or mysql command line tool (documentation here http://dev.mysql.com/doc/refman/5.6/en/mysql.html). MyLabStocks uses the  framework phpMyEdit to manage the user interface. Use the provided tool http://your_server/phpMyEditSetup.php to generate code. For any question please refer to the phpMyEdit embedded documentation (http://your_server/labstocks/doc/html/).
+MyLabstocks is delivered under a free licence. Feel free to modify and
+extend it to meet the needs of your lab. To do that you can
+create new tables using phpMyAdmin
+(http://your_server/phpmyadmin)
+or mysql command line tools (documentation here
+http://dev.mysql.com/doc/refman/5.6/en/mysql.html).
+MyLabStocks uses the  framework phpMyEdit to manage the user interface. You can use the provided tool (http://your_server/phpMyEditSetup.php) to generate code.
+You can learn how to customize the interface by reading the phpMyEdit embedded documentation (http://your_server/labstocks/doc/html/).
 

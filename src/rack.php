@@ -133,7 +133,7 @@ if (isset($_REQUEST["action"])) {
     foreach($fields as $field) {
       $key = $container . $rack . $box . $field;
       isset($content[$key]) ? $color="LightGray" : $color="LightGreen";
-      $content_index[$key] == $passage ? $color="PowderBlue": $color=$color;
+      @$content_index[$key] == $passage ? $color="PowderBlue": $color=$color;
       $output .= "<td style='background-color: $color; width:80; border: 1px solid black;''>";
       if ($session->mode != "view") {
         $output .= "<input type='checkbox' name='box_field_$box" . "_$field' value='box_field'>$field</input><br>";
