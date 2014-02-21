@@ -240,10 +240,12 @@ Backing up the Mysql Database and Stored Files
 
 We HIGHLY RECOMMEND THAT YOU REGULARLY BACKUP you MyLabStocks database. We provide two levels of backup. The first only dump the mySQL database and the second also add the uploaded files (plasmid_files raw_dirs directories in your /var/www/labstocks directory). These two features are available on the *home* page. The two links in the sentence *Backup the entire system or only the database NOW!* allow any user to download the requested backups. It could be useful for an administrator to integrate it in a robust file backup system using for example a cron that regularly pull the archives (*wget http://.../labstocks/backup.php?FULL_BACK=1*). 
 
+
+
 How To Restore System From Backup
 ---------------------------------
 
-On the targeted server, you can restore database from the last backup (file ''labstocks_db.sql'') by typing the following command in a terminal. It drops existing tables, creates new one and restore data. You have to adapt user password and database name according to your setting.
+On the targeted server, you can restore database from the last backup (file ''labstocks_db.sql'') by typing the following command in a terminal. It drops existing tables, creates new one and restores data. You have to adapt user, password and database name according to your setting.
 
 .. code:: bash
 
@@ -262,5 +264,5 @@ To restore uploaded file, you have to copy backuped directories (''plasmid_files
 Extend Database
 ---------------
 
-MyLabstock is delivrer under a free licence. Feel free to modify and extend it as to adapt it to your your own lab. To do that you could easily create new table using phpMyAdmin (http://your_server/phpmyadmin) http://http://your_server/yourserver)ou mysql command line tool (documentation here http://dev.mysql.com/doc/refman/5.6/en/mysql.html). MyLabStocks uses the  framework phpMyEdit to manaeg the user interface. Use the provided tool http://your_server/phpMyEditSetup.php to generate code. For any question please refer to the embeded documention (http://your_server/labstocks/doc/html/).
+MyLabstock is delivered under a free licence. Feel free to modify and extend it as to adapt it to your your own lab. To do that you could easily create new table using phpMyAdmin (http://your_server/phpmyadmin) http://http://your_server/yourserver) or mysql command line tool (documentation here http://dev.mysql.com/doc/refman/5.6/en/mysql.html). MyLabStocks uses the  framework phpMyEdit to manage the user interface. Use the provided tool http://your_server/phpMyEditSetup.php to generate code. For any question please refer to the phpMyEdit embedded documentation (http://your_server/labstocks/doc/html/).
 
