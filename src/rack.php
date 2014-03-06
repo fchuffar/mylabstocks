@@ -9,36 +9,42 @@ if (isset($_REQUEST["action"])) {
   $passage = $_REQUEST["passage"];
   $container = $_REQUEST["container"];
   $rack = $_REQUEST["rack"];
+  $box = $_REQUEST["box"];
   if ($_REQUEST["action"] == "update_storage") {
     $where_clause = "";
     $try_to_update = FALSE;
     foreach ($_REQUEST as $key => $value) {
-      if ($value == "box_field") {
+      if (preg_match("/fieldy_fieldx/i", $key)) {
         $try_to_update = TRUE;
         $tmp_exp = explode("_", $key);
-        $tmp_box = $tmp_exp[2];
-        $tmp_field = $tmp_exp[3];
-        $where_clause .= "(container='$container' AND rack='$rack' AND box='$tmp_box' AND field='$tmp_field') OR ";
+        $tmp_field_y = $tmp_exp[2];
+        $tmp_field_x = $tmp_exp[3];
+        $where_clause .= "(container='$container' AND rack='$rack' AND box='$box' AND field_y='$tmp_field_y' AND field_x='$tmp_field_x') OR ";
         // $output .= "<p>$tmp_box $tmp_field***********</p>";
       }
     }    
     $where_clause .= "0";    
-    $qry = "SELECT * FROM cl_storage WHERE $where_clause";    
-    // echo "<br>" . $qry . "<br>";
-    $result = mysql_query($qry, $connexion);
-    $error = FALSE;
-    while($tmp_passage = mysql_fetch_object($result)) {
-      if (isset($tmp_passage->cl_passages)) {
-        $error = TRUE;
-        echo "<H4 style='background-color: red;'><b>ERROR!</b>  $tmp_passage->container $tmp_passage->rack $tmp_passage->box $tmp_passage->field is not empty.</H4>";
-      }
-    }
-    if ($try_to_update & $session->mode == "view") {
-      echo "<H4 style='background-color: red;'><b>ERROR!</b> You can't update Liquid N2 storage in view mode.</H4>";
-    }
-    if (!$error & $session->mode != "view") {
-      $qry = "UPDATE cl_storage SET cl_passages='$passage' WHERE $where_clause";
+    if ($passage == "drop") {
+      $qry = "UPDATE cl_storage SET cl_passages=NULL WHERE $where_clause";
+      $result = mysql_query($qry, $connexion);      
+    } else {
+      $qry = "SELECT * FROM cl_storage WHERE $where_clause";    
+      // echo "<br>" . $qry . "<br>";
       $result = mysql_query($qry, $connexion);
+      $error = FALSE;
+      while($tmp_passage = mysql_fetch_object($result)) {
+        if (isset($tmp_passage->cl_passages)) {
+          $error = TRUE;
+          echo "<H4 style='background-color: red;'><b>ERROR!</b>  $tmp_passage->container $tmp_passage->rack $tmp_passage->box $tmp_passage->field_y $tmp_passage->field_x is not empty.</H4>";
+        }
+      }
+      if ($try_to_update & $session->mode == "view") {
+        echo "<H4 style='background-color: red;'><b>ERROR!</b> You can't update Liquid N2 storage in view mode.</H4>";
+      }
+      if (!$error & $session->mode != "view") {
+        $qry = "UPDATE cl_storage SET cl_passages='$passage' WHERE $where_clause";
+        $result = mysql_query($qry, $connexion);
+      }      
     }
   }
 }
@@ -68,9 +74,17 @@ if (isset($_REQUEST["action"])) {
     $passage == $tmp_passage->ID ? $selected = "selected" : $selected = "";
     $output .= "<option value='$tmp_passage->ID' $selected>$tmp_passage->name $tmp_passage->passage $tmp_passage->date_of_freezing</option>";
   }
+  $output .= "<option value='drop'>drop</option>";
   $output .= "</select><br>";
 
-  $output .= "In which container/rack?<br>";
+
+
+
+  $output .= "In which container/rack/box?<br>";
+
+
+
+
   $output .= "Container: <select name='container' >";
   $qry = "SELECT DISTINCT container FROM cl_storage";
   $result = mysql_query($qry, $connexion);
@@ -83,6 +97,10 @@ if (isset($_REQUEST["action"])) {
   }
   $output .= "</select><br>";
 
+
+
+
+
   $output .= "Rack: <select name='rack' >";
   $qry = "SELECT DISTINCT rack FROM cl_storage WHERE container='$container'";
   $result = mysql_query($qry, $connexion);
@@ -94,21 +112,35 @@ if (isset($_REQUEST["action"])) {
     $output .= "<option value='$storage->rack' $selected>$storage->rack</option>";
   }
   $output .= "</select><br>";
+  
 
 
-  $qry = "SELECT * FROM cl_storage, cl_passages WHERE container='$container' AND rack='$rack' AND cl_storage.cl_passages=cl_passages.ID";
+
+  $output .= "Box: <select name='box' >";
+  $qry = "SELECT DISTINCT box FROM cl_storage WHERE container='$container' AND rack='$rack'";
+  $result = mysql_query($qry, $connexion);
+  while($storage = mysql_fetch_object($result)) {
+    if (!isset($box)) {
+      $box = $storage->box;
+    }
+    $rack == $storage->box ? $selected = "selected" : $selected = "";
+    $output .= "<option value='$storage->box' $selected>$storage->box</option>";
+  }
+  $output .= "</select><br>";
+
+  $qry = "SELECT * FROM cl_storage, cl_passages WHERE container='$container' AND rack='$rack' AND  box='$box'  AND cl_storage.cl_passages=cl_passages.ID";
   $result = mysql_query($qry, $connexion);
   $content = array();
   $content_index = array();
   while($joint_passage = mysql_fetch_object($result)) {
-    $key = $joint_passage->container . $joint_passage->rack . $joint_passage->box . $joint_passage->field;
+    $key = $joint_passage->container . $joint_passage->rack . $joint_passage->box . $joint_passage->field_y . $joint_passage->field_x;;
     $value = $joint_passage->name . "<br>" . $joint_passage->passage . "<br>" . $joint_passage->date_of_freezing;
     $content[$key] = $value;
     $content_index[$key] = $joint_passage->cl_passages ;
   }
 
 
-  $rack_map = array(
+  $box_map = array(
     "A" => range(1,2),
     "B" => range(1,3),
     "C" => range(1,4),
@@ -124,21 +156,21 @@ if (isset($_REQUEST["action"])) {
 
   $output .= "In which boxes/fields?<br>";
   $output .= "<table>";
-  foreach ($rack_map as $box => $fields) {
+  foreach ($box_map as $field_y => $fields) {
     $output .= "<tr><td >";
-    $output .= $box;
+    $output .= $field_y;
     $output .= "</td>";
     $output .= "<td>";
     $output .= "<center><table ><tr>";
-    foreach($fields as $field) {
-      $key = $container . $rack . $box . $field;
+    foreach($fields as $field_x) {
+      $key = $container . $rack . $box . $field_y . $field_x;
       isset($content[$key]) ? $color="LightGray" : $color="LightGreen";
       @$content_index[$key] == $passage ? $color="PowderBlue": $color=$color;
       $output .= "<td style='background-color: $color; width:80; border: 1px solid black;''>";
       if ($session->mode != "view") {
-        $output .= "<input type='checkbox' name='box_field_$box" . "_$field' value='box_field'>$field</input><br>";
+        $output .= "<input type='checkbox' name='fieldy_fieldx_" . $field_y . "_" . $field_x . " value='on'>$field_x</input><br>";
       } else {
-        $output .= "<b>$field</b><br>";        
+        $output .= "<b>$field_x</b><br>";        
       }
       $output .= isset($content[$key]) ? $content[$key] : "empty<br><br><br>";
       $output .= "</td>";

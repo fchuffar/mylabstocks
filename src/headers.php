@@ -25,7 +25,7 @@ require_once ("connect_entry.php");
             <li id="antibodies"><span><a href="antibodies.php"> Antibodies </a></span></li>
             <li id="cl_name"><span><a href="cl_name.php"> Cell Line Names </a></span></li>
             <li id="cl_passages"><span><a href="cl_passages.php"> Cell Line Passages </a></span></li>
-            <li id="cl_storage"><span><a href="cl_storage.php"> Cell Line Storage </a></span></li>
+            <!--li id="cl_storage"><span><a href="cl_storage.php"> Cell Line Storage </a></span></li-->
             <li id="rack"><span><a href="rack.php"> Box Manager </a></span></li>
             <li id="wwwblast"><span><a href="wwwblast.php"> wwwBLAST </a></span></li>
             <li id="collections"><span><a href="collections.php"> Collections </a></span></li>
