@@ -153,8 +153,15 @@ $opts['fdd']['box'] = array(
   'maxlen'   => 50,
   'sort'     => true
 );
-$opts['fdd']['field'] = array(
-  'name'     => 'Field',
+$opts['fdd']['field_y'] = array(
+  'name'     => 'Field Y',
+  'options'  => 'LFACPDVR',
+  'select'   => 'T',
+  'maxlen'   => 50,
+  'sort'     => true
+);
+$opts['fdd']['field_x'] = array(
+  'name'     => 'Field X',
   'options'  => 'LFACPDVR',
   'select'   => 'T',
   'maxlen'   => 50,
