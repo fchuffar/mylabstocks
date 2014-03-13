@@ -168,5 +168,5 @@ echo "BLAST has updated PlasMapper with the latest plasmid's features.";
 ?>
 
 <center>
-<iframe src="/blast/blast.html" width="100%" height="90%" border="0"/>
+<iframe src="<?php echo WWWBLAST_SERVER; ?>/blast.html" width="100%" height="90%" border="0"/>
 </center>

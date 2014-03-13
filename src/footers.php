@@ -12,6 +12,8 @@ if ($tb != "home" & $tb != "rack" ) {
   $pme_instance = new phpMyEdit($opts);  
 
   print("<p><a href=backup.php?TABLE=$tb>Export to .csv format.</a></p>");
+  print("<p>Backup <a href='backup.php?FULL_BACK=1'>the entire system</a> or <a href='backup.php'>only the database</a> NOW!</p>");
+
 
   if (!array_key_exists("PME_sys_operation", $_REQUEST)) {
     $tmp_array = $pme_instance->fds;
