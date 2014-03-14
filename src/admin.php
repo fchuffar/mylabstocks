@@ -2,8 +2,6 @@
 session_start();
 require("headers.php");
 
-
-
 if (! defined('PHP_EOL')) {
 	define('PHP_EOL', strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ? "\r\n"
 			: strtoupper(substr(PHP_OS, 0, 3) == 'MAC') ? "\r" : "\n");

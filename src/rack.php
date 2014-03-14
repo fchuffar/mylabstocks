@@ -2,7 +2,9 @@
 session_start();
 require("headers.php");
 
-
+if ($session->mode == "super") {
+  print("<p><a href='add_box.php'>Add a new box for your Liquid N2 storage.</a></p>");
+}
 
 if (isset($_REQUEST["action"])) {
   // print_r($_REQUEST);

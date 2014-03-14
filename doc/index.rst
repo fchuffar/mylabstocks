@@ -241,12 +241,11 @@ Backing up the Mysql Database and Stored Files
 We HIGHLY RECOMMEND THAT YOU REGULARLY BACKUP your MyLabStocks
 database. We provide two levels of backup. The first one dumps only the
 MySQL database. The second one also adds the items' files that were uploaded on the server (plasmid_files and raw_dirs directories from your /var/www/labstocks
-directory). These two features are available on the *home* page. The
-two links in the sentence *Backup the entire system or only the
+directory). These two features are available on the bottom of each entry page. The two links in the sentence *Backup the entire system or only the
 database NOW!* allow any user to download the requested backups. It
 could be useful for an administrator to integrate it in a robust file
 backup system using, for example, a cron that regularly pull the
-archives (wget http://.../labstocks/backup.php?FULL_BACK=1).
+archives (wget http://.../labstocks/backup.php?FULL_BACK=1). A third link allow you to export the current table in ''csv'' format.
 
 
 
@@ -288,3 +287,7 @@ http://dev.mysql.com/doc/refman/5.6/en/mysql.html).
 MyLabStocks uses the  framework phpMyEdit to manage the user interface. You can use the provided tool (http://your_server/phpMyEditSetup.php) to generate code.
 You can learn how to customize the interface by reading the phpMyEdit embedded documentation (http://your_server/labstocks/doc/html/).
 
+Adding New Boxes In The Box Manager
+-----------------------------------
+
+Tu add new boxes in the box manager you have to connect to the box manager in super user mode (or asking to your admin to). In this contexte, at the top of the page appears a link ''Add a new box for your Liquid N2 storage''. Follow this link, fill the form and click the button ''Add this new box''.  

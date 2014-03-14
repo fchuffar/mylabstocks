@@ -182,6 +182,7 @@ CREATE TABLE `cl_name` (
   `name` varchar(100) NOT NULL,
   `description` longtext,
   `origin` longtext,
+  `Author` varchar(50) DEFAULT NULL,
   `type` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -193,7 +194,7 @@ CREATE TABLE `cl_name` (
 
 LOCK TABLES `cl_name` WRITE;
 /*!40000 ALTER TABLE `cl_name` DISABLE KEYS */;
-INSERT INTO `cl_name` VALUES ('LCL_e','EBV-transformed B cell from Evelyne Manet','gift from Evelyne Manet','LCL'),('LCL_GFP','LCL with GFP on ...','Home made','LCL');
+INSERT INTO `cl_name` VALUES ('LCL_e','EBV-transformed B cell from Evelyne Manet','gift from Evelyne Manet','Gift.or.Purchased','LCL'),('LCL_GFP','LCL with GFP on ...','Home made','Gift.or.Purchased','LCL');
 /*!40000 ALTER TABLE `cl_name` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,6 +209,7 @@ CREATE TABLE `cl_passages` (
   `ID` int(15) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `passage` longtext,
+  `Author` varchar(50) DEFAULT NULL,
   `date_of_freezing` date DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
@@ -219,7 +221,7 @@ CREATE TABLE `cl_passages` (
 
 LOCK TABLES `cl_passages` WRITE;
 /*!40000 ALTER TABLE `cl_passages` DISABLE KEYS */;
-INSERT INTO `cl_passages` VALUES (1,'LCL_GFP','3','2014-02-18'),(2,'LCL_e','n+10','2014-02-19');
+INSERT INTO `cl_passages` VALUES (1,'LCL_GFP','3','Gift.or.Purchased','2014-02-18'),(2,'LCL_e','n+10','Gift.or.Purchased','2014-02-19');
 /*!40000 ALTER TABLE `cl_passages` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -156,6 +156,15 @@ $opts['fdd']['type'] = array(
   'maxlen'   => 100,
   'sort'     => true
 );
+$opts['fdd']['Author'] = array(
+  'name'     => 'Author',
+  'select'   => 'D',
+  'maxlen'   => 10,
+  'sort'     => true,
+  'values'   => array(
+  	'table'  => 'lab_members',
+	'column' => 'id')
+);
 
 require("footers.php");
 ?>

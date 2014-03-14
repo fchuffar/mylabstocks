@@ -88,7 +88,7 @@ if (!(in_array($tb, array("home", "")))) {
   // to pass to phpMyEdit
   //
   //check that visitor is allowed to use this table
-  if ($tb == "admin" && $session->mode != "super") {
+  if (($tb == "admin" || $tb == "add_box") && $session->mode != "super") {
     echo "<p>Sorry, your session is not granted access to admin panel. Please logout and try again with appropriate login...</p>";
     exit;
   } else if ($session->target_table != $tb && $session->target_table != "all") {
