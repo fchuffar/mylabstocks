@@ -170,7 +170,7 @@ $opts['language'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'] . '-UTF8';
 // echo "<pre>";
 // print_r($_SESSION);
 // echo "</pre>";
-if (@$_SESSION["tb"] != $tb) {
+if (@$_SESSION["tb"] != $tb && $tb != "admin") {
   unset($_SESSION["action"]);
   $_SESSION["tb"] = $tb;   
 }

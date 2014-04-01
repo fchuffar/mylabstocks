@@ -7,6 +7,16 @@ if (! defined('PHP_EOL')) {
 			: strtoupper(substr(PHP_OS, 0, 3) == 'MAC') ? "\r" : "\n");
 }
 
+
+
+
+
+
+
+
+  
+  
+
 $hn = SERVEUR;
 $un = NOM;
 $pw = PASSE;
@@ -16,6 +26,25 @@ $options       = 1;
 $baseFilename  = $tb;
 $pageTitle     = $tb;
 
+
+function mysql_tables($database='')
+{
+    $tables = array();
+    $list_tables_sql = "SHOW TABLES FROM {$database};";
+    $result = mysql_query($list_tables_sql);
+    if($result)
+    while($table = mysql_fetch_row($result))
+    {
+        $tables[] = $table[0];
+    }
+    return $tables;
+}
+$tbs = mysql_tables($db);
+
+
+if (!in_array($_SESSION["tb"], $tbs)) {
+  unset($_SESSION["tb"]);
+}
 if (@$_REQUEST["action"] == "CHANGE_TB") {
   $_SESSION["tb"] = $_REQUEST["tb"];
 } else {
