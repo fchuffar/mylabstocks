@@ -30,13 +30,13 @@ $opts['dbh'] = $connexion;
 $opts['tb'] = $tb;
 
 // Name of field which is the unique key
-$opts['key'] = 'ID';
+$opts['key'] = 'name';
 
 // Type of key field (int/real/string/date etc.)
-$opts['key_type'] = 'int';
+$opts['key_type'] = 'string';
 
 // Sorting field(s)
-$opts['sort_field'] = array('ID');
+$opts['sort_field'] = array('name');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
