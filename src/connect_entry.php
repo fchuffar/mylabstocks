@@ -11,4 +11,5 @@ define ('WWWBLAST_SERVER', "http://" . $_SERVER["HTTP_HOST"] . "/blast/");
 define ('PLASMAPPER_HOME', "/var/lib/tomcat6/webapps/PlasMapper/");
 define ('BLAST_HOME', "/var/www/blast/db/");
 define ('FORMATDB_CMD', "formatdb");
+define ('SESSION_DURATION', 1800);
 ?>

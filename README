@@ -336,3 +336,10 @@ manager in super user mode (or asking to your admin to). In this
 contexte, at the top of the page appears a link ''Add a new box for
 your Liquid N2 storage''. Follow this link, fill the form and click
 the button ''Add this new box''.
+
+
+Modifying The Session Duration
+------------------------------
+
+To modify the session duration, edit the connect_entry.php
+configuration file and modify the SESSION_DURATION default value.

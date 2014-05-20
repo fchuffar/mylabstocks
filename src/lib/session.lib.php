@@ -72,7 +72,7 @@ function create_session ($bd, $login, $pwd, $id_session){
     //verif du mot de passe
     if ($visitor->pwd == md5($pwd)) {
       // on insere une session de trente minutes dans table websession
-      $time_limit = date ("U") + 1800;
+      $time_limit = date ("U") + SESSION_DURATION;
       $insSession = "INSERT INTO websession (id_session, login, "
         . "time_limit, target_table, "
         . "mode) VALUES ('$id_session', '$login', '$time_limit', '$visitor->target_table', '$visitor->mode')";
