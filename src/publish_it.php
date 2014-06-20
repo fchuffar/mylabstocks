@@ -3,6 +3,7 @@ session_start();
 require("headers.php");
 
 $output = "";
+$ids = "";
 
 if (isset($_REQUEST["action"])) {
   // print_r($_REQUEST);

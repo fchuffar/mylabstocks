@@ -49,7 +49,7 @@ require_once ("connect_entry.php");
 <?php
 
 function dump_genotype($strain) {
-  $geno = "<p>$strain->Name_ Genotype: ".
+  $geno = "<p>$strain->id - General_Background: $strain->General_Background,  Genotype: ".
   	"<I>".
  	"<B>". 
   	$strain->Mating_Type ." ".
@@ -72,8 +72,7 @@ function dump_genotype($strain) {
  	$strain->Cytoplasmic_Character ." ".
  	"] (" .
  	$strain->extrachromosomal_plasmid ." ".
- 	")" .
- 	"</p>"; 
+ 	").</p>"; 
   return($geno);
 } 
 
