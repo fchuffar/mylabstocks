@@ -2,10 +2,12 @@
 session_start();
 require("headers.php");
 
+$output = "";
+
 if (isset($_REQUEST["action"])) {
   // print_r($_REQUEST);
   $ids = $_REQUEST["ids"];
-  $all_ids = explode(" ", preg_replace("/([^0-9]+)/"," ",$ids));
+  $all_ids = preg_split("/([^0-9]+)/",$ids, -1, PREG_SPLIT_NO_EMPTY);
   // print("<pre>");
   // print_r($all_ids);
   // print("</pre>");
@@ -17,13 +19,12 @@ if (isset($_REQUEST["action"])) {
       // print("<pre>");
       // print_r($strain);
       // print("</pre>");
-      echo dump_genotype($strain);
+      $output .= dump_genotype($strain);
     }
   }
 }
 
 
-  $output = "";
   $output .= "<p>Enter IDs of strains (blank separated) that you want to publish genotypes.</p>";
   $output .= "<form>";
 

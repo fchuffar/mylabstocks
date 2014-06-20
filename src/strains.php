@@ -414,5 +414,7 @@ $opts['fdd']['storage_rooms'] = array(
 // TRIGGER
 // Before displaying the view page
 $opts['triggers']['select']['pre'][] = 'strains.TSP.php';
+
+
 require("footers.php");
 ?>
