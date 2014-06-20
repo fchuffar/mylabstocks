@@ -48,6 +48,36 @@ require_once ("connect_entry.php");
 
 <?php
 
+function dump_genotype($strain) {
+  $geno = "<p>$strain->Name_ Genotype: ".
+  	"<I>".
+ 	"<B>". 
+  	$strain->Mating_Type ." ".
+ 	"</B>" .
+ 	$strain->ADE2 ." ".
+ 	$strain->HIS3 ." ".
+ 	$strain->LEU2 ." ".
+ 	$strain->LYS2 ." ".
+ 	$strain->MET15 ." ".
+ 	$strain->TRP1 ." ".
+ 	$strain->URA3 ." ".
+ 	$strain->HO_ ." ".
+ 	$strain->locus1 ." ".
+ 	$strain->locus2 ." ".
+ 	$strain->locus3 ." ".
+ 	$strain->locus4 ." ".
+ 	$strain->locus5 ." ".
+ 	"</I>".
+ 	" [" .
+ 	$strain->Cytoplasmic_Character ." ".
+ 	"] (" .
+ 	$strain->extrachromosomal_plasmid ." ".
+ 	")" .
+ 	"</p>"; 
+  return($geno);
+} 
+
+
 $to_be_post_list_content = "";
 $to_be_pre_list_content = "";
 // print($_SERVER["SCRIPT_FILENAME"]);
@@ -88,7 +118,7 @@ if (!(in_array($tb, array("home", "")))) {
   // to pass to phpMyEdit
   //
   //check that visitor is allowed to use this table
-  if (($tb == "admin" || $tb == "add_box") && $session->mode != "super") {
+  if (($tb == "admin" || $tb == "add_box" || $tb == "publish_it") && $session->mode != "super") {
     echo "<p>Sorry, your session is not granted access to admin panel. Please logout and try again with appropriate login...</p>";
     exit;
   } else if ($session->target_table != $tb && $session->target_table != "all") {

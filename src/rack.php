@@ -66,7 +66,7 @@ if (isset($_REQUEST["action"])) {
   $output .= "<form>";
 
   $output .= "Which passage do you want to precise storage?<br>";
-  $output .= "Passage: <select name='passage' >";
+  $output .= "Passage: <select name='passage' onChange='submit()'>";
   $qry = "SELECT * FROM cl_passages";
   $result = mysql_query($qry, $connexion);
   while($tmp_passage = mysql_fetch_object($result)) {
@@ -87,8 +87,8 @@ if (isset($_REQUEST["action"])) {
 
 
 
-  $output .= "Container: <select name='container' >";
-  $qry = "SELECT DISTINCT container FROM cl_storage";
+  $output .= "Container: <select name='container' onChange='submit()'>";
+  $qry = "SELECT DISTINCT container FROM cl_storage ORDER BY container";
   $result = mysql_query($qry, $connexion);
   while($storage = mysql_fetch_object($result)) {
     if (!isset($container)) {
@@ -103,42 +103,78 @@ if (isset($_REQUEST["action"])) {
 
 
 
-  $output .= "Rack: <select name='rack' >";
-  $qry = "SELECT DISTINCT rack FROM cl_storage WHERE container='$container'";
+  $output .= "Rack: <select name='rack' onChange='submit()'>";
+  $qry = "SELECT DISTINCT rack FROM cl_storage WHERE container='$container' ORDER BY rack";
   $result = mysql_query($qry, $connexion);
+  $tmp_racks = array();
   while($storage = mysql_fetch_object($result)) {
-    if (!isset($rack)) {
-      $rack = $storage->rack;
-    }
-    $rack == $storage->rack ? $selected = "selected" : $selected = "";
-    $output .= "<option value='$storage->rack' $selected>$storage->rack</option>";
+    array_push($tmp_racks, $storage->rack);
   }
+  if (isset($rack)) {
+    if (!in_array($rack, $tmp_racks)) {
+      unset($rack);
+    }
+  }  
+  foreach ($tmp_racks as $storage_rack) {
+    if (!isset($rack)) {
+      $rack = $storage_rack;
+    }
+    $rack == $storage_rack ? $selected = "selected" : $selected = "";
+    $output .= "<option value='$storage_rack' $selected>$storage_rack</option>";
+  }
+  // while($storage = mysql_fetch_object($result)) {
+  // if (!isset($rack)) {
+  //   $rack = $storage->rack;
+  // }
+  // $rack == $storage->rack ? $selected = "selected" : $selected = "";
+  // $output .= "<option value='$storage->rack' $selected>$storage->rack</option>";
+  // }
   $output .= "</select><br>";
   
 
 
 
-  $output .= "Box: <select name='box' >";
-  $qry = "SELECT DISTINCT box FROM cl_storage WHERE container='$container' AND rack='$rack'";
+  $output .= "Box: <select name='box' onChange='submit()'>";
+  $qry = "SELECT DISTINCT box FROM cl_storage WHERE container='$container' AND rack='$rack' ORDER BY box";
   $result = mysql_query($qry, $connexion);
+  $tmp_boxes = array();
   while($storage = mysql_fetch_object($result)) {
-    if (!isset($box)) {
-      $box = $storage->box;
+    array_push($tmp_boxes, $storage->box);
+  }
+  if (isset($box)) {
+    if (!in_array($box, $tmp_boxes)) {
+      unset($box);
     }
-    $rack == $storage->box ? $selected = "selected" : $selected = "";
-    $output .= "<option value='$storage->box' $selected>$storage->box</option>";
+  }  
+  foreach ($tmp_boxes as $storage_box) {
+    if (!isset($box)) {
+      $box = $storage_box;
+    }
+    $box == $storage_box ? $selected = "selected" : $selected = "";
+    $output .= "<option value='$storage_box' $selected>$storage_box</option>";
   }
   $output .= "</select><br>";
+
+
+
+
+  $qry = "SELECT name FROM cl_passages WHERE ID='$passage'";
+  $result = mysql_query($qry, $connexion);
+  $cell_line = mysql_fetch_object($result)->name;
+  
+
 
   $qry = "SELECT * FROM cl_storage, cl_passages WHERE container='$container' AND rack='$rack' AND  box='$box'  AND cl_storage.cl_passages=cl_passages.ID";
   $result = mysql_query($qry, $connexion);
   $content = array();
   $content_index = array();
+  $content_cell_line = array();
   while($joint_passage = mysql_fetch_object($result)) {
     $key = $joint_passage->container . $joint_passage->rack . $joint_passage->box . $joint_passage->field_y . $joint_passage->field_x;;
     $value = $joint_passage->name . "<br>" . $joint_passage->passage . "<br>" . $joint_passage->date_of_freezing;
     $content[$key] = $value;
     $content_index[$key] = $joint_passage->cl_passages ;
+    $content_cell_line[$key] = $joint_passage->name ;
   }
 
 
@@ -167,7 +203,8 @@ if (isset($_REQUEST["action"])) {
     foreach($fields as $field_x) {
       $key = $container . $rack . $box . $field_y . $field_x;
       isset($content[$key]) ? $color="LightGray" : $color="LightGreen";
-      @$content_index[$key] == $passage ? $color="PowderBlue": $color=$color;
+      @$content_cell_line[$key] == $cell_line ? $color="PowderBlue": $color=$color;
+      @$content_index[$key] == $passage ? $color="RoyalBlue": $color=$color;
       $output .= "<td style='background-color: $color; width:80; border: 1px solid black;''>";
       if ($session->mode != "view") {
         $output .= "<input type='checkbox' name='fieldy_fieldx_" . $field_y . "_" . $field_x . " value='on'>$field_x</input><br>";
@@ -190,6 +227,51 @@ if (isset($_REQUEST["action"])) {
   $output .= "</form>";
 
   echo $output;
+
+
+
+
+
+
+
+
+
+
+
+
+
+  $output2 = "<table class='pme-main'><tr class='pme-header'><th class='pme-header'>Cell Line</th><th class='pme-header'>#Vials</th><th class='pme-header'>Note</th></tr>";
+
+  $qry = "SELECT name, COUNT(cl_passages) as cnt FROM cl_storage, cl_passages WHERE cl_storage.cl_passages=cl_passages.ID GROUP BY name";
+  $result = mysql_query($qry, $connexion);
+  $content = array();
+  $content_index = array();
+  while($joint_passage = mysql_fetch_object($result)) {
+    if ($joint_passage->cnt <= 5) {
+      $note = "<blink><b>Please freeze additional passages to maintain frozen stocks!</b></blink>";
+    } else {
+      $note = "Sufficient stock.";
+    }
+    $output2 .= "<tr class='pme-row-0'><td class='pme-cell-0'>$joint_passage->name</td><td class='pme-cell-0'>$joint_passage->cnt</td><td class='pme-cell-0'>$note</td></tr>";    
+    // print($joint_passage->name . " "  . $joint_passage->cnt . "<pre>");
+    // print_r($joint_passage);
+    // print("</pre>");
+    // $key = $joint_passage->container . $joint_passage->rack . $joint_passage->box . $joint_passage->field_y . $joint_passage->field_x;;
+    // $value = $joint_passage->name . "<br>" . $joint_passage->passage . "<br>" . $joint_passage->date_of_freezing;
+    // $content[$key] = $value;
+    // $content_index[$key] = $joint_passage->cl_passages ;
+  }
+  $output2 .= "</table>";
+
+    print($output2);
+
+
+
+
+
+
+
+
 
   // session_start ();
   require("footers.php");

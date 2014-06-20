@@ -12,31 +12,7 @@ while(!$found && $strain = mysql_fetch_object($all)){
 
 if ($strain){
  // print full genotype
- echo " Genotype: ".
- 	"<I>".
-	"<B>". 
- 	$strain->Mating_Type ." ".
-	"</B>" .
-	$strain->ADE2 ." ".
-	$strain->HIS3 ." ".
-	$strain->LEU2 ." ".
-	$strain->LYS2 ." ".
-	$strain->MET15 ." ".
-	$strain->TRP1 ." ".
-	$strain->URA3 ." ".
-	$strain->HO_ ." ".
-	$strain->locus1 ." ".
-	$strain->locus2 ." ".
-	$strain->locus3 ." ".
-	$strain->locus4 ." ".
-	$strain->locus5 ." ".
-	"</I>".
-	" [" .
-	$strain->Cytoplasmic_Character ." ".
-	"] (" .
-	$strain->extrachromosomal_plasmid ." ".
-	")" .
-	"<BR>". "<BR>";
+ echo dump_genotype($strain);
   /*	
  // find author in table labmembers
  $allauth = $this->myQuery("SELECT * FROM labmembers");

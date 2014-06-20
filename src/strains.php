@@ -2,6 +2,13 @@
 session_start ();
 require("headers.php");
 
+
+
+if ($session->mode == "super") {
+  print("<p><a href='publish_it.php'>Publish genotypes.</a></p>");
+}
+
+
 // if (array_key_exists("action", $_REQUEST)) {
 //   if ($_REQUEST["action"] == "SEARCH_IN_GENOTYPE") {
 //     $keys = split(" ", $_REQUEST["geno"]); 
