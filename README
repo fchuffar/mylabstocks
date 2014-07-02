@@ -343,3 +343,12 @@ Modifying The Session Duration
 
 To modify the session duration, edit the connect_entry.php
 configuration file and modify the SESSION_DURATION default value.
+
+
+Extracting the genotypes of multiple strains when preparing a publication
+-------------------------------------------------------------------------
+
+Log in with superuser priviledges. Go to the strains tab, click on the
+'extract genotypes' link above the table Enter IDs of strains to be
+retrieved, separated by blank space or commas. Click on 'extract
+genotypes' button.
