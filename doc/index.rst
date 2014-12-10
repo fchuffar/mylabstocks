@@ -19,6 +19,7 @@ The Software is provided “as is” without warranty of any kind, either expres
 This software is governed by the CeCILL license under French law and abiding by the rules of distribution of free software.  You can  use, modify and/ or redistribute the software under the terms of the CeCILL license as circulated by CEA, CNRS and INRIA at the following URL "http://www.cecill.info".                                                
                                                                           
 As a counterpart to the access to the source code and  rights to copy, modify and redistribute granted by the license, users are provided only  with a limited warranty  and the software's author,  the holder of the economic rights,  and the successive licensors  have only  limited liability.                                                               
+This software is provided with absolutely NO WARRANTY. The authors can not be held responsible, even partially, for any damage, loss, financial loss or any other undesired facts resulting from the use of the software. 
                                                                           
 In this respect, the user's attention is drawn to the risks associated with loading,  using,  modifying and/or developing or reproducing the software by the user in light of its specific status of free software, that may mean  that it is complicated to manipulate,  and  that  also therefore means  that it is reserved for developers  and  experienced professionals having in-depth computer knowledge. Users are therefore encouraged to load and test the software's suitability as regards their requirements in conditions enabling the security of their systems and/or data to be ensured and,  more generally, to use and operate it in the same conditions as regards security.                                     
                                                                           
@@ -305,3 +306,10 @@ Log in with superuser priviledges.
 Go to the strains tab, click on the 'extract genotypes' link above the table
 Enter IDs of strains to be retrieved, separated by blank space or commas.
 Click on 'extract genotypes' button.
+
+
+Clearing Existing Values and Start Over 
+--------------------------------------- 
+
+Existing values can be deleted from the admin tab using the superuser password. By doing so, you have to take care of the order in which you delete entries. For example, your are allowed to delete an "author" only if this author is no longer associated with any item entry ("strain", "lab book", ...). It is therefore necessary to first delete these item entries befor this author. Existing entries can also be deleted via SQL requests or through the phpMyAdmin graphical interface, using the DUMP TABLE command.
+
