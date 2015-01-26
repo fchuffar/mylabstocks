@@ -849,6 +849,32 @@ INSERT INTO `st_ADE2` VALUES (''),('ade2-1'),('ade2-1/ADE2'),('ade2-1/ade2-1'),(
 /*!40000 ALTER TABLE `st_ADE2` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+
+
+--
+-- Table structure for table `st_species`
+--
+
+DROP TABLE IF EXISTS `st_species`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `st_species` (
+  `species` varchar(50) NOT NULL,
+  PRIMARY KEY (`species`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `st_species`
+--
+
+INSERT INTO `st_species` (`species`) VALUES
+('Candida albicans'),
+('Saccharomyces cerevisiae');
+
+
+
+
 --
 -- Table structure for table `st_HIS3`
 --
@@ -1165,6 +1191,7 @@ CREATE TABLE `strains` (
   `storage_minus80freezers` varchar(100) DEFAULT NULL,
   `storage_fridges` varchar(100) DEFAULT NULL,
   `storage_rooms` varchar(100) DEFAULT NULL,
+  `species` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Author` (`Author`),
   CONSTRAINT `strains_ibfk_1` FOREIGN KEY (`Author`) REFERENCES `lab_members` (`id`)

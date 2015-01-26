@@ -180,6 +180,15 @@ $opts['fdd']['Other_names'] = array(
   'maxlen'   => 25,
   'sort'     => true
 );
+$opts['fdd']['species'] = array(
+  'name'     => 'species',
+  'select'   => 'D',
+  'maxlen'   => 50,
+  'sort'     => true,
+  'values'   => array(
+  	'table'  => 'st_species',
+	'column' => 'species')
+);
 $opts['fdd']['Comments'] = array(
   'name'     => 'Comments',
   'select'   => 'T',
@@ -273,7 +282,7 @@ $opts['fdd']['URA3'] = array(
 $opts['fdd']['HO_'] = array(
   'name'     => 'HO ',
   'select'   => 'T',
-  'maxlen'   => 25,
+  'maxlen'   => 50,
   'sort'     => true
 );
 $opts['fdd']['locus1'] = array(
