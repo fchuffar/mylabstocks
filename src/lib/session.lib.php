@@ -11,7 +11,7 @@ function execQry ($qry, $bd)
   $result = mysql_query($qry, $bd);
   if (!$result)
   {
-    echo "error in execQry ". mysql_error ($db);
+    echo "error in execQry ". mysql_error ($bd);
     exit;
   }
   else
