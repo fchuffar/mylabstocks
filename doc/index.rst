@@ -80,11 +80,15 @@ On the targeted server type the following commands in a terminal.
   tar xfvz wwwblast-2.2.26-x64-linux.tar.gz
   sudo cp -r blast /var/www/.
   sudo chown www-data:www-data /var/www/blast/TmpGifs /var/www/blast/*.log /var/www/blast/db/
+
+  echo "Alias /blast /var/www/blast/" > /tmp/blast.conf
   echo "<Directory /var/www/blast/>" > /tmp/blast.conf
   echo "   Options +ExecCGI" >> /tmp/blast.conf
   echo "</Directory>" >> /tmp/blast.conf
   echo "AddHandler cgi-script .cgi" >> /tmp/blast.conf
   sudo cp /tmp/blast.conf /etc/apache2/conf.d/blast.conf
+  sudo ln -s ../conf.d/blast.conf /etc/apache2/conf-available/blast.conf
+  sudo ln -s ../conf-available/blast.conf /etc/apache2/conf-enabled/blast.conf
   rm /tmp/blast.conf
   sudo /etc/init.d/apache2 restart
   sudo sed -i 's/<option VALUE.*test_na_db/<option VALUE=oligostock_db>oligostock_db<option VALUE=plasmidstock_db>plasmidstock_db<option VALUE=plfeatstock_db>plfeatstock_db/g' /var/www/blast/blast.html
@@ -164,6 +168,15 @@ Now your are ready to install the core of MyLabStocks. It consists of a set of p
   sudo mkdir /var/www/labstocks/raw_dirs
   sudo mkdir /var/www/labstocks/collections
   sudo chown -R www-data:www-data /var/www/labstocks/connect_entry.php /var/www/labstocks/formatdb.log  /var/www/labstocks/plasmid_files /var/www/labstocks/raw_dirs
+  echo "Alias /blast /var/www/blast/" > /tmp/blast.conf
+  echo "<Directory /var/www/blast/>" > /tmp/blast.conf
+  echo "   Options +ExecCGI" >> /tmp/blast.conf
+  echo "</Directory>" >> /tmp/blast.conf
+  echo "AddHandler cgi-script .cgi" >> /tmp/blast.conf
+  sudo cp /tmp/blast.conf /etc/apache2/conf.d/blast.conf
+  sudo ln -s ../conf.d/blast.conf /etc/apache2/conf-available/blast.conf
+  sudo ln -s ../conf-available/blast.conf /etc/apache2/conf-enabled/blast.conf
+  rm /tmp/blast.conf
 ..
 
 Configure MyLabStocks
