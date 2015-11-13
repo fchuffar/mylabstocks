@@ -14,10 +14,8 @@ $table_of_passages = "<table class=\"pme-main\"><tr class=\"pme-navigation\">
 
 while ($row = mysql_fetch_array($results)) {
   // pre_print_r($row);
-  $cl_passages_ids[] = $row[0];
-  $cl_storage_ids[] = $row[1];
   $table_of_passages .= "<tr class=\"pme-row-0\">
-    <td class=\"pme-cell-0\">c" . $row["container"] . " r" . $row["rack"] . " b" . $row["box"] . " " . $row["field_y"] . "" . $row["field_x"] . "</td>
+    <td class=\"pme-cell-0\"><a href=\"rack.php?action=update_view&passage=" . $this->rec . "&container=" . $row["container"] . "&rack=" . $row["rack"] . "&box=" . $row["box"] . "\">c" . $row["container"] . " r" . $row["rack"] . " b" . $row["box"] . "</a> " . $row["field_y"] . "" . $row["field_x"] . "</td>
   </tr>";
   
 }

@@ -25,8 +25,8 @@ while ($row = mysql_fetch_array($results)) {
     <td class=\"pme-cell-0\">" . $row["passage"] . "</td>
     <td class=\"pme-cell-0\">" . $row["date_of_freezing"] . "</td>
     <td class=\"pme-cell-0\">" . $row["Author"] . "</td>
-    <td class=\"pme-cell-0\">c" . $row["container"] . " r" . $row["rack"] . " b" . $row["box"] . " " . $row["field_y"] . "" . $row["field_x"] . "</td>
-  </tr>";
+    <td class=\"pme-cell-0\"><a href=\"rack.php?action=update_view&passage=" . $row[0] . "&container=" . $row["container"] . "&rack=" . $row["rack"] . "&box=" . $row["box"] . "\">c" . $row["container"] . " r" . $row["rack"] . " b" . $row["box"] . "</a> " . $row["field_y"] . "" . $row["field_x"] . "</td>
+      </tr>";
   
 }
 
@@ -35,7 +35,7 @@ $table_of_passages .= "</table>";
 // pre_print_r($ids);
 
 
-$link_to_paasages = "<a href=\"http://minideb/labstocks/cl_passages.php?action=ADV_SEARCH&col_0=name&cond_0=%3D&input_0=$this->rec\">all passages (" . count(array_unique($cl_passages_ids)) . ")</a>";
+$link_to_paasages = "<a href=\"cl_passages.php?action=ADV_SEARCH&col_0=name&cond_0=%3D&input_0=$this->rec\">all passages (" . count(array_unique($cl_passages_ids)) . ")</a>";
 
 
 
