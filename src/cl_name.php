@@ -166,5 +166,9 @@ $opts['fdd']['Author'] = array(
 	'column' => 'id')
 );
 
+// TRIGGER
+$opts['triggers']['select']['pre'][]    = 'cl_name.MVC.php';
+$opts['triggers']['update']['pre'][]    = 'cl_name.MVC.php';
+
 require("footers.php");
 ?>

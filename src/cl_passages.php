@@ -188,6 +188,10 @@ $opts['fdd']['Author'] = array(
 	'column' => 'id')
 );
 
+// TRIGGER
+$opts['triggers']['select']['pre'][]    = 'cl_passages.MVC.php';
+$opts['triggers']['update']['pre'][]    = 'cl_passages.MVC.php';
+
 
 require("footers.php");
 ?>
