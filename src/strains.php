@@ -419,10 +419,26 @@ $opts['fdd']['storage_rooms'] = array(
 	  'column' => 'name'),
   'default'  => 'Amp'
 );
+$opts['fdd']['relevant_plasmids'] = array(
+  'name'     => 'Relevant Plasmids (space separated)',
+  'options'  => 'AVCPD',
+  'select'   => 'T',
+  'maxlen'   => 125,
+  'sort'     => true
+);
+$opts['fdd']['relevant_oligos'] = array(
+  'name'     => 'Relevant Oligos (space separated)',
+  'options'  => 'AVCPD',
+  'select'   => 'T',
+  'maxlen'   => 125,
+  'sort'     => true
+);
 
 // TRIGGER
 // Before displaying the view page
 $opts['triggers']['select']['pre'][] = 'strains.TSP.php';
+$opts['triggers']['select']['pre'][]    = 'strains.MVC.php';
+$opts['triggers']['update']['pre'][]    = 'strains.MVC.php';
 
 
 require("footers.php");

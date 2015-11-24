@@ -327,3 +327,7 @@ Clearing Existing Values and Start Over
 
 Existing values can be deleted from the admin tab using the superuser password. By doing so, you have to take care of the order in which you delete entries. For example, your are allowed to delete an "author" only if this author is no longer associated with any item entry ("strain", "lab book", ...). It is therefore necessary to first delete these item entries befor this author. Existing entries can also be deleted via SQL requests or through the phpMyAdmin graphical interface, using the DUMP TABLE command.
 
+Linking Plasmids and Oligos
+---------------------------
+
+We are able to link the strains to plasmids and oligos easily using "Relevant Plasmids" and "Relevant Oligos" fields in the strain table. Corresponding IDs must be separated unsing coma or space. When it is recorded, this fields is parsed in edit and view mode and users have to click on the IDs to be redirected to the plasmid or oligo page.
