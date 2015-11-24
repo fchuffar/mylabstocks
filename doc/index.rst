@@ -59,7 +59,7 @@ The first installation step is to retrieve the source code of MyLabStocks. You c
 
 .. code:: bash
 
-  git clone http://forge.cbp.ens-lyon.fr/git/mylabstocks
+  git clone https://github.com/fchuffar/mylabstocks
 ..
 
 
@@ -212,7 +212,7 @@ Go to http://your_server/labstocks/wwwblast.php to initialize blast databases.
 Links
 -----
 
-`MyLabStocks` home, repository and documentation: http://forge.cbp.ens-lyon.fr/redmine/projects/mylabstocks
+`MyLabStocks` home, repository and documentation: https://github.com/fchuffar/mylabstocks
 
 Gael Yvert lab: http://www.ens-lyon.fr/LBMC/gisv/
 

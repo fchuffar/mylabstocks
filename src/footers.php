@@ -130,7 +130,7 @@ if (q != null) {
 
 
 
-<center><a href="https://forge.cbp.ens-lyon.fr/redmine/projects/mylabstocks">mylabstocks</a>  -- since 2007 -- <a href="http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html">CeCILL V2.1</a> -- A software from <a href="http://www.ens-lyon.fr/LBMC/gisv/index.php/en/">the lab of Gael Yvert</a></center>
+<center><a href="https://github.com/fchuffar/mylabstocks">mylabstocks</a>  -- since 2007 -- <a href="http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html">CeCILL V2.1</a> -- A software from <a href="http://www.ens-lyon.fr/LBMC/gisv/index.php/en/">the lab of Gael Yvert</a></center>
 
 
 
