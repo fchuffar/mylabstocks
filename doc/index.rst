@@ -330,4 +330,4 @@ Existing values can be deleted from the admin tab using the superuser password. 
 Linking Plasmids and Oligos
 ---------------------------
 
-We are able to link the strains to plasmids and oligos easily using "Relevant Plasmids" and "Relevant Oligos" fields in the strain table. Corresponding IDs must be separated unsing coma or space. When it is recorded, this fields is parsed in edit and view mode and users have to click on the IDs to be redirected to the plasmid or oligo page.
+User is able to link the strains to plasmids and oligos easily using "Relevant Plasmids" and "Relevant Oligos" fields in the strains table. In "add" or "edit" mode, this fields must be filled with corresponding IDs, separated using comas or spaces. When it is recorded, for a given strain, this fields is parsed in "edit" and "view" mode. Links appear just above the given strain table. Users have to click on the IDs to be redirected to the corresponding plasmid or oligo page.
