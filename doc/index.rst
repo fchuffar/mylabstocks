@@ -246,7 +246,7 @@ and the file itself.
 Reporting Bugs
 --------------
 
-If you think you have found a bug and would like to report the problem, then please ensure you have applied all applicable updates. If this is the case, send a description of your problem and some screenshot to florent.chuffart on its ens-lyon.fr email. Thank you for your contribution.
+If you think you have found a bug and would like to report the problem, then please ensure you have applied all applicable updates. If this is the case, send a description of your problem and some screenshot to florent.chuffart on its gmail.com email. Thank you for your contribution.
 
 
 
